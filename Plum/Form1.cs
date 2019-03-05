@@ -16,5 +16,14 @@ namespace Plum
         {
             InitializeComponent();
         }
+
+        private void btnMaterial_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void toolStripLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

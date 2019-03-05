@@ -53,6 +53,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -61,6 +64,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -74,6 +78,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kisspng-common-plum-stock-photography-leaf-red-plums-5aa8a567bcd959.3660422215210018317735.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kisspng-common-plum-stock-photography-leaf-red-plums-5aa8a567e68f01.3390297315210018319444.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plum-fruit-food-blue-healthy-wallpaper-preview.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ce69c6219c893605ff84994954fcc117.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_food-blt-v1_2386377.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_bibimbub_3377053.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_13_3319631.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_12_1874864.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_12_1874864%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_12_18748641.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
