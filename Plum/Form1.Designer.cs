@@ -134,7 +134,7 @@
             // toolStripButton1
             // 
             this.toolStripButton1.AutoSize = false;
-            this.toolStripButton1.Image = global::Plum.Properties.Resources.iconfinder_12_18748641;
+            this.toolStripButton1.Image = global::Plum.Properties.Resources.rgb;
             this.toolStripButton1.ImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -150,7 +150,7 @@
             // toolStripButton2
             // 
             this.toolStripButton2.AutoSize = false;
-            this.toolStripButton2.Image = global::Plum.Properties.Resources.iconfinder_64;
+            this.toolStripButton2.Image = global::Plum.Properties.Resources.man;
             this.toolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";

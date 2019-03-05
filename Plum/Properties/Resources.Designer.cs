@@ -175,9 +175,29 @@ namespace Plum.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap man {
+            get {
+                object obj = ResourceManager.GetObject("man", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap plum_fruit_food_blue_healthy_wallpaper_preview {
             get {
                 object obj = ResourceManager.GetObject("plum-fruit-food-blue-healthy-wallpaper-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rgb {
+            get {
+                object obj = ResourceManager.GetObject("rgb", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
