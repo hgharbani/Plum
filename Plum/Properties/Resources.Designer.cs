@@ -73,6 +73,16 @@ namespace Plum.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap diet {
+            get {
+                object obj = ResourceManager.GetObject("diet", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconfinder_12_1874864 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_12_1874864", resourceCulture);
@@ -106,6 +116,16 @@ namespace Plum.Properties {
         internal static System.Drawing.Bitmap iconfinder_13_3319631 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_13_3319631", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_64 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder-64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -158,6 +178,16 @@ namespace Plum.Properties {
         internal static System.Drawing.Bitmap plum_fruit_food_blue_healthy_wallpaper_preview {
             get {
                 object obj = ResourceManager.GetObject("plum-fruit-food-blue-healthy-wallpaper-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap turkey {
+            get {
+                object obj = ResourceManager.GetObject("turkey", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

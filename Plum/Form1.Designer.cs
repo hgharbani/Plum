@@ -38,6 +38,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -68,18 +69,21 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("IRANSans Medium", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label2.ForeColor = System.Drawing.Color.Yellow;
-            this.label2.Location = new System.Drawing.Point(23, 12);
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("IRANSansWeb", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label2.ForeColor = System.Drawing.Color.Transparent;
+            this.label2.Location = new System.Drawing.Point(43, 13);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(314, 53);
+            this.label2.Size = new System.Drawing.Size(234, 42);
             this.label2.TabIndex = 0;
             this.label2.Text = "نرم افزار مدیریتی آلو";
             // 
             // toolStrip1
             // 
+            this.toolStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.toolStrip1.AutoSize = false;
-            this.toolStrip1.BackColor = System.Drawing.Color.Goldenrod;
+            this.toolStrip1.BackColor = System.Drawing.Color.GhostWhite;
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(0, 0);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -88,7 +92,8 @@
             this.btnFood,
             this.toolStripSeparator2,
             this.toolStripButton1,
-            this.toolStripSeparator3});
+            this.toolStripSeparator3,
+            this.toolStripButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -99,7 +104,7 @@
             // btnMaterial
             // 
             this.btnMaterial.AutoSize = false;
-            this.btnMaterial.Image = global::Plum.Properties.Resources.iconfinder_food_blt_v1_2386377;
+            this.btnMaterial.Image = global::Plum.Properties.Resources.diet;
             this.btnMaterial.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnMaterial.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMaterial.Name = "btnMaterial";
@@ -114,7 +119,7 @@
             // btnFood
             // 
             this.btnFood.AutoSize = false;
-            this.btnFood.Image = global::Plum.Properties.Resources.iconfinder_bibimbub_3377053;
+            this.btnFood.Image = global::Plum.Properties.Resources.turkey;
             this.btnFood.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnFood.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnFood.Name = "btnFood";
@@ -141,6 +146,16 @@
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 73);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.AutoSize = false;
+            this.toolStripButton2.Image = global::Plum.Properties.Resources.iconfinder_64;
+            this.toolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(130, 70);
+            this.toolStripButton2.Text = "درباره ما";
             // 
             // Form1
             // 
@@ -182,6 +197,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
     }
 }
 
