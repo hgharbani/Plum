@@ -8,22 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Plum
+namespace Plum.Form.Food
 {
-    public partial class Form1 : Form
+    public partial class FoodIndex : System.Windows.Forms.Form
     {
-        public Form1()
+        public FoodIndex()
         {
             InitializeComponent();
-        }
-
-        private void btnMaterial_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void toolStripLabel1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

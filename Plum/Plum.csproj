@@ -32,8 +32,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.License">
+      <HintPath>..\..\..\..\..\..\Spire.Office\Bin\NET4.6\Spire.License.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.PdfViewer.Forms">
+      <HintPath>..\..\..\..\..\..\Spire.Office\Bin\NET4.6\Spire.PdfViewer.Forms.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Common, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.Common.4.3.0\lib\net451\System.Data.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SqlClient, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.6.0\lib\net451\System.Data.SqlClient.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,15 +64,57 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Form\Food\CreateFood.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Form\Food\CreateFood.Designer.cs">
+      <DependentUpon>CreateFood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Food\FoodIndex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Food\FoodIndex.Designer.cs">
+      <DependentUpon>FoodIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Material\createMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Material\createMaterial.Designer.cs">
+      <DependentUpon>createMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Material\EditMateril.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Material\EditMateril.Designer.cs">
+      <DependentUpon>EditMateril.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Material\Index.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Material\Index.Designer.cs">
+      <DependentUpon>Index.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Form\Food\FoodIndex.resx">
+      <DependentUpon>FoodIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Material\createMaterial.resx">
+      <DependentUpon>createMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Material\EditMateril.resx">
+      <DependentUpon>EditMateril.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Material\Index.resx">
+      <DependentUpon>Index.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -66,6 +127,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -123,6 +185,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\man.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Form\FoodPrice\" />
+    <Folder Include="Form\Report\" />
+    <Folder Include="Model\" />
+    <Folder Include="Service\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
