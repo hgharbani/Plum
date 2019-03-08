@@ -32,19 +32,19 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnMaterial = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnFood = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.btnMaterial = new System.Windows.Forms.ToolStripButton();
-            this.btnFood = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -107,20 +107,63 @@
             this.toolStrip1.Size = new System.Drawing.Size(1023, 73);
             this.toolStrip1.TabIndex = 2;
             // 
+            // btnMaterial
+            // 
+            this.btnMaterial.AutoSize = false;
+            this.btnMaterial.Image = global::Plum.Properties.Resources.diet;
+            this.btnMaterial.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnMaterial.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnMaterial.Name = "btnMaterial";
+            this.btnMaterial.Size = new System.Drawing.Size(130, 70);
+            this.btnMaterial.Text = "مواد اولیه";
+            this.btnMaterial.Click += new System.EventHandler(this.btnMaterial_Click_1);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 73);
+            // 
+            // btnFood
+            // 
+            this.btnFood.AutoSize = false;
+            this.btnFood.Image = global::Plum.Properties.Resources.turkey;
+            this.btnFood.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnFood.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFood.Name = "btnFood";
+            this.btnFood.Size = new System.Drawing.Size(150, 70);
+            this.btnFood.Text = "مدیریت غذاها";
+            this.btnFood.Click += new System.EventHandler(this.btnFood_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 73);
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.AutoSize = false;
+            this.toolStripButton1.Image = global::Plum.Properties.Resources.rgb;
+            this.toolStripButton1.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(120, 70);
+            this.toolStripButton1.Text = "گزارشات";
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 73);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.AutoSize = false;
+            this.toolStripButton2.Image = global::Plum.Properties.Resources.man;
+            this.toolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(130, 70);
+            this.toolStripButton2.Text = "درباره ما";
             // 
             // panel2
             // 
@@ -146,17 +189,17 @@
             // panel7
             // 
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel7.Location = new System.Drawing.Point(0, 336);
+            this.panel7.Location = new System.Drawing.Point(0, 337);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(388, 131);
+            this.panel7.Size = new System.Drawing.Size(388, 120);
             this.panel7.TabIndex = 3;
             // 
             // panel6
             // 
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 218);
+            this.panel6.Location = new System.Drawing.Point(0, 210);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(388, 118);
+            this.panel6.Size = new System.Drawing.Size(388, 127);
             this.panel6.TabIndex = 2;
             // 
             // panel5
@@ -164,7 +207,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 100);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(388, 118);
+            this.panel5.Size = new System.Drawing.Size(388, 110);
             this.panel5.TabIndex = 1;
             // 
             // panel4
@@ -174,49 +217,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(388, 100);
             this.panel4.TabIndex = 0;
-            // 
-            // btnMaterial
-            // 
-            this.btnMaterial.AutoSize = false;
-            this.btnMaterial.Image = global::Plum.Properties.Resources.diet;
-            this.btnMaterial.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnMaterial.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnMaterial.Name = "btnMaterial";
-            this.btnMaterial.Size = new System.Drawing.Size(130, 70);
-            this.btnMaterial.Text = "مواد اولیه";
-            this.btnMaterial.Click += new System.EventHandler(this.btnMaterial_Click_1);
-            // 
-            // btnFood
-            // 
-            this.btnFood.AutoSize = false;
-            this.btnFood.Image = global::Plum.Properties.Resources.turkey;
-            this.btnFood.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnFood.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnFood.Name = "btnFood";
-            this.btnFood.Size = new System.Drawing.Size(150, 70);
-            this.btnFood.Text = "مدیریت غذاها";
-            this.btnFood.Click += new System.EventHandler(this.btnFood_Click);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.AutoSize = false;
-            this.toolStripButton1.Image = global::Plum.Properties.Resources.rgb;
-            this.toolStripButton1.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(120, 70);
-            this.toolStripButton1.Text = "گزارشات";
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.AutoSize = false;
-            this.toolStripButton2.Image = global::Plum.Properties.Resources.man;
-            this.toolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(130, 70);
-            this.toolStripButton2.Text = "درباره ما";
             // 
             // Form1
             // 
@@ -238,6 +238,7 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);

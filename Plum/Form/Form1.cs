@@ -38,5 +38,11 @@ namespace Plum
             var FoodIndex = new FoodIndex();
             FoodIndex.ShowDialog();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            WindowState = FormWindowState.Maximized;
+        }
     }
 }
