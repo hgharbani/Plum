@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.Id = new System.Windows.Forms.TextBox();
-            this.UnitPrice = new System.Windows.Forms.TextBox();
             this.FoodName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,6 +37,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.UnitPrice = new NumericTextBox.NumericTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
@@ -52,16 +52,6 @@
             this.Id.Size = new System.Drawing.Size(219, 28);
             this.Id.TabIndex = 7;
             this.Id.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // UnitPrice
-            // 
-            this.UnitPrice.Font = new System.Drawing.Font("IRANSans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UnitPrice.Location = new System.Drawing.Point(37, 153);
-            this.UnitPrice.Name = "UnitPrice";
-            this.UnitPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.UnitPrice.Size = new System.Drawing.Size(219, 28);
-            this.UnitPrice.TabIndex = 6;
-            this.UnitPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // FoodName
             // 
@@ -126,17 +116,27 @@
             // 
             this.errorProvider2.ContainerControl = this;
             // 
+            // UnitPrice
+            // 
+            this.UnitPrice.Font = new System.Drawing.Font("IRANSans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UnitPrice.FormatType = NumericTextBox.FormatType.Long;
+            this.UnitPrice.Location = new System.Drawing.Point(37, 158);
+            this.UnitPrice.MaxLength = 25;
+            this.UnitPrice.Name = "UnitPrice";
+            this.UnitPrice.Size = new System.Drawing.Size(219, 28);
+            this.UnitPrice.TabIndex = 12;
+            // 
             // EditMateril
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(436, 274);
+            this.Controls.Add(this.UnitPrice);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Id);
-            this.Controls.Add(this.UnitPrice);
             this.Controls.Add(this.FoodName);
             this.Font = new System.Drawing.Font("IRANSans", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -159,9 +159,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
         public System.Windows.Forms.TextBox Id;
-        public System.Windows.Forms.TextBox UnitPrice;
         public System.Windows.Forms.TextBox FoodName;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ErrorProvider errorProvider2;
+        public NumericTextBox.NumericTextBox UnitPrice;
     }
 }

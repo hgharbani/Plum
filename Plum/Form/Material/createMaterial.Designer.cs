@@ -32,10 +32,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.UnitPrice = new System.Windows.Forms.TextBox();
             this.FoodName = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider3 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.UnitPrice = new NumericTextBox.NumericTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).BeginInit();
             this.SuspendLayout();
@@ -75,16 +75,6 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "قیمت هر کیلو:";
             // 
-            // UnitPrice
-            // 
-            this.UnitPrice.Font = new System.Drawing.Font("IRANSans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UnitPrice.Location = new System.Drawing.Point(40, 128);
-            this.UnitPrice.Name = "UnitPrice";
-            this.UnitPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.UnitPrice.Size = new System.Drawing.Size(264, 28);
-            this.UnitPrice.TabIndex = 8;
-            this.UnitPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // FoodName
             // 
             this.FoodName.Font = new System.Drawing.Font("IRANSans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -104,6 +94,16 @@
             // 
             this.errorProvider3.ContainerControl = this;
             this.errorProvider3.RightToLeft = true;
+            // 
+            // UnitPrice
+            // 
+            this.UnitPrice.Font = new System.Drawing.Font("IRANSans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UnitPrice.FormatType = NumericTextBox.FormatType.Long;
+            this.UnitPrice.Location = new System.Drawing.Point(40, 134);
+            this.UnitPrice.MaxLength = 25;
+            this.UnitPrice.Name = "UnitPrice";
+            this.UnitPrice.Size = new System.Drawing.Size(264, 28);
+            this.UnitPrice.TabIndex = 8;
             // 
             // createMaterial
             // 
@@ -137,9 +137,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox UnitPrice;
         private System.Windows.Forms.TextBox FoodName;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ErrorProvider errorProvider3;
+        private NumericTextBox.NumericTextBox UnitPrice;
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Plum.Services;
+using NumericTextBox;
 
 namespace Plum.Form.Material
 {
@@ -20,12 +21,13 @@ namespace Plum.Form.Material
 
         private void button1_Click(object sender, EventArgs e)
         {
+          
             if (string.IsNullOrWhiteSpace(FoodName.Text))
             {
                 errorProvider1.SetError(FoodName,"لطفا نام را وارد نمایید");
                 return ;
             }
-            if (string.IsNullOrWhiteSpace(UnitPrice.Text))
+            if (string.IsNullOrWhiteSpace(UnitPrice.Value))
             {
                 errorProvider3.SetError(UnitPrice, "لطفا قیمت را وارد نمایید");
                 return;
@@ -36,7 +38,7 @@ namespace Plum.Form.Material
                 var model = new Data.Material()
                 {
                     MaterialName = FoodName.Text,
-                    UnitPrice = int.Parse(UnitPrice.Text),
+                    UnitPrice = int.Parse(UnitPrice.Value),
                     Active = true,
                     InsertTime = DateTime.Now,
                     ParentId = null,

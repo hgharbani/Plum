@@ -87,7 +87,7 @@ namespace Plum.Services.FoodServices
         {
             try
             {
-                db.Entry(food).State = EntityState.Deleted;
+                db.Foods.Remove(food);
                 return true;
             }
             catch (Exception)
@@ -100,18 +100,19 @@ namespace Plum.Services.FoodServices
         {
             try
             {
-                Food foodModel = db.Foods.AsNoTracking().Include(a => a.FoodMaterials).Include(a => a.FoodSurplusPrices)
+                Food foodModel = db.Foods.AsQueryable().Include(a => a.FoodMaterials).Include(a => a.FoodSurplusPrices)
                     .FirstOrDefault(a => a.Id == foodId);
                 foreach (var foodMaterial in foodModel.FoodMaterials)
                 {
-                    db.Entry(foodMaterial).State = EntityState.Deleted;
-                    
+                    db.FoodMaterials.Remove(foodMaterial);
+
                 }
 
                 foreach (var foodModelFoodSurplusPrice in foodModel.FoodSurplusPrices)
                 {
-                    
-                    db.Entry(foodModelFoodSurplusPrice).State = EntityState.Deleted;
+
+                    db.FoodSurplusPrices.Remove(foodModelFoodSurplusPrice);
+
                 }
                 DeleteFood(foodModel);
                 return true;

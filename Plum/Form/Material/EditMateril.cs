@@ -27,7 +27,7 @@ namespace Plum.Form.Material
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(UnitPrice.Text))
+            if (string.IsNullOrWhiteSpace(UnitPrice.Value))
             {
                 errorProvider2.SetError(UnitPrice, "لطفا قیمت را وارد نمایید");
                 return;
@@ -40,7 +40,7 @@ namespace Plum.Form.Material
                 {
                     Id = int.Parse(Id.Text),
                     MaterialName = FoodName.Text,
-                    UnitPrice = int.Parse(UnitPrice.Text),
+                    UnitPrice = double.Parse(UnitPrice.Value),
                     Active = true,
                     InsertTime = DateTime.Now,
                     ParentId = null,
@@ -49,7 +49,7 @@ namespace Plum.Form.Material
 
                 if (db.MaterialRepositories.UpdateMaterial(model))
                 {
-                    db.Save();
+                    //db.Save();
                     MessageBox.Show("عملیات با موفقیت انجام شد");
                     DialogResult = DialogResult.OK;
                 }

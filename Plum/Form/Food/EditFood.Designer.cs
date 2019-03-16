@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Id = new System.Windows.Forms.TextBox();
             this.FoodName = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -48,6 +51,7 @@
             this.button1.TabIndex = 16;
             this.button1.Text = "ثبت";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label3
             // 
@@ -90,6 +94,10 @@
             this.FoodName.TabIndex = 12;
             this.FoodName.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // EditFood
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 21F);
@@ -110,6 +118,7 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "EditFood";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,5 +131,6 @@
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox Id;
         public System.Windows.Forms.TextBox FoodName;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

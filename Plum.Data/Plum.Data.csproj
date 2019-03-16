@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Plum.Data</RootNamespace>
     <AssemblyName>Plum.Data</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -72,6 +72,7 @@
     <Compile Include="FoodSurplusPrice.cs" />
     <Compile Include="Material.cs" />
     <Compile Include="Contex\PlumContext.cs" />
+    <Compile Include="PlumResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

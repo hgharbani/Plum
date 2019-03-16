@@ -1,5 +1,6 @@
 ﻿using System;
 using Plum.Data;
+using Plum.Services.FoodMaterial;
 using Plum.Services.FoodServices;
 using Plum.Services.MAterialServices;
 
@@ -10,6 +11,7 @@ namespace Plum.Services
         PlumContext db=new PlumContext();
         private IMaterialService _materialService;
         private IFoodService _foodService;
+        private IFoodMaterialService _foodMaterialService;
 
         public IFoodService FoodService
         {
@@ -34,6 +36,19 @@ namespace Plum.Services
                 }
 
                 return _materialService;
+            }
+        }
+
+        public IFoodMaterialService FoodMaterialService
+        {
+            get
+            {
+                if (_materialService == null)
+                {
+                    return _foodMaterialService = new FoodMaterialService(db);
+                }
+
+                return _foodMaterialService;
             }
         }
 

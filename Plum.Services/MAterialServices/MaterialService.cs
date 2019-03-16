@@ -26,7 +26,7 @@ namespace Plum.Services.MAterialServices
         /// <returns></returns>
         public Material GetOne(int id)
         {
-            return db.Materials.FirstOrDefault(a => a.Id == id);
+            return db.Materials.AsQueryable().Include(a=>a.FoodMaterials).FirstOrDefault(a => a.Id == id );
         }
 
         /// <summary>
@@ -69,22 +69,51 @@ namespace Plum.Services.MAterialServices
             try
             {
                 Material materialModel = GetOne(material.Id);
-                if (db.Materials.Any(a => a.Id != material.Id && a.MaterialName == material.MaterialName))
+                if (db.Materials.Any(a => a.Id != material.Id && a.MaterialName == material.MaterialName&&a.Active))
                 {
                     return false;
                 }
                 if (materialModel.UnitPrice != material.UnitPrice)
                 {
-
-                    materialModel.Active = false;
-                    materialModel.ParentId = materialModel.Id;
-                    db.Materials.Add(materialModel);
+                    var oldMaterial=new Material()
+                    {
+                        MaterialName = materialModel.MaterialName,
+                        Active = false,
+                        ParentId = materialModel.Id,
+                        UnitPrice = materialModel.UnitPrice,
+                        InsertTime = materialModel.InsertTime,
+                        MaterialTypeData = materialModel.MaterialTypeData
+                    };
+                 
+                    db.Materials.Add(oldMaterial);
                 }
-                db.Entry(material).State = EntityState.Modified;
-                return true;
+
+                materialModel.MaterialName = material.MaterialName;
+                materialModel.UnitPrice = material.UnitPrice;
+                materialModel.InsertTime = material.InsertTime;
+                
+                foreach (var item in materialModel.FoodMaterials.ToList())
+                {
+                    item.UnitPrice = material.UnitPrice;
+
+                    var unitPrice = material.UnitPrice / 1000;
+                    var quantity = item.Quantity;
+                    var totalPrice = unitPrice * quantity;
+                    item.MaterialTotalPrice = totalPrice;
+                    db.Entry(item).State = EntityState.Modified;
+                }
+
+              
+               
+                if (db.SaveChanges() > 0)
+                {
+                    return true;
+                }
+                return false;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                var x = e;
                 return false;
             }
         }

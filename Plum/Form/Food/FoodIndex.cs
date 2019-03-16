@@ -112,5 +112,55 @@ namespace Plum.Form.Food
                 ShowFoodGrid();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+            
+                FoodMaterial.Index frm = new FoodMaterial.Index();
+                frm._foodIds= int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                frm.label2.Text = " صفحه مدیریت مواد لازم غذا:" + "  "+ dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                var createMaterialFoods = frm.ShowDialog();
+                if (createMaterialFoods == DialogResult.OK)
+                {
+                    ShowFoodGrid();
+                }
+            }
+            else
+            {
+                MessageBox.Show("لطفا ابتدا نام غذا را از جدول زیر انتخاب نمایید.");
+            }
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                using (UnitOfWork db = new UnitOfWork())
+                {
+                    int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                    FoodPrice.Index frm = new FoodPrice.Index();
+                    frm._foodId = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                    var model = db.FoodMaterialService.GetOneByFoodId(id);
+                    var totalPrice = model.Sum(a => a.MaterialTotalPrice);
+                    frm.TotalPrice.Text = totalPrice.ToString();
+                    frm.label1.Text = " هزینه های مازاد یک پرس :" + "  " +
+                                      dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                    var createMaterialFoods = frm.ShowDialog();
+                    if (createMaterialFoods == DialogResult.OK)
+                    {
+                        ShowFoodGrid();
+                    }
+                    
+                }
+            }
+            else
+            {
+                MessageBox.Show("لطفا ابتدا نام غذا را از جدول زیر انتخاب نمایید.");
+            }
+
+        }
     }
 }
