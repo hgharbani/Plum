@@ -8,6 +8,10 @@ namespace Plum.Model.Model
 {
    public class PlumResult
     {
+        public PlumResult()
+        {
+            IsChange = true;
+        }
         public bool IsChange { get; set; }
         public string Message { get; set; }
         public object ReturnValue { get; set; }

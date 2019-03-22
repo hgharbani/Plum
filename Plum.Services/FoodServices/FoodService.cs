@@ -40,10 +40,10 @@ namespace Plum.Services.FoodServices
         {
             if (active)
             {
-                return db.Foods.Where(a => a.Active).ToList();
+                return db.Foods.AsNoTracking().Include(a=>a.FoodMaterials).Include(a=>a.FoodSurplusPrices).Where(a => a.Active).ToList();
 
             }
-            return db.Foods.Where(a => a.Active == false).ToList();
+            return db.Foods.AsNoTracking().Include(a => a.FoodMaterials).Include(a => a.FoodSurplusPrices).Where(a => a.Active == false).ToList();
 
         }
 
@@ -127,5 +127,7 @@ namespace Plum.Services.FoodServices
         {
             return db.Foods.Where(c => c.FoodName.Contains(parameter)&& c.Active).ToList();
         }
+
+      
     }
 }

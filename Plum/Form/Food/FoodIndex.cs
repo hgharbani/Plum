@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PersianDate;
+using Plum.Form.Report.Reports;
 using Plum.Services;
 
 namespace Plum.Form.Food
@@ -148,6 +149,43 @@ namespace Plum.Form.Food
                     frm.TotalPrice.Text = totalPrice.ToString();
                     frm.label1.Text = " هزینه های مازاد یک پرس :" + "  " +
                                       dataGridView1.CurrentRow.Cells[1].Value.ToString();
+
+                    //گرفتن لیست هزینه های مازاد یک پرس غذا 
+                    var foodsurplus = db.FoodSurplusPricService.GetFoodSurplusPricesByFoodId(id);
+                    if (foodsurplus.Any())
+                    {
+                        frm._IsUpdate = true; //فعال سازی مود اپدیت کردن
+
+                    }
+                    else
+                    {
+                        frm._IsUpdate = false; //فعال سازی مود ثبت کردن
+                    }
+                    
+                    frm.person.Text = foodsurplus.Any(a => a.AdjustKind == 1)
+                        ? foodsurplus.First(a => a.AdjustKind == 1).Price.ToString()
+                        : "0";
+
+                    frm.Chashni.Text = foodsurplus.Any(a => a.AdjustKind == 2)
+                        ? foodsurplus.First(a => a.AdjustKind == 2).Price.ToString()
+                        : "0";
+                    frm.Clean.Text = foodsurplus.Any(a => a.AdjustKind == 3)
+                        ? foodsurplus.First(a => a.AdjustKind == 3).Price.ToString()
+                        : "0";
+                    frm.Box.Text = foodsurplus.Any(a => a.AdjustKind == 4)
+                        ? foodsurplus.First(a => a.AdjustKind == 4).Price.ToString()
+                        : "0";
+                    frm.Parent.Text = foodsurplus.Any(a => a.AdjustKind == 5)
+                        ? foodsurplus.First(a => a.AdjustKind == 5).Price.ToString()
+                        : "0";
+                    frm.bimeh.Text = foodsurplus.Any(a => a.AdjustKind == 6)
+                        ? foodsurplus.First(a => a.AdjustKind == 6).Price.ToString()
+                        : "0";
+                    frm.tax.Text = foodsurplus.Any(a => a.AdjustKind == 7)
+                        ? foodsurplus.First(a => a.AdjustKind == 7).Price.ToString()
+                        : "0";
+                    frm.Calculator();
+
                     var createMaterialFoods = frm.ShowDialog();
                     if (createMaterialFoods == DialogResult.OK)
                     {
@@ -160,6 +198,16 @@ namespace Plum.Form.Food
             {
                 MessageBox.Show("لطفا ابتدا نام غذا را از جدول زیر انتخاب نمایید.");
             }
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            var reportViewver = new ReportViewer();
+            var food = (Data.Food) cmbFoodName.SelectedItem;
+            reportViewver.foodId = food.Id;
+            reportViewver.ShowDialog();
+
 
         }
     }

@@ -21,7 +21,7 @@ namespace Plum.Data
         /// <summary>
         /// 
         /// </summary>
-        public  int CostTitle { get; set; }
+        public  string CostTitle { get; set; }
 
         /// <summary>
         /// 
@@ -31,7 +31,7 @@ namespace Plum.Data
         /// <summary>
         /// 
         /// </summary>
-        public double FoodTotalPrice { get; set; }
+        public int AdjustKind { get; set; }
 
         /// <summary>
         /// 

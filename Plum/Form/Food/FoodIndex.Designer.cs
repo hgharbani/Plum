@@ -62,6 +62,7 @@
             this.cmbFoodName = new System.Windows.Forms.ComboBox();
             this.foodBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button2 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -313,6 +314,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.GhostWhite;
+            this.panel4.Controls.Add(this.button9);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Controls.Add(this.PriceTo);
             this.panel4.Controls.Add(this.label3);
@@ -418,12 +420,25 @@
             this.button2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("IRANSans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.button2.Location = new System.Drawing.Point(353, 213);
+            this.button2.Location = new System.Drawing.Point(479, 213);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(235, 63);
+            this.button2.Size = new System.Drawing.Size(151, 63);
             this.button2.TabIndex = 7;
             this.button2.Text = "جستجو";
             this.button2.UseVisualStyleBackColor = false;
+            // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.Color.DarkKhaki;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.Font = new System.Drawing.Font("IRANSans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.button9.Location = new System.Drawing.Point(291, 213);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(151, 63);
+            this.button9.TabIndex = 16;
+            this.button9.Text = "چاپ";
+            this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // FoodIndex
             // 
@@ -485,5 +500,6 @@
         private System.Windows.Forms.BindingSource foodBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn FoodName;
+        private System.Windows.Forms.Button button9;
     }
 }

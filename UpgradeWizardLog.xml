@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="_UpgradeWizard_Files\UpgradeWizardLog.xslt"?>
+<log>
+  <event>Get project references.</event>
+  <event action="Analyze" type="Success" name="Assembly References" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\Plum.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\App.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\App.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\App.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\App.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\App.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\App.config" />
+  <event action="Analyze" type="Success" name="App.config" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\App.config" />
+  <event action="Analyze" type="Success" name="CreateFood.resx" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\Form\Food\CreateFood.resx" />
+  <event action="Analyze" type="Success" name="EditFood.resx" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\Form\Food\EditFood.resx" />
+  <event action="Analyze" type="Success" name="FoodIndex.resx" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\Form\Food\FoodIndex.resx" />
+  <event action="Analyze" type="Success" name="CreateMAterialFood.resx" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\Form\FoodMaterial\CreateMAterialFood.resx" />
+  <event action="Analyze" type="Success" name="EditMaterialFood.resx" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\Form\FoodMaterial\EditMaterialFood.resx" />
+  <event action="Analyze" type="Success" name="Index.resx" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\Form\FoodMaterial\Index.resx" />
+  <event action="Analyze" type="Success" name="Index.resx" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\Form\FoodPrice\Index.resx" />
+  <event action="Analyze" type="Success" name="Form1.resx" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\Form\Form1.resx" />
+  <event action="Analyze" type="Success" name="createMaterial.resx" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\Form\Material\createMaterial.resx" />
+  <event action="Analyze" type="Success" name="EditMateril.resx" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\Form\Material\EditMateril.resx" />
+  <event action="Analyze" type="Success" name="Index.resx" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\Form\Material\Index.resx" />
+  <event action="Analyze" type="Success" name="Index.resx" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\Form\Report\Index.resx" />
+  <event action="Analyze" type="Success" name="RptFoodDetails.resx" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\Form\Report\Reports\RptFoodDetails.resx" />
+  <event action="Analyze" type="Success" name="ShowReport.resx" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\Form\Report\ShowReport.resx" />
+  <event action="Analyze" type="Success" name="Assembly References" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\packages.config" />
+  <event action="Analyze" type="Success" name="Resources.resx" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\Properties\Resources.resx" />
+  <event action="Analyze" type="Success" name="Plum" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum\Plum.csproj" />
+  <event>Get project references.</event>
+  <event action="Analyze" type="Success" name="Assembly References" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Data\Plum.Data.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Data\App.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Data\App.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Data\App.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Data\App.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Data\App.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Data\App.config" />
+  <event action="Analyze" type="Success" name="App.config" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Data\App.config" />
+  <event action="Analyze" type="Success" name="Assembly References" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Data\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Data\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Data\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Data\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Data\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Data\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Data\packages.config" />
+  <event action="Analyze" type="Success" name="Plum.Data" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Data\Plum.Data.csproj" />
+  <event>Get project references.</event>
+  <event action="Analyze" type="Success" name="Assembly References" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Model\Plum.Model.csproj" />
+  <event action="Analyze" type="Success" name="Plum.Model" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Model\Plum.Model.csproj" />
+  <event>Get project references.</event>
+  <event action="Analyze" type="Success" name="Assembly References" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Services\Plum.Services.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Services\App.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Services\App.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Services\App.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Services\App.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Services\App.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Services\App.config" />
+  <event action="Analyze" type="Success" name="App.config" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Services\App.config" />
+  <event action="Analyze" type="Success" name="Assembly References" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Services\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Services\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Services\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Services\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Services\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Services\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Services\packages.config" />
+  <event action="Analyze" type="Success" name="Plum.Services" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Services\Plum.Services.csproj" />
+  <event>Get project references.</event>
+  <event action="Analyze" type="Success" name="Assembly References" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Utility\Plum.Utility.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Utility\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Utility\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Utility\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Utility\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Utility\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Utility\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Utility\packages.config" />
+  <event action="Analyze" type="Success" name="UserControl1.resx" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Utility\UserControl1.resx" />
+  <event action="Analyze" type="Success" name="Plum.Utility" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.Utility\Plum.Utility.csproj" />
+  <event action="Analyze" type="Success" name="Plum" path="E:\Drive E\برنامه نویسی\برنامه های من\برنامه مدیریت غذا آلو\Plum\Plum.sln" />
+</log>

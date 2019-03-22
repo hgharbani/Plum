@@ -2,6 +2,7 @@
 using Plum.Data;
 using Plum.Services.FoodMaterial;
 using Plum.Services.FoodServices;
+using Plum.Services.FoodSurplusPrice;
 using Plum.Services.MAterialServices;
 
 namespace Plum.Services
@@ -12,7 +13,7 @@ namespace Plum.Services
         private IMaterialService _materialService;
         private IFoodService _foodService;
         private IFoodMaterialService _foodMaterialService;
-
+        private IFoodSurplusPricService _foodSurplusPricService;
         public IFoodService FoodService
         {
             get
@@ -49,6 +50,19 @@ namespace Plum.Services
                 }
 
                 return _foodMaterialService;
+            }
+        }
+
+        public IFoodSurplusPricService FoodSurplusPricService
+        {
+            get
+            {
+                if (_materialService == null)
+                {
+                    return _foodSurplusPricService = new FoodSurplusPricService(db);
+                }
+
+                return _foodSurplusPricService;
             }
         }
 

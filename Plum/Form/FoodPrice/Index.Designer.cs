@@ -48,8 +48,8 @@
             this.Box = new NumericTextBox.NumericTextBox();
             this.Parent = new NumericTextBox.NumericTextBox();
             this.FullPrice = new NumericTextBox.NumericTextBox();
-            this.floatTextBox2 = new Plum.Utility.FloatTextBox();
-            this.floatTextBox1 = new Plum.Utility.FloatTextBox();
+            this.bimeh = new System.Windows.Forms.TextBox();
+            this.tax = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -89,7 +89,7 @@
             // 
             this.lb6.AutoSize = true;
             this.lb6.Font = new System.Drawing.Font("IRANSans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lb6.Location = new System.Drawing.Point(779, 444);
+            this.lb6.Location = new System.Drawing.Point(779, 432);
             this.lb6.Name = "lb6";
             this.lb6.Size = new System.Drawing.Size(266, 30);
             this.lb6.TabIndex = 27;
@@ -203,6 +203,7 @@
             this.button1.TabIndex = 38;
             this.button1.Text = "ثبت";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // person
             // 
@@ -256,7 +257,6 @@
             // 
             // FullPrice
             // 
-            this.FullPrice.Enabled = false;
             this.FullPrice.Font = new System.Drawing.Font("IRANSans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FullPrice.FormatType = NumericTextBox.FormatType.Long;
             this.FullPrice.Location = new System.Drawing.Point(34, 559);
@@ -265,29 +265,26 @@
             this.FullPrice.ReadOnly = true;
             this.FullPrice.Size = new System.Drawing.Size(306, 33);
             this.FullPrice.TabIndex = 46;
+            this.FullPrice.Click += new System.EventHandler(this.FullPrice_Click);
+            this.FullPrice.TextChanged += new System.EventHandler(this.FullPrice_TextChanged);
             // 
-            // floatTextBox2
+            // bimeh
             // 
-            this.floatTextBox2.AutoSize = true;
-            this.floatTextBox2.BackColor = System.Drawing.Color.Transparent;
-            this.floatTextBox2.Font = new System.Drawing.Font("IRANSans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.floatTextBox2.Location = new System.Drawing.Point(34, 433);
-            this.floatTextBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.floatTextBox2.Name = "floatTextBox2";
-            this.floatTextBox2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.floatTextBox2.Size = new System.Drawing.Size(306, 41);
-            this.floatTextBox2.TabIndex = 47;
+            this.bimeh.Font = new System.Drawing.Font("IRANSans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bimeh.Location = new System.Drawing.Point(34, 432);
+            this.bimeh.Name = "bimeh";
+            this.bimeh.Size = new System.Drawing.Size(306, 33);
+            this.bimeh.TabIndex = 47;
+            this.bimeh.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // floatTextBox1
+            // tax
             // 
-            this.floatTextBox1.AutoSize = true;
-            this.floatTextBox1.BackColor = System.Drawing.Color.Transparent;
-            this.floatTextBox1.Font = new System.Drawing.Font("IRANSans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.floatTextBox1.Location = new System.Drawing.Point(34, 490);
-            this.floatTextBox1.Name = "floatTextBox1";
-            this.floatTextBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.floatTextBox1.Size = new System.Drawing.Size(306, 42);
-            this.floatTextBox1.TabIndex = 0;
+            this.tax.Font = new System.Drawing.Font("IRANSans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tax.Location = new System.Drawing.Point(34, 490);
+            this.tax.Name = "tax";
+            this.tax.Size = new System.Drawing.Size(306, 33);
+            this.tax.TabIndex = 48;
+            this.tax.TextChanged += new System.EventHandler(this.tax_TextChanged);
             // 
             // Index
             // 
@@ -295,8 +292,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1067, 725);
-            this.Controls.Add(this.floatTextBox2);
-            this.Controls.Add(this.floatTextBox1);
+            this.Controls.Add(this.tax);
+            this.Controls.Add(this.bimeh);
             this.Controls.Add(this.FullPrice);
             this.Controls.Add(this.Parent);
             this.Controls.Add(this.Box);
@@ -320,6 +317,7 @@
             this.MinimizeBox = false;
             this.Name = "Index";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Index";
             this.Load += new System.EventHandler(this.Index_Load);
             this.panel1.ResumeLayout(false);
@@ -351,7 +349,7 @@
         public NumericTextBox.NumericTextBox Box;
         public NumericTextBox.NumericTextBox Parent;
         public NumericTextBox.NumericTextBox FullPrice;
-        private Utility.FloatTextBox floatTextBox1;
-        private Utility.FloatTextBox floatTextBox2;
+        public System.Windows.Forms.TextBox bimeh;
+        public System.Windows.Forms.TextBox tax;
     }
 }

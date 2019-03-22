@@ -43,11 +43,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Model\Food\FoodDetailsModel.cs" />
     <Compile Include="Model\MAterial\FoodMaterialModel.cs" />
     <Compile Include="Model\MAterial\MaterialModel.cs" />
     <Compile Include="Model\PlumResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Plum.Data\Plum.Data.csproj">
+      <Project>{0e1b959e-60f1-41d8-8afc-18a7fe6b1c43}</Project>
+      <Name>Plum.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
