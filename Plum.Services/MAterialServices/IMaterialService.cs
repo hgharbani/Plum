@@ -21,7 +21,7 @@ namespace Plum.Services.MAterialServices
         List<Material> GetAll(bool active=true);
 
         bool InsertMaterial(Material material);
-        bool UpdateMaterial(Material material);
+        bool UpdateMaterial(Material material, bool inHistory);
         bool DeleteMaterial(Material material);
         bool DeleteMaterial(int materialId);
         IEnumerable<Material> GetMaterials(string parameter);

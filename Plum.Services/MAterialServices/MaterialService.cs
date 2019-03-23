@@ -64,7 +64,13 @@ namespace Plum.Services.MAterialServices
             }
         }
 
-        public bool UpdateMaterial(Material material)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="material"></param>
+        /// <param name="inHistory"></param>
+        /// <returns></returns>
+        public bool UpdateMaterial(Material material, bool inHistory)
         {
             try
             {
@@ -73,7 +79,7 @@ namespace Plum.Services.MAterialServices
                 {
                     return false;
                 }
-                if (materialModel.UnitPrice != material.UnitPrice)
+                if (materialModel.UnitPrice != material.UnitPrice && inHistory)
                 {
                     var oldMaterial=new Material()
                     {

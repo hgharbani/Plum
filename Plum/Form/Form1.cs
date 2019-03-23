@@ -21,6 +21,7 @@ namespace Plum
             InitializeComponent();
         }
 
+        public int UserId;
         private void btnMaterial_Click(object sender, EventArgs e)
         {
         }
@@ -83,6 +84,17 @@ namespace Plum
             {
                 System.IO.File.Copy(openFileDialog.FileName, @"C:\PlumFood\DataBase\localDB.db", true);
                 MessageBox.Show("بازگردانی انجام شد");
+            }
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            var report = new Form.User.ChangePassword();
+            report.userId = UserId;
+           var result= report.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                DialogResult = DialogResult.None;
             }
         }
     }

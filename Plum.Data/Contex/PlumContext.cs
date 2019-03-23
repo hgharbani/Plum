@@ -27,6 +27,7 @@ namespace Plum.Data
         public DbSet<Food> Foods { get; set; }
         public DbSet<FoodMaterial> FoodMaterials { get; set; }
         public DbSet<FoodSurplusPrice> FoodSurplusPrices { get; set; }
+        public DbSet<User> Users { get; set; }
 
     }
 

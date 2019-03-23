@@ -47,7 +47,7 @@ namespace Plum.Form.Material
                     MaterialTypeData = Data.Material.TypeMAterial.Edit
                 };
 
-                if (db.MaterialRepositories.UpdateMaterial(model))
+                if (db.MaterialRepositories.UpdateMaterial(model,checkBox1.Checked))
                 {
                     //db.Save();
                     MessageBox.Show("عملیات با موفقیت انجام شد");

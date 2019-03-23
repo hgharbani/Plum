@@ -4,6 +4,7 @@ using Plum.Services.FoodMaterial;
 using Plum.Services.FoodServices;
 using Plum.Services.FoodSurplusPrice;
 using Plum.Services.MAterialServices;
+using Plum.Services.UserServices;
 
 namespace Plum.Services
 {
@@ -14,6 +15,7 @@ namespace Plum.Services
         private IFoodService _foodService;
         private IFoodMaterialService _foodMaterialService;
         private IFoodSurplusPricService _foodSurplusPricService;
+        private IUserServices _userServices;
         public IFoodService FoodService
         {
             get
@@ -65,7 +67,19 @@ namespace Plum.Services
                 return _foodSurplusPricService;
             }
         }
+        public IUserServices UserServices
+        {
+            get
+            {
+                if (_userServices==null)
+                {
+                    return _userServices = new UserServices.UserServices(db);
 
+                }
+
+                return _userServices;
+            } 
+        }
         public void Save()
         {
             db.SaveChanges();
