@@ -42,7 +42,7 @@ namespace Plum.Services.MAterialServices
                 return db.Materials.Where(a => a.Active).ToList();
 
             }
-            return db.Materials.Where(a => a.Active == false).ToList();
+            return db.Materials.ToList();
 
         }
 

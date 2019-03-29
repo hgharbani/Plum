@@ -125,6 +125,7 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -222,6 +223,18 @@
     <Compile Include="Form\Report\Index.Designer.cs">
       <DependentUpon>Index.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form\Report\MasterDetail\DetailReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Form\Report\MasterDetail\DetailReport.Designer.cs">
+      <DependentUpon>DetailReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Report\MasterDetail\MasterReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Form\Report\MasterDetail\MasterReport.Designer.cs">
+      <DependentUpon>MasterReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\Report\Reports\FoodDetailMaterialReport.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -291,6 +304,12 @@
     <EmbeddedResource Include="Form\Report\Index.resx">
       <DependentUpon>Index.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form\Report\MasterDetail\DetailReport.resx">
+      <DependentUpon>DetailReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Report\MasterDetail\MasterReport.resx">
+      <DependentUpon>MasterReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\Report\Reports\ReportViewer.resx">
       <DependentUpon>ReportViewer.cs</DependentUpon>
     </EmbeddedResource>
@@ -319,6 +338,7 @@
     </None>
     <None Include="Properties\DataSources\Plum.Data.Food.datasource" />
     <None Include="Properties\DataSources\Plum.Data.Material.datasource" />
+    <None Include="Properties\DataSources\Plum.Model.Model.Food.FoodDetailsModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -400,6 +420,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Reastor.png" />
+    <None Include="Resources\reload.png" />
     <Content Include="Resources\SaveIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

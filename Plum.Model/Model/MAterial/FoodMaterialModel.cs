@@ -33,6 +33,8 @@ namespace Plum.Model.Model.MAterial
         /// </summary>
         [DisplayName("قیمت نهایی")]
         public double TotalPrice { get; set; }
+
+        public int FoodId { get; set; }
         
     }
 }

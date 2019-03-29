@@ -26,5 +26,14 @@ namespace Plum.Services.FoodSurplusPrice
         /// <param name="foodId"></param>
         /// <returns></returns>
         PlumResult UpdateFoodSurplusPrice(ICollection<Data.FoodSurplusPrice> foodSurplusPrices,int foodId);
+
+        /// <summary>
+        /// محاسبه مقدار هزینه مازاد با توجه به تعداد درخواست غذا
+        /// </summary>
+        /// <param name="foodId"></param>
+        /// <param name="sumTotalMaterialPrice"></param>
+        /// <param name="quantity"></param>
+        /// <returns></returns>
+        double CalculatorFinalPrice(int foodId, double sumTotalMaterialPrice, int quantity);
     }
 }

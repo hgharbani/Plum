@@ -71,7 +71,7 @@ namespace Plum.Form.FoodMaterial
                 if (db.FoodMaterialService.UpdateFoodMaterial(foodMaterial))
                 {
                     db.Save();
-                    MessageBox.Show("عملیات با موفقیت انجام شد");
+                    RtlMessageBox.Show("عملیات با موفقیت انجام شد");
                     DialogResult = DialogResult.OK;
                 }
                 else

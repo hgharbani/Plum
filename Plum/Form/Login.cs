@@ -55,7 +55,7 @@ namespace Plum.Form
                 }
                 else
                 {
-                    MessageBox.Show("اطلاعات وارد شده صحیح نمی باشد");
+                    RtlMessageBox.Show("اطلاعات وارد شده صحیح نمی باشد");
                 }
             }
             

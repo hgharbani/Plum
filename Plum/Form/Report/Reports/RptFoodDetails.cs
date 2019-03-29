@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Plum.Data;
@@ -46,8 +46,6 @@ namespace Plum.Form.Report.Reports
             objectDataSource2.DataSource = foodDetailsModels.FoodMaterials;
             objectDataSource1.DataSource = foodDetailsModels.FoodSurplusPrices;
             table2.DataSource = foodDetailsModels.FoodSurplusPrices;
-
-           
             textBox28.Value = foodDetailsModels.FoodName;
             textBox9.Value = foodDetailsModels.FoodMaterials.Sum(a => a.TotalPrice).ToString("c0", cultureInfo);
         

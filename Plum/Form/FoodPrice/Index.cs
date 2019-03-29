@@ -2,6 +2,7 @@
 using Plum.Services;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace Plum.Form.FoodPrice
@@ -33,23 +34,27 @@ namespace Plum.Form.FoodPrice
             double cleanNumeric = string.IsNullOrWhiteSpace(Clean.Text) ? 0 : double.Parse(Clean.Text);
             double boxNumeric = string.IsNullOrWhiteSpace(Box.Text) ? 0 : double.Parse(Box.Text);
             double parentNumeric = string.IsNullOrWhiteSpace(Parent.Text) ? 0 : double.Parse(Parent.Text);
-            double bimehNumeric = string.IsNullOrWhiteSpace(bimeh.Text) ? 0 : double.Parse(bimeh.Text);
-            double taxNumeric = string.IsNullOrWhiteSpace(tax.Text) ? 0 : double.Parse(tax.Text);
+            double bimehNumeric = string.IsNullOrWhiteSpace(bimeh.Text) ? 0 : double.Parse(bimeh.Text, CultureInfo.InvariantCulture);
+            double taxNumeric = string.IsNullOrWhiteSpace(tax.Text) ? 0 : double.Parse(tax.Text, CultureInfo.InvariantCulture);
 
             sum = sum + (totalPeice + personNumeric + chashniNumeric + cleanNumeric + boxNumeric + parentNumeric);
+            var SumBimeh = 0.0;//حاصل جمع مقادیر * مقدار بیمه
             if (bimehNumeric > 0)
             {
-                double total = sum * bimehNumeric;
-                sum = sum + total;
+                 SumBimeh = sum * bimehNumeric;
+             
             }
-
+            //مجموعه هزینه ها * مقدار مالیات
+            var maliyat = 0.0;
             if (taxNumeric > 0)
             {
-                double total = sum * taxNumeric;
-                sum = sum + total;
+                 maliyat = sum * taxNumeric;
+            
             }
 
-            FullPrice.Text = sum.ToString();
+            sum = sum + maliyat + SumBimeh;
+            //مجموعه هزینه ها + حاصلضرب مقدار درصد کسر شده به ازای بیمه+حاصلضرب درصد کصر شده به ازای مالیات
+            FullPrice.Text = sum.ToString(CultureInfo.InvariantCulture);
         }
         private void FullPrice_Click(object sender, EventArgs e)
         {
@@ -64,9 +69,9 @@ namespace Plum.Form.FoodPrice
             double cleanNumeric = string.IsNullOrWhiteSpace(Clean.Text) ? 0 : double.Parse(Clean.Text);
             double boxNumeric = string.IsNullOrWhiteSpace(Box.Text) ? 0 : double.Parse(Box.Text);
             double parentNumeric = string.IsNullOrWhiteSpace(Parent.Text) ? 0 : double.Parse(Parent.Text);
-            double bimehNumeric = string.IsNullOrWhiteSpace(bimeh.Text) ? 0 : double.Parse(bimeh.Text);
-            double taxNumeric = string.IsNullOrWhiteSpace(tax.Text) ? 0 : double.Parse(tax.Text);
-            double fullPriceNumeric = string.IsNullOrWhiteSpace(FullPrice.Text) ? 0 : double.Parse(FullPrice.Text);
+            double bimehNumeric = string.IsNullOrWhiteSpace(bimeh.Text) ? 0 : double.Parse(bimeh.Text,CultureInfo.InvariantCulture);
+            double taxNumeric = string.IsNullOrWhiteSpace(tax.Text) ? 0 : double.Parse(tax.Text, CultureInfo.InvariantCulture);
+            double fullPriceNumeric = string.IsNullOrWhiteSpace(FullPrice.Text) ? 0 : double.Parse(FullPrice.Text, CultureInfo.InvariantCulture);
             models.Add(new FoodSurplusPrice()
             {
                 CostTitle = lb1.Text,
@@ -138,7 +143,7 @@ namespace Plum.Form.FoodPrice
                     var result = db.FoodSurplusPricService.AddFoodSurplusPrice(models);
                     if (result.IsChange)
                     {
-                        MessageBox.Show(result.Message);
+                        RtlMessageBox.Show(result.Message);
                         DialogResult = DialogResult.OK;
 
                     }
@@ -149,7 +154,7 @@ namespace Plum.Form.FoodPrice
                     var result = db.FoodSurplusPricService.UpdateFoodSurplusPrice(models,_foodId);
                     if (result.IsChange)
                     {
-                        MessageBox.Show(result.Message);
+                        RtlMessageBox.Show(result.Message);
                         DialogResult = DialogResult.OK;
 
                     }
@@ -163,19 +168,22 @@ namespace Plum.Form.FoodPrice
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            bool valid = double.TryParse(bimeh.Text.ToString(), out double Number);
+            bool valid = double.TryParse(tax.Text, NumberStyles.Number, CultureInfo.InvariantCulture,
+                out double Number);
             if (valid == false)
             {
-                bimeh.Text = "0.0";
+                bimeh.Text = "0";
             }
         }
 
         private void tax_TextChanged(object sender, EventArgs e)
         {
-            bool valid = double.TryParse(tax.Text.ToString(), out double Number);
+
+            bool valid = double.TryParse(tax.Text, NumberStyles.Number, CultureInfo.InvariantCulture,
+                out double Number);
             if (valid == false)
             {
-                tax.Text = "0.0";
+                tax.Text = "0";
             }
         }
 

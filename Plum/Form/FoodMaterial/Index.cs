@@ -85,7 +85,7 @@ namespace Plum.Form.FoodMaterial
 
                     int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
                     string name = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                    if (MessageBox.Show($"ایا از حذف {name} مطمئن هستید", "توجه", MessageBoxButtons.YesNo,
+                    if (RtlMessageBox.Show($"ایا از حذف {name} مطمئن هستید", "توجه", MessageBoxButtons.YesNo,
                             MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
                         Data.FoodMaterial model = db.FoodMaterialService.GetOne(id);
@@ -96,11 +96,11 @@ namespace Plum.Form.FoodMaterial
                         {
                             db.Save();
 
-                            MessageBox.Show(result.Message);
+                            RtlMessageBox.Show(result.Message);
                         }
                         else
                         {
-                            MessageBox.Show(result.Message);
+                            RtlMessageBox.Show(result.Message);
                         }
 
                     }
@@ -134,7 +134,7 @@ namespace Plum.Form.FoodMaterial
             }
             else
             {
-                MessageBox.Show("آیتمی انتخاب نشده است");
+                RtlMessageBox.Show("آیتمی انتخاب نشده است");
             }
         }
     }

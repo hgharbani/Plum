@@ -34,6 +34,8 @@
             this.textBox2 = new Telerik.Reporting.TextBox();
             this.textBox3 = new Telerik.Reporting.TextBox();
             this.textBox4 = new Telerik.Reporting.TextBox();
+            this.textBox11 = new Telerik.Reporting.TextBox();
+            this.textBox12 = new Telerik.Reporting.TextBox();
             this.detail = new Telerik.Reporting.DetailSection();
             this.panel2 = new Telerik.Reporting.Panel();
             this.table1 = new Telerik.Reporting.Table();
@@ -42,19 +44,17 @@
             this.textBox7 = new Telerik.Reporting.TextBox();
             this.textBox8 = new Telerik.Reporting.TextBox();
             this.panel1 = new Telerik.Reporting.Panel();
-            this.textBox9 = new Telerik.Reporting.TextBox();
             this.textBox10 = new Telerik.Reporting.TextBox();
+            this.textBox9 = new Telerik.Reporting.TextBox();
+            this.table2 = new Telerik.Reporting.Table();
+            this.textBox13 = new Telerik.Reporting.TextBox();
+            this.textBox14 = new Telerik.Reporting.TextBox();
             this.pageHeaderSection1 = new Telerik.Reporting.PageHeaderSection();
             this.textBox27 = new Telerik.Reporting.TextBox();
             this.textBox28 = new Telerik.Reporting.TextBox();
             this.pageFooterSection1 = new Telerik.Reporting.PageFooterSection();
-            this.table2 = new Telerik.Reporting.Table();
-            this.textBox11 = new Telerik.Reporting.TextBox();
-            this.textBox12 = new Telerik.Reporting.TextBox();
-            this.textBox13 = new Telerik.Reporting.TextBox();
-            this.textBox14 = new Telerik.Reporting.TextBox();
-            this.objectDataSource2 = new Telerik.Reporting.ObjectDataSource();
             this.objectDataSource1 = new Telerik.Reporting.ObjectDataSource();
+            this.objectDataSource2 = new Telerik.Reporting.ObjectDataSource();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // textBox1
@@ -84,6 +84,22 @@
             this.textBox4.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.152D), Telerik.Reporting.Drawing.Unit.Inch(0.25D));
             this.textBox4.StyleName = "Normal.TableHeader";
             this.textBox4.Value = "مواد لازم";
+            // 
+            // textBox11
+            // 
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(2.135D), Telerik.Reporting.Drawing.Unit.Inch(0.2D));
+            this.textBox11.Style.BorderColor.Default = System.Drawing.Color.Black;
+            this.textBox11.StyleName = "BlueOpal.TableHeader";
+            this.textBox11.Value = "";
+            // 
+            // textBox12
+            // 
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.344D), Telerik.Reporting.Drawing.Unit.Inch(0.2D));
+            this.textBox12.Style.BorderColor.Default = System.Drawing.Color.Black;
+            this.textBox12.StyleName = "BlueOpal.TableHeader";
+            this.textBox12.Value = "هزینه های مازاد";
             // 
             // detail
             // 
@@ -182,13 +198,25 @@
             // panel1
             // 
             this.panel1.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
-            this.textBox9,
-            this.textBox10});
+            this.textBox10,
+            this.textBox9});
             this.panel1.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0D), Telerik.Reporting.Drawing.Unit.Inch(0.5D));
             this.panel1.Name = "panel1";
             this.panel1.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(5.5D), Telerik.Reporting.Drawing.Unit.Inch(0.3D));
             this.panel1.Style.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panel1.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.Solid;
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(2.138D), Telerik.Reporting.Drawing.Unit.Inch(0D));
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.362D), Telerik.Reporting.Drawing.Unit.Inch(0.3D));
+            this.textBox10.Style.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.textBox10.Style.Font.Name = "IRANSans";
+            this.textBox10.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(14D);
+            this.textBox10.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
+            this.textBox10.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
+            this.textBox10.Value = "جمع کل";
             // 
             // textBox9
             // 
@@ -205,51 +233,6 @@
             this.textBox9.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.textBox9.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.textBox9.Value = "textBox9";
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(2.138D), Telerik.Reporting.Drawing.Unit.Inch(0D));
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.362D), Telerik.Reporting.Drawing.Unit.Inch(0.3D));
-            this.textBox10.Style.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox10.Style.Font.Name = "IRANSans";
-            this.textBox10.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(14D);
-            this.textBox10.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
-            this.textBox10.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
-            this.textBox10.Value = "جمع کل";
-            // 
-            // pageHeaderSection1
-            // 
-            this.pageHeaderSection1.Height = Telerik.Reporting.Drawing.Unit.Inch(0.5D);
-            this.pageHeaderSection1.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
-            this.textBox27,
-            this.textBox28});
-            this.pageHeaderSection1.Name = "pageHeaderSection1";
-            // 
-            // textBox27
-            // 
-            this.textBox27.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.7D), Telerik.Reporting.Drawing.Unit.Inch(0D));
-            this.textBox27.Name = "textBox27";
-            this.textBox27.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.8D), Telerik.Reporting.Drawing.Unit.Inch(0.4D));
-            this.textBox27.Style.Font.Name = "B Titr";
-            this.textBox27.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(14D);
-            this.textBox27.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
-            this.textBox27.Value = "هزینه های کلی یک پرس";
-            // 
-            // textBox28
-            // 
-            this.textBox28.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.1D), Telerik.Reporting.Drawing.Unit.Inch(0D));
-            this.textBox28.Name = "textBox28";
-            this.textBox28.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.6D), Telerik.Reporting.Drawing.Unit.Inch(0.4D));
-            this.textBox28.Style.Font.Name = "B Titr";
-            this.textBox28.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(14D);
-            this.textBox28.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;
-            this.textBox28.Value = "";
-            // 
-            // pageFooterSection1
-            // 
-            this.pageFooterSection1.Height = Telerik.Reporting.Drawing.Unit.Inch(0.3D);
-            this.pageFooterSection1.Name = "pageFooterSection1";
             // 
             // table2
             // 
@@ -278,22 +261,6 @@
             this.table2.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(5.479D), Telerik.Reporting.Drawing.Unit.Inch(0.671D));
             this.table2.Style.BorderColor.Default = System.Drawing.Color.Silver;
             this.table2.StyleName = "BlueOpal.TableNormal";
-            // 
-            // textBox11
-            // 
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(2.135D), Telerik.Reporting.Drawing.Unit.Inch(0.2D));
-            this.textBox11.Style.BorderColor.Default = System.Drawing.Color.Black;
-            this.textBox11.StyleName = "BlueOpal.TableHeader";
-            this.textBox11.Value = "";
-            // 
-            // textBox12
-            // 
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.344D), Telerik.Reporting.Drawing.Unit.Inch(0.2D));
-            this.textBox12.Style.BorderColor.Default = System.Drawing.Color.Black;
-            this.textBox12.StyleName = "BlueOpal.TableHeader";
-            this.textBox12.Value = "هزینه های مازاد";
             // 
             // textBox13
             // 
@@ -335,15 +302,48 @@
             this.textBox14.StyleName = "BlueOpal.TableBody";
             this.textBox14.Value = "= Fields.CostTitle";
             // 
-            // objectDataSource2
+            // pageHeaderSection1
             // 
-            this.objectDataSource2.DataSource = typeof(Plum.Model.Model.MAterial.FoodMaterialModel);
-            this.objectDataSource2.Name = "objectDataSource2";
+            this.pageHeaderSection1.Height = Telerik.Reporting.Drawing.Unit.Inch(0.5D);
+            this.pageHeaderSection1.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
+            this.textBox27,
+            this.textBox28});
+            this.pageHeaderSection1.Name = "pageHeaderSection1";
+            // 
+            // textBox27
+            // 
+            this.textBox27.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.7D), Telerik.Reporting.Drawing.Unit.Inch(0D));
+            this.textBox27.Name = "textBox27";
+            this.textBox27.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.8D), Telerik.Reporting.Drawing.Unit.Inch(0.4D));
+            this.textBox27.Style.Font.Name = "B Titr";
+            this.textBox27.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(14D);
+            this.textBox27.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
+            this.textBox27.Value = "هزینه های کلی یک پرس";
+            // 
+            // textBox28
+            // 
+            this.textBox28.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.1D), Telerik.Reporting.Drawing.Unit.Inch(0D));
+            this.textBox28.Name = "textBox28";
+            this.textBox28.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.6D), Telerik.Reporting.Drawing.Unit.Inch(0.4D));
+            this.textBox28.Style.Font.Name = "B Titr";
+            this.textBox28.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(14D);
+            this.textBox28.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;
+            this.textBox28.Value = "";
+            // 
+            // pageFooterSection1
+            // 
+            this.pageFooterSection1.Height = Telerik.Reporting.Drawing.Unit.Inch(0.3D);
+            this.pageFooterSection1.Name = "pageFooterSection1";
             // 
             // objectDataSource1
             // 
             this.objectDataSource1.DataSource = typeof(Plum.Data.FoodSurplusPrice);
             this.objectDataSource1.Name = "objectDataSource1";
+            // 
+            // objectDataSource2
+            // 
+            this.objectDataSource2.DataSource = typeof(Plum.Model.Model.MAterial.FoodMaterialModel);
+            this.objectDataSource2.Name = "objectDataSource2";
             // 
             // RptFoodDetails
             // 
@@ -441,25 +441,25 @@
         private Telerik.Reporting.PageFooterSection pageFooterSection1;
         private Telerik.Reporting.Panel panel2;
         private Telerik.Reporting.Table table1;
-        private Telerik.Reporting.TextBox textBox5;
         private Telerik.Reporting.TextBox textBox6;
         private Telerik.Reporting.TextBox textBox7;
         private Telerik.Reporting.TextBox textBox8;
-        private Telerik.Reporting.TextBox textBox1;
         private Telerik.Reporting.TextBox textBox2;
         private Telerik.Reporting.TextBox textBox3;
         private Telerik.Reporting.TextBox textBox4;
-        private Telerik.Reporting.ObjectDataSource objectDataSource2;
-        private Telerik.Reporting.Panel panel1;
         private Telerik.Reporting.TextBox textBox9;
         private Telerik.Reporting.TextBox textBox10;
         private Telerik.Reporting.TextBox textBox27;
         private Telerik.Reporting.TextBox textBox28;
-        private Telerik.Reporting.ObjectDataSource objectDataSource1;
         private Telerik.Reporting.Table table2;
         private Telerik.Reporting.TextBox textBox13;
         private Telerik.Reporting.TextBox textBox14;
         private Telerik.Reporting.TextBox textBox11;
         private Telerik.Reporting.TextBox textBox12;
+        private Telerik.Reporting.TextBox textBox5;
+        private Telerik.Reporting.TextBox textBox1;
+        private Telerik.Reporting.Panel panel1;
+        private Telerik.Reporting.ObjectDataSource objectDataSource2;
+        private Telerik.Reporting.ObjectDataSource objectDataSource1;
     }
 }

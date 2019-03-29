@@ -31,8 +31,8 @@
             this.labelProductName = new System.Windows.Forms.Label();
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.labelCompanyName = new System.Windows.Forms.Label();
             this.labelCopyright = new System.Windows.Forms.Label();
+            this.labelCompanyName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.tableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
@@ -102,20 +102,6 @@
             this.tableLayoutPanel.Size = new System.Drawing.Size(742, 433);
             this.tableLayoutPanel.TabIndex = 0;
             // 
-            // labelCompanyName
-            // 
-            this.labelCompanyName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelCompanyName.Font = new System.Drawing.Font("IRANSans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCompanyName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelCompanyName.Location = new System.Drawing.Point(3, 294);
-            this.labelCompanyName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
-            this.labelCompanyName.MaximumSize = new System.Drawing.Size(0, 100);
-            this.labelCompanyName.Name = "labelCompanyName";
-            this.labelCompanyName.Size = new System.Drawing.Size(494, 100);
-            this.labelCompanyName.TabIndex = 22;
-            this.labelCompanyName.Text = "آلو";
-            this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // labelCopyright
             // 
             this.labelCopyright.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -129,6 +115,20 @@
             this.labelCopyright.TabIndex = 21;
             this.labelCopyright.Text = "برنامه مدیریت مصرف آلو";
             this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelCompanyName
+            // 
+            this.labelCompanyName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelCompanyName.Font = new System.Drawing.Font("IRANSans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCompanyName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelCompanyName.Location = new System.Drawing.Point(3, 294);
+            this.labelCompanyName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
+            this.labelCompanyName.MaximumSize = new System.Drawing.Size(0, 100);
+            this.labelCompanyName.Name = "labelCompanyName";
+            this.labelCompanyName.Size = new System.Drawing.Size(494, 100);
+            this.labelCompanyName.TabIndex = 22;
+            this.labelCompanyName.Text = "آلو";
+            this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ShowReport
             // 

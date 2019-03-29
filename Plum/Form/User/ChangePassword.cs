@@ -35,7 +35,7 @@ namespace Plum.Form.User
                         Password = textBox1.Text
                     };
                     var result = db.UserServices.UpdateUser(user);
-                    MessageBox.Show(result.Message);
+                    RtlMessageBox.Show(result.Message);
                     db.Save();
                     DialogResult = DialogResult.OK;
                 }

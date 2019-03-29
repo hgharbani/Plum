@@ -81,7 +81,7 @@ namespace Plum.Form.Food
             }
             else
             {
-                MessageBox.Show("آیتمی انتخاب نشده است");
+                RtlMessageBox.Show("آیتمی انتخاب نشده است");
             }
 
         }
@@ -107,20 +107,20 @@ namespace Plum.Form.Food
 
                     int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
                     string name = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                    if (MessageBox.Show($"ایا از حذف {name} مطمئن هستید", "توجه", MessageBoxButtons.YesNo,
+                    if (RtlMessageBox.Show($"ایا از حذف {name} مطمئن هستید", "توجه", MessageBoxButtons.YesNo,
                             MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
                         Data.Material model = db.MaterialRepositories.GetOne(id);
                         if (model.FoodMaterials.Any())
                         {
-                            MessageBox.Show("قادر به حذف این کالا نمی باشد زیرا در چندین غذا در حال استفاده است");
+                            RtlMessageBox.Show("قادر به حذف این کالا نمی باشد زیرا در چندین غذا در حال استفاده است");
                         }
                         else
                         {
                             bool result = db.MaterialRepositories.DeleteMaterial(id);
                             db.Save();
 
-                            MessageBox.Show("کالا با موفقیت حذف شد");
+                            RtlMessageBox.Show("کالا با موفقیت حذف شد");
                         }
                     }
 

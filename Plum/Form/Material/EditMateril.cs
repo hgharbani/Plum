@@ -50,7 +50,7 @@ namespace Plum.Form.Material
                 if (db.MaterialRepositories.UpdateMaterial(model,checkBox1.Checked))
                 {
                     //db.Save();
-                    MessageBox.Show("عملیات با موفقیت انجام شد");
+                    RtlMessageBox.Show("عملیات با موفقیت انجام شد");
                     DialogResult = DialogResult.OK;
                 }
                 else

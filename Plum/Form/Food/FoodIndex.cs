@@ -7,9 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DocumentFormat.OpenXml.Spreadsheet;
 using PersianDate;
 using Plum.Form.Report.Reports;
+using Plum.Model.Model.Food;
 using Plum.Services;
+using Color = System.Drawing.Color;
+using Font = System.Drawing.Font;
+using FontSize = DocumentFormat.OpenXml.Wordprocessing.FontSize;
 
 namespace Plum.Form.Food
 {
@@ -28,19 +33,48 @@ namespace Plum.Form.Food
         /// <summary>
         /// 
         /// </summary>
-        public void ShowFoodGrid()
+        public void ShowFoodGrid(bool isAll=true)
         {
             using (UnitOfWork db = new UnitOfWork())
             {
+                var model=new List<FoodDetailsModel>();
                 dataGridView1.AutoGenerateColumns = false;
+               
+
                 List<Data.Food> foods = db.FoodService.GetAll(true);
 
-                TotalCount.Text = ((foods.Count())).ToString();
+            
+                if (!string.IsNullOrWhiteSpace(MaterialsName.Text)&&isAll==false)
+                {
+                    var materials = MaterialsName.Text.Trim().Replace(",","-").Split('-');
+                    foods = foods.Where(a => a.FoodMaterials.Any(b => materials.Contains(b.Material.MaterialName))).ToList();
+                }
+                var result = foods.Select(a => new FoodDetailsModel()
+                {
+                    FoodId = a.Id,
+                    FoodName = a.FoodName,
+                    MaterialPrice = a.FoodMaterials.Sum(b => b.MaterialTotalPrice),
+                    FinalPrice = a.FoodSurplusPrices.Any(b => b.AdjustKind == 8) ? a.FoodSurplusPrices.Where(b => b.AdjustKind == 8).Select(b => b.Price).FirstOrDefault() : 0
+                }).ToList();
+
+                if (!string.IsNullOrWhiteSpace(PriceFrom.Text)&& isAll == false)
+                {
+                    var fromPrice = Convert.ToDouble(PriceFrom.Text);
+                    result = result.Where(a => a.FinalPrice >= fromPrice).ToList();
+                }
+                if (!string.IsNullOrWhiteSpace(PriceTo.Text) && isAll == false)
+                {
+                    var fromPrice = Convert.ToDouble(PriceTo.Text);
+                    result = result.Where(a => a.FinalPrice >= fromPrice).ToList();
+                }
+                TotalCount.Text = ((result.Count())).ToString();
+              
+                
                 if (foods.Count() <= 15)
                 {
                     //button1.Enabled = false;
                 }
-                dataGridView1.DataSource = foods;
+                dataGridView1.DataSource = result;
                 cmbFoodName.DataSource = foods;
                 
             }
@@ -53,6 +87,9 @@ namespace Plum.Form.Food
         private void FoodIndex_Load(object sender, EventArgs e)
         {
             ShowFoodGrid();
+            MaterialsName.Text = @"برای تعریف چند کالا از علامت - استفاده نمایید";
+            MaterialsName.Font = new Font(MaterialsName.Font.FontFamily, 10);
+            MaterialsName.ForeColor=Color.Gray;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -76,7 +113,7 @@ namespace Plum.Form.Food
                     formEdit.Id.Text = id.ToString();
                     formEdit.FoodName.Text = model.FoodName;
 
-                    if (formEdit.ShowDialog() == DialogResult.OK)
+                    if (formEdit.ShowDialog() == DialogResult.None)
                     {
                         ShowFoodGrid();
                     }
@@ -85,7 +122,7 @@ namespace Plum.Form.Food
             }
             else
             {
-                MessageBox.Show("آیتمی انتخاب نشده است");
+                RtlMessageBox.Show("آیتمی انتخاب نشده است");
             }
         }
 
@@ -98,14 +135,14 @@ namespace Plum.Form.Food
 
                     int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
                     string name = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                    if (MessageBox.Show($"ایا از حذف {name} مطمئن هستید", "توجه", MessageBoxButtons.YesNo,
+                    if (RtlMessageBox.Show($"ایا از حذف {name} مطمئن هستید", "توجه", MessageBoxButtons.YesNo,
                             MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
                         Data.Food model = db.FoodService.GetOne(id);
                         bool result = db.FoodService.DeleteFood(id);
                         db.Save();
 
-                        MessageBox.Show("کالا با موفقیت حذف شد");
+                        RtlMessageBox.Show("کالا با موفقیت حذف شد");
                     }
 
                 }
@@ -130,7 +167,7 @@ namespace Plum.Form.Food
             }
             else
             {
-                MessageBox.Show("لطفا ابتدا نام غذا را از جدول زیر انتخاب نمایید.");
+                RtlMessageBox.Show("لطفا ابتدا نام غذا را از جدول زیر انتخاب نمایید.");
             }
 
         }
@@ -209,6 +246,42 @@ namespace Plum.Form.Food
             reportViewver.ShowDialog();
 
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ShowFoodGrid(false);
+        }
+
+        private void MaterialsName_Enter(object sender, EventArgs e)
+        {
+            if (MaterialsName.Text == @"برای تعریف چند کالا از علامت - استفاده نمایید")
+            {
+                MaterialsName.Text = "";
+            }
+        }
+
+        private void MaterialsName_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(MaterialsName.Text))
+            {
+                MaterialsName.Text = @"برای تعریف چند کالا از علامت - استفاده نمایید";
+                MaterialsName.ForeColor = Color.Gray;
+                MaterialsName.Font=new Font(MaterialsName.Font.FontFamily,10);
+
+
+            }
+        }
+
+        private void MaterialsName_TextChanged(object sender, EventArgs e)
+        {
+            MaterialsName.ForeColor=Color.Black;
+            MaterialsName.Font = new Font(MaterialsName.Font.FontFamily, 12);
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            ShowFoodGrid(true);
         }
     }
 }
