@@ -16,21 +16,42 @@ namespace Plum.Model.Model.Food
         /// 
         /// </summary>
         public int FoodId { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
-        [DisplayName("نام غذا")] public string FoodName { get; set; }
+        [DisplayName("نام غذا")]
+        public string FoodName { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
-        [DisplayName("قیمت مواد لازم")] public double MaterialPrice { get; set; }
-        [DisplayName("قیمت نهایی")] public double FinalPrice { get; set; }
+        [DisplayName("نام شرکت")]
+        public string CompanyName { get; set; }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        [DisplayName("قیمت مواد لازم")]
+        public double MaterialPrice { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [DisplayName("قیمت نهایی")]
+        public double FinalPrice { get; set; }
 
         [DisplayName(" تعداد هر پرس")]
         public int Quantity { get; set; }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public List<FoodMaterialModel> FoodMaterials { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public List<FoodSurplusPrice> FoodSurplusPrices { get; set; }
     }
 }

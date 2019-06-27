@@ -3,7 +3,7 @@ using Plum.Data;
 using Plum.Services.FoodMaterial;
 using Plum.Services.FoodServices;
 using Plum.Services.FoodSurplusPrice;
-using Plum.Services.MAterialServices;
+using Plum.Services.MaterialPriceServices;
 using Plum.Services.UserServices;
 
 namespace Plum.Services
@@ -11,7 +11,8 @@ namespace Plum.Services
     public class UnitOfWork : IDisposable
     {
         PlumContext db=new PlumContext();
-        private IMaterialService _materialService;
+        private IMaterialPriceService _materialPriceService;
+        
         private IFoodService _foodService;
         private IFoodMaterialService _foodMaterialService;
         private IFoodSurplusPricService _foodSurplusPricService;
@@ -29,16 +30,16 @@ namespace Plum.Services
             }
         }
         
-        public IMaterialService MaterialRepositories
+        public IMaterialPriceService MaterialRepositories
         {
             get
             {
-                if (_materialService == null)
+                if (_materialPriceService == null)
                 {
-                    return _materialService = new MaterialService(db);
+                    return _materialPriceService = new MaterialPriceService(db);
                 }
 
-                return _materialService;
+                return _materialPriceService;
             }
         }
 
@@ -46,7 +47,7 @@ namespace Plum.Services
         {
             get
             {
-                if (_materialService == null)
+                if (_foodMaterialService == null)
                 {
                     return _foodMaterialService = new FoodMaterialService(db);
                 }
@@ -59,7 +60,7 @@ namespace Plum.Services
         {
             get
             {
-                if (_materialService == null)
+                if (_foodSurplusPricService == null)
                 {
                     return _foodSurplusPricService = new FoodSurplusPricService(db);
                 }

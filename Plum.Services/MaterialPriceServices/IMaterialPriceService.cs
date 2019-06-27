@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using Plum.Data;
 
-namespace Plum.Services.MAterialServices
+namespace Plum.Services.MaterialPriceServices
 {
-    public interface IMaterialService
+    public interface IMaterialPriceService
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Material GetOne(int id);
+        MaterialPrice GetOne(int id);
 
         /// <summary>
         /// 
@@ -18,13 +18,13 @@ namespace Plum.Services.MAterialServices
         /// <param name="id"></param>
         /// <param name="active"></param>
         /// <returns></returns>
-        List<Material> GetAll(bool active=true);
+        List<MaterialPrice> GetAll(bool active=true);
 
-        bool InsertMaterial(Material material);
-        bool UpdateMaterial(Material material, bool inHistory);
-        bool DeleteMaterial(Material material);
+        bool InsertMaterial(MaterialPrice material);
+        bool UpdateMaterial(MaterialPrice material, bool inHistory);
+        bool DeleteMaterial(MaterialPrice material);
         bool DeleteMaterial(int materialId);
-        IEnumerable<Material> GetMaterials(string parameter);
+        IEnumerable<MaterialPrice> GetMaterials(string parameter);
         
     }
 }

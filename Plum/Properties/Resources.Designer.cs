@@ -133,6 +133,26 @@ namespace Plum.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_business_work_7_2377640 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_business-work_7_2377640", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_business_work_7_2377640_1_ {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_business-work_7_2377640(1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconfinder_food_blt_v1_2386377 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_food-blt-v1_2386377", resourceCulture);

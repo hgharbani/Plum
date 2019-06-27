@@ -69,12 +69,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Company.cs" />
     <Compile Include="Contex\InitialDb.cs" />
     <Compile Include="Food.cs" />
     <Compile Include="FoodMaterial.cs" />
     <Compile Include="FoodSurplusPrice.cs" />
-    <Compile Include="Material.cs" />
+    <Compile Include="MaterialPrice.cs" />
     <Compile Include="Contex\PlumContext.cs" />
+    <Compile Include="Material.cs" />
     <Compile Include="PlumResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />

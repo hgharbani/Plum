@@ -64,7 +64,7 @@
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(451, 86);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 21);
+            this.label2.Size = new System.Drawing.Size(67, 28);
             this.label2.TabIndex = 13;
             this.label2.Text = "مواد لازم";
             // 
@@ -75,7 +75,7 @@
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(418, 156);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 21);
+            this.label3.Size = new System.Drawing.Size(103, 28);
             this.label3.TabIndex = 14;
             this.label3.Text = "قیمت هر کیلو";
             // 
@@ -86,7 +86,7 @@
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(445, 223);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 21);
+            this.label4.Size = new System.Drawing.Size(73, 28);
             this.label4.TabIndex = 16;
             this.label4.Text = "مقدار لازم";
             // 
@@ -99,7 +99,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(107, 86);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(292, 33);
+            this.comboBox1.Size = new System.Drawing.Size(292, 42);
             this.comboBox1.TabIndex = 17;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -118,7 +118,7 @@
             this.Quantity.Location = new System.Drawing.Point(107, 217);
             this.Quantity.MaxLength = 25;
             this.Quantity.Name = "Quantity";
-            this.Quantity.Size = new System.Drawing.Size(292, 33);
+            this.Quantity.Size = new System.Drawing.Size(292, 41);
             this.Quantity.TabIndex = 18;
             // 
             // UnitPrice
@@ -130,13 +130,13 @@
             this.UnitPrice.Location = new System.Drawing.Point(107, 156);
             this.UnitPrice.MaxLength = 25;
             this.UnitPrice.Name = "UnitPrice";
-            this.UnitPrice.Size = new System.Drawing.Size(292, 33);
+            this.UnitPrice.Size = new System.Drawing.Size(292, 41);
             this.UnitPrice.TabIndex = 19;
             // 
             // CreateMAterialFood
             // 
             this.AcceptButton = this.button1;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.GhostWhite;
             this.ClientSize = new System.Drawing.Size(592, 378);

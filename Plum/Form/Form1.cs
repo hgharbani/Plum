@@ -191,7 +191,7 @@ namespace Plum
                 var selectDate = DateTime.Now.AddYears(-firsYear);
                 var material = db.MaterialRepositories.GetAll(false);
                
-                material = material.OrderBy(a=>a.InsertTime).Where(a => a.InsertTime >= selectDate && a.MaterialName== materialComboBox.MaterialName).ToList();
+                material = material.OrderBy(a=>a.InsertTime).Where(a => a.InsertTime >= selectDate && a.Material.MaterialName== materialComboBox.MaterialName).ToList();
                 var series1 = new System.Windows.Forms.DataVisualization.Charting.Series
                 {
                     Name = materialComboBox.MaterialName,

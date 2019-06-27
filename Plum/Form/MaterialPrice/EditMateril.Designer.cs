@@ -1,4 +1,4 @@
-﻿namespace Plum.Form.Material
+﻿namespace Plum.Form.MaterialPrice
 {
     partial class EditMateril
     {
@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.Id = new System.Windows.Forms.TextBox();
-            this.FoodName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,6 +38,9 @@
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.UnitPrice = new NumericTextBox.NumericTextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cmdMaterial = new System.Windows.Forms.ComboBox();
+            this.cmdCompany = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
@@ -46,31 +48,21 @@
             // Id
             // 
             this.Id.Font = new System.Drawing.Font("IRANSans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Id.Location = new System.Drawing.Point(120, 69);
+            this.Id.Location = new System.Drawing.Point(129, 91);
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
             this.Id.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Id.Size = new System.Drawing.Size(246, 28);
+            this.Id.Size = new System.Drawing.Size(246, 35);
             this.Id.TabIndex = 7;
             this.Id.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // FoodName
-            // 
-            this.FoodName.Font = new System.Drawing.Font("IRANSans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FoodName.Location = new System.Drawing.Point(120, 129);
-            this.FoodName.Name = "FoodName";
-            this.FoodName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.FoodName.Size = new System.Drawing.Size(246, 28);
-            this.FoodName.TabIndex = 5;
-            this.FoodName.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("IRANSans", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(451, 201);
+            this.label2.Location = new System.Drawing.Point(461, 290);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 17);
+            this.label2.Size = new System.Drawing.Size(87, 24);
             this.label2.TabIndex = 9;
             this.label2.Text = "قیمت هر کیلو:";
             // 
@@ -78,19 +70,19 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("IRANSans", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(503, 135);
+            this.label1.Location = new System.Drawing.Point(500, 225);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 17);
+            this.label1.Size = new System.Drawing.Size(48, 24);
             this.label1.TabIndex = 8;
-            this.label1.Text = "نام :";
+            this.label1.Text = "شرکت:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("IRANSans", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(461, 75);
+            this.label3.Location = new System.Drawing.Point(470, 97);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 17);
+            this.label3.Size = new System.Drawing.Size(78, 24);
             this.label3.TabIndex = 10;
             this.label3.Text = "کد محصول :";
             // 
@@ -101,7 +93,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("IRANSans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(186, 283);
+            this.button1.Location = new System.Drawing.Point(195, 388);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(148, 54);
             this.button1.TabIndex = 11;
@@ -121,28 +113,57 @@
             // 
             this.UnitPrice.Font = new System.Drawing.Font("IRANSans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UnitPrice.FormatType = NumericTextBox.FormatType.Long;
-            this.UnitPrice.Location = new System.Drawing.Point(120, 195);
+            this.UnitPrice.Location = new System.Drawing.Point(129, 285);
             this.UnitPrice.MaxLength = 25;
             this.UnitPrice.Name = "UnitPrice";
-            this.UnitPrice.Size = new System.Drawing.Size(246, 28);
+            this.UnitPrice.Size = new System.Drawing.Size(246, 35);
             this.UnitPrice.TabIndex = 12;
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Font = new System.Drawing.Font("IRANSans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(120, 241);
+            this.checkBox1.Location = new System.Drawing.Point(129, 346);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(246, 25);
+            this.checkBox1.Size = new System.Drawing.Size(265, 32);
             this.checkBox1.TabIndex = 13;
             this.checkBox1.Text = "سابقه قیمت در سامانه ذخیره شود ؟";
             this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("IRANSans", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(516, 160);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(32, 24);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "نام :";
+            // 
+            // cmdMaterial
+            // 
+            this.cmdMaterial.FormattingEnabled = true;
+            this.cmdMaterial.Location = new System.Drawing.Point(129, 157);
+            this.cmdMaterial.Name = "cmdMaterial";
+            this.cmdMaterial.Size = new System.Drawing.Size(246, 32);
+            this.cmdMaterial.TabIndex = 16;
+            // 
+            // cmdCompany
+            // 
+            this.cmdCompany.FormattingEnabled = true;
+            this.cmdCompany.Location = new System.Drawing.Point(129, 222);
+            this.cmdCompany.Name = "cmdCompany";
+            this.cmdCompany.Size = new System.Drawing.Size(246, 32);
+            this.cmdCompany.TabIndex = 17;
             // 
             // EditMateril
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(602, 391);
+            this.ClientSize = new System.Drawing.Size(677, 511);
+            this.Controls.Add(this.cmdCompany);
+            this.Controls.Add(this.cmdMaterial);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.UnitPrice);
             this.Controls.Add(this.button1);
@@ -150,7 +171,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Id);
-            this.Controls.Add(this.FoodName);
             this.Font = new System.Drawing.Font("IRANSans", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -172,10 +192,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
         public System.Windows.Forms.TextBox Id;
-        public System.Windows.Forms.TextBox FoodName;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ErrorProvider errorProvider2;
         public NumericTextBox.NumericTextBox UnitPrice;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.ComboBox cmdMaterial;
+        public System.Windows.Forms.ComboBox cmdCompany;
     }
 }

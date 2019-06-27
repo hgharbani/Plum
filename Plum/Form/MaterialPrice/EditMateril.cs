@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Plum.Services;
 
-namespace Plum.Form.Material
+namespace Plum.Form.MaterialPrice
 {
     public partial class EditMateril : System.Windows.Forms.Form
     {
@@ -20,13 +13,18 @@ namespace Plum.Form.Material
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            if (string.IsNullOrWhiteSpace(FoodName.Text))
+            var material = (Data.Material)cmdMaterial.SelectedItem;
+            var company = (Data.Company)cmdCompany.SelectedItem;
+            if (material == null)
             {
-                errorProvider1.SetError(FoodName, "لطفا نام را وارد نمایید");
+                errorProvider1.SetError(cmdMaterial, "لطفا کالا را وارد نمایید");
                 return;
             }
-
+            if (company == null)
+            {
+                errorProvider1.SetError(cmdCompany, "لطفا شرکت را انتخاب نمایید");
+                return;
+            }
             if (string.IsNullOrWhiteSpace(UnitPrice.Value))
             {
                 errorProvider2.SetError(UnitPrice, "لطفا قیمت را وارد نمایید");
@@ -36,20 +34,21 @@ namespace Plum.Form.Material
 
             using (UnitOfWork db = new UnitOfWork())
             {
-                var model = new Data.Material()
+                var model = new Data.MaterialPrice()
                 {
                     Id = int.Parse(Id.Text),
-                    MaterialName = FoodName.Text,
+                    MaterialId = material.Id,
+                    CompanyId = company.CompanyId,
                     UnitPrice = double.Parse(UnitPrice.Value),
                     Active = true,
                     InsertTime = DateTime.Now,
                     ParentId = null,
-                    MaterialTypeData = Data.Material.TypeMAterial.Edit
+                    MaterialTypeData = Data.MaterialPrice.TypeMAterial.Edit
                 };
 
-                if (db.MaterialRepositories.UpdateMaterial(model,checkBox1.Checked))
+                if (db.MaterialRepositories.UpdateMaterial(model, checkBox1.Checked))
                 {
-                    //db.Save();
+                    db.Save();
                     RtlMessageBox.Show("عملیات با موفقیت انجام شد");
                     DialogResult = DialogResult.OK;
                 }

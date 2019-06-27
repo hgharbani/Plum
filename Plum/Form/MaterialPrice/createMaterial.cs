@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Plum.Data;
 using Plum.Services;
-using NumericTextBox;
 
-namespace Plum.Form.Material
+namespace Plum.Form.MaterialPrice
 {
     public partial class createMaterial : System.Windows.Forms.Form
     {
@@ -21,11 +14,18 @@ namespace Plum.Form.Material
 
         private void button1_Click(object sender, EventArgs e)
         {
-          
-            if (string.IsNullOrWhiteSpace(FoodName.Text))
+
+            var material = (Data.Material)cmbMaterial.SelectedItem;
+            var company = (Data.Company)comboBox2.SelectedItem;
+            if (material == null)
             {
-                errorProvider1.SetError(FoodName,"لطفا نام را وارد نمایید");
-                return ;
+                errorProvider1.SetError(cmbMaterial, "لطفا کالا را وارد نمایید");
+                return;
+            }
+            if (company == null)
+            {
+                errorProvider2.SetError(comboBox2, "لطفا شرکت را انتخاب نمایید");
+                return;
             }
             if (string.IsNullOrWhiteSpace(UnitPrice.Value))
             {
@@ -35,14 +35,15 @@ namespace Plum.Form.Material
             }
             using (UnitOfWork db = new UnitOfWork())
             {
-                var model = new Data.Material()
+             
+                var model = new Data.MaterialPrice()
                 {
-                    MaterialName = FoodName.Text,
+                    MaterialId = material.Id,
                     UnitPrice = int.Parse(UnitPrice.Value),
                     Active = true,
                     InsertTime = DateTime.Now,
                     ParentId = null,
-                    MaterialTypeData = Data.Material.TypeMAterial.Create
+                    MaterialTypeData = Data.MaterialPrice.TypeMAterial.Create
                 };
                 
                 if (db.MaterialRepositories.InsertMaterial(model))
@@ -59,6 +60,16 @@ namespace Plum.Form.Material
             }
             
             
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -19,6 +19,13 @@ namespace Plum.Model.Model.MAterial
         /// <summary>
         /// 
         /// </summary>
+        [DisplayName("نام شرکت")]
+
+        public string CompanyName { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         [DisplayName("مقدار لازم")]
         public double Quantity { get; set; }
 

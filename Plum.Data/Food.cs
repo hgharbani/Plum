@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Plum.Data
 {
@@ -7,6 +8,7 @@ namespace Plum.Data
         /// <summary>
         /// 
         /// </summary>
+       [Key]
         public int Id { get; set; }
 
         /// <summary>
@@ -17,8 +19,14 @@ namespace Plum.Data
         /// <summary>
         /// 
         /// </summary>
+        public int CompanyId { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public bool Active { get; set; }
 
+        public virtual Company Company { get; set; }
 
         /// <summary>
         /// 

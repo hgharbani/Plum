@@ -168,11 +168,11 @@ namespace Plum.Form.FoodPrice
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            bool valid = double.TryParse(tax.Text, NumberStyles.Number, CultureInfo.InvariantCulture,
+            bool valid = double.TryParse(bimeh.Text, NumberStyles.Number, CultureInfo.InvariantCulture,
                 out double Number);
             if (valid == false)
             {
-                bimeh.Text = "0";
+                tax.Text = "0";
             }
         }
 

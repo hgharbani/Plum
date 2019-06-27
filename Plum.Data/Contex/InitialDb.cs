@@ -15,7 +15,7 @@ namespace Plum.Data.Contex
         public InitialDb(DbModelBuilder modelBuilder) : base(modelBuilder)
         {
         }
-        string data = "jelveh";
+        string _data = "jelveh";
         byte[] hash;
         protected override void Seed(PlumContext context)
         {

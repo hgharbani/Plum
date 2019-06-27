@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
-using Plum.Form.Material;
 
 namespace Plum.Form.FoodMaterial
 {
@@ -42,8 +41,8 @@ namespace Plum.Form.FoodMaterial
                     FoodMaterialModel foodmaterial = new FoodMaterialModel()
                     {
                         Id = item.Id,
-                        MaterialName = item.Material.MaterialName,
-                        Price = item.Material.UnitPrice,
+                        MaterialName = item.MaterialPrice.Material.MaterialName,
+                        Price = item.MaterialPrice.UnitPrice,
                         Quantity = item.Quantity,
                         TotalPrice = item.MaterialTotalPrice
                     };
@@ -124,7 +123,7 @@ namespace Plum.Form.FoodMaterial
                     formEdit._foodIds = model.FoodId;
                     formEdit.Quantity.Text = model.Quantity.ToString();
                     formEdit._materialId=model.MaterialId ;
-                    formEdit.UnitPrice.Text = model.Material.UnitPrice.ToString();
+                    formEdit.UnitPrice.Text = model.MaterialPrice.UnitPrice.ToString();
                     if (formEdit.ShowDialog() == DialogResult.OK)
                     {
                         ShowMaterialFoodGrid(_foodIds);

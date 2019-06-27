@@ -43,7 +43,7 @@ namespace Plum.Form.Report.Reports
                 {
                     var foodMaterialModel = new FoodMaterialModel()
                     {
-                        MaterialName = matetrial.Material.MaterialName,
+                        MaterialName = matetrial.MaterialPrice.Material.MaterialName,
                         Price = matetrial.UnitPrice,
                         Quantity = matetrial.Quantity,
                         TotalPrice = matetrial.MaterialTotalPrice,

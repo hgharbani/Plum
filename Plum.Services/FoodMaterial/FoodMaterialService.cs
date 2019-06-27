@@ -25,7 +25,7 @@ namespace Plum.Services.FoodMaterial
         /// <returns></returns>
         public Data.FoodMaterial GetOne(int id)
         {
-            Data.FoodMaterial result = _db.FoodMaterials.AsNoTracking().Include(a => a.Material).Include(a => a.Food).FirstOrDefault(a => a.Id == id);
+            Data.FoodMaterial result = _db.FoodMaterials.AsNoTracking().Include(a => a.MaterialPrice).Include(a => a.Food).FirstOrDefault(a => a.Id == id);
             return result;
         }
 
@@ -36,7 +36,7 @@ namespace Plum.Services.FoodMaterial
         /// <returns></returns>
         public ICollection<Data.FoodMaterial> GetOneByFoodId(int foodId)
         {
-            var result = _db.FoodMaterials.AsNoTracking().Include(a => a.Material).Include(a => a.Food).Where(a => a.FoodId == foodId).ToList();
+            var result = _db.FoodMaterials.AsNoTracking().Include(a => a.MaterialPrice).Include(a => a.Food).Where(a => a.FoodId == foodId).ToList();
             return result;
         }
 
@@ -48,7 +48,7 @@ namespace Plum.Services.FoodMaterial
         /// <returns></returns>
         public Data.FoodMaterial GetOneByMaterialId(int foodId,int materialId)
         {
-            Data.FoodMaterial result = _db.FoodMaterials.AsNoTracking().Include(a => a.Material).Include(a => a.Food).FirstOrDefault(a =>a.FoodId==foodId&& a.MaterialId == materialId);
+            Data.FoodMaterial result = _db.FoodMaterials.AsNoTracking().Include(a => a.MaterialPrice).Include(a => a.Food).FirstOrDefault(a =>a.FoodId==foodId&& a.MaterialId == materialId);
             return result;
         }
 
@@ -59,7 +59,7 @@ namespace Plum.Services.FoodMaterial
         /// <returns></returns>
         public ICollection<Data.FoodMaterial> GetFoodMaterialsByMaterialId(int materialId)
         {
-            var result = _db.FoodMaterials.AsNoTracking().Include(a => a.Material).Include(a => a.Food).Where(a =>  a.MaterialId == materialId).ToList();
+            var result = _db.FoodMaterials.AsNoTracking().Include(a => a.MaterialPrice).Include(a => a.Food).Where(a =>  a.MaterialId == materialId).ToList();
             return result;
         }
 
@@ -71,13 +71,13 @@ namespace Plum.Services.FoodMaterial
         /// <returns></returns>
         public ICollection<Data.FoodMaterial> GetFoodMaterialsByMaterialId(int[] materialIds)
         {
-            var result = _db.FoodMaterials.AsNoTracking().Include(a => a.Material).Include(a => a.Food).Where(a => materialIds.Contains(a.MaterialId)).ToList();
+            var result = _db.FoodMaterials.AsNoTracking().Include(a => a.MaterialPrice).Include(a => a.Food).Where(a => materialIds.Contains(a.MaterialId)).ToList();
             return result;
         }
 
         public ICollection<Data.FoodMaterial> GetAll()
         {
-            List<Data.FoodMaterial> result = _db.FoodMaterials.AsNoTracking().Include(a => a.Material).Include(a => a.Food).Where(a => a.Active).ToList();
+            List<Data.FoodMaterial> result = _db.FoodMaterials.AsNoTracking().Include(a => a.MaterialPrice).Include(a => a.Food).Where(a => a.Active).ToList();
             return result;
         }
 
@@ -203,7 +203,7 @@ namespace Plum.Services.FoodMaterial
         public IEnumerable<Data.FoodMaterial> GetMaterialFoods(int foodId, string parameter)
         {
             
-            return _db.FoodMaterials.AsNoTracking().Include(a=>a.Material).Where(c => c.Material.MaterialName.Contains(parameter) || c.MaterialTotalPrice==double.Parse(parameter) || c.UnitPrice == double.Parse(parameter)).ToList();
+            return _db.FoodMaterials.AsNoTracking().Include(a=>a.MaterialPrice).Where(c => c.MaterialPrice.Material.MaterialName.Contains(parameter) || c.MaterialTotalPrice==double.Parse(parameter) || c.UnitPrice == double.Parse(parameter)).ToList();
         }
 
 

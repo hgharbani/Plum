@@ -51,7 +51,7 @@ namespace Plum.Form.FoodMaterial
                     errorProvider1.RightToLeft = true;
                     errorProvider1.SetError(Quantity, "لطفا مقدار لازم را وارد را وارد نمایید");
                 }
-                var material = (Data.Material)comboBox1.SelectedItem;
+                var material = (Data.MaterialPrice)comboBox1.SelectedItem;
                 //مبلغ هرکیلو تقسیم بر 1000=مبلغ هر گرم
                 var unitPrice = material.UnitPrice / 1000;
                 var quantity = double.Parse(Quantity.Value);

@@ -190,22 +190,22 @@
     <Compile Include="Form\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\Material\createMaterial.cs">
+    <Compile Include="Form\MaterialPrice\createMaterial.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\Material\createMaterial.Designer.cs">
+    <Compile Include="Form\MaterialPrice\createMaterial.Designer.cs">
       <DependentUpon>createMaterial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\Material\EditMateril.cs">
+    <Compile Include="Form\MaterialPrice\EditMateril.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\Material\EditMateril.Designer.cs">
+    <Compile Include="Form\MaterialPrice\EditMateril.Designer.cs">
       <DependentUpon>EditMateril.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\Material\Index.cs">
+    <Compile Include="Form\MaterialPrice\Index.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\Material\Index.Designer.cs">
+    <Compile Include="Form\MaterialPrice\Index.Designer.cs">
       <DependentUpon>Index.cs</DependentUpon>
     </Compile>
     <Compile Include="Form\Form1.cs">
@@ -256,6 +256,12 @@
     <Compile Include="Form\Report\ShowReport.Designer.cs">
       <DependentUpon>ShowReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form\SurplusPrice\Index.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\SurplusPrice\Index.Designer.cs">
+      <DependentUpon>Index.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\User\ChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -289,13 +295,13 @@
     <EmbeddedResource Include="Form\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\Material\createMaterial.resx">
+    <EmbeddedResource Include="Form\MaterialPrice\createMaterial.resx">
       <DependentUpon>createMaterial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\Material\EditMateril.resx">
+    <EmbeddedResource Include="Form\MaterialPrice\EditMateril.resx">
       <DependentUpon>EditMateril.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\Material\Index.resx">
+    <EmbeddedResource Include="Form\MaterialPrice\Index.resx">
       <DependentUpon>Index.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\Form1.resx">
@@ -421,7 +427,13 @@
   <ItemGroup>
     <None Include="Resources\Reastor.png" />
     <None Include="Resources\reload.png" />
+    <None Include="Resources\iconfinder_business-work_7_2377640.png" />
+    <None Include="Resources\iconfinder_business-work_7_2377640%281%29.png" />
     <Content Include="Resources\SaveIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Form\Company\" />
+    <Folder Include="Form\Material\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.110.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.110.0\build\net46\System.Data.SQLite.Core.targets')" />

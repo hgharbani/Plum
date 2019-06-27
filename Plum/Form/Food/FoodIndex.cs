@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,7 +48,7 @@ namespace Plum.Form.Food
                 if (!string.IsNullOrWhiteSpace(MaterialsName.Text)&&isAll==false)
                 {
                     var materials = MaterialsName.Text.Trim().Replace(",","-").Split('-');
-                    foods = foods.Where(a => a.FoodMaterials.Any(b => materials.Contains(b.Material.MaterialName))).ToList();
+                    foods = foods.Where(a => a.FoodMaterials.Any(b => materials.Contains(b.MaterialPrice.Material.MaterialName))).ToList();
                 }
                 var result = foods.Select(a => new FoodDetailsModel()
                 {
@@ -213,13 +214,20 @@ namespace Plum.Form.Food
                         ? foodsurplus.First(a => a.AdjustKind == 4).Price.ToString()
                         : "0";
                     frm.Parent.Text = foodsurplus.Any(a => a.AdjustKind == 5)
-                        ? foodsurplus.First(a => a.AdjustKind == 5).Price.ToString()
+                        ? foodsurplus.First(a => a.AdjustKind == 5).Price.ToString(CultureInfo.InvariantCulture)
                         : "0";
-                    frm.bimeh.Text = foodsurplus.Any(a => a.AdjustKind == 6)
-                        ? foodsurplus.First(a => a.AdjustKind == 6).Price.ToString()
-                        : "0";
+                    if (foodsurplus.Any(a => a.AdjustKind == 6))
+                    {
+                        var x = foodsurplus.First(a => a.AdjustKind == 6).Price.ToString(CultureInfo.InvariantCulture);
+                        frm.bimeh.Text = x.ToString();
+                    }
+                    else
+                    {
+                        frm.bimeh.Text = "0";
+                    }
+                 
                     frm.tax.Text = foodsurplus.Any(a => a.AdjustKind == 7)
-                        ? foodsurplus.First(a => a.AdjustKind == 7).Price.ToString()
+                        ? foodsurplus.First(a => a.AdjustKind == 7).Price.ToString(CultureInfo.InvariantCulture)
                         : "0";
                     frm.Calculator();
 

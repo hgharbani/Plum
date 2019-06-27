@@ -69,14 +69,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="CompanyServices\CompanyService.cs" />
+    <Compile Include="CompanyServices\ICompanyService.cs" />
     <Compile Include="FoodMaterial\FoodMaterialService.cs" />
     <Compile Include="FoodMaterial\IFoodMaterialService.cs" />
     <Compile Include="FoodServices\FoodService.cs" />
     <Compile Include="FoodServices\IFoodService.cs" />
     <Compile Include="FoodSurplusPrice\FoodSurplusPricService.cs" />
     <Compile Include="FoodSurplusPrice\IFoodSurplusPricService.cs" />
-    <Compile Include="MAterialServices\IMaterialService.cs" />
-    <Compile Include="MAterialServices\MaterialService.cs" />
+    <Compile Include="MaterialPriceServices\IMaterialPriceService.cs" />
+    <Compile Include="MaterialPriceServices\MaterialPriceService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitOfWork.cs" />
     <Compile Include="UserServices\IUserServices.cs" />
@@ -92,7 +94,9 @@
       <Name>Plum.Utility</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="MaterialServices\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

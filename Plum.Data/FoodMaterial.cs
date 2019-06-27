@@ -1,8 +1,16 @@
-﻿namespace Plum.Data
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Plum.Data
 {
     public class FoodMaterial
     {
-        public  int Id { get; set; }
+        [Key]
+
+        public int Id { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public int FoodId { get; set; }
 
         /// <summary>
@@ -33,7 +41,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public virtual Material Material { get; set; }
+        public virtual MaterialPrice MaterialPrice { get; set; }
 
         /// <summary>
         /// 

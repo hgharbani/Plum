@@ -1,5 +1,4 @@
-﻿using Plum.Form.Material;
-using Plum.Services;
+﻿using Plum.Services;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using PersianDate;
+using Plum.Form.MaterialPrice;
 
 namespace Plum.Form.Food
 {
@@ -36,18 +36,18 @@ namespace Plum.Form.Food
             using (UnitOfWork db = new UnitOfWork())
             {
                 dataGridView1.AutoGenerateColumns = false;
-                List<Data.Material> material = db.MaterialRepositories.GetAll(true);
+                List<Data.MaterialPrice> material = db.MaterialRepositories.GetAll(true);
                 TotalCount.Text = ((material.Count())).ToString();
                 if (material.Count() <= 15)
                 {
                     button1.Enabled = false;
                 }
                 dataGridView1.DataSource = material;
-               
+
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                 
-                    var x = ((DateTime) row.Cells[3].Value).ToFa();
+
+                    var x = ((DateTime)row.Cells[3].Value).ToFa();
                     row.Cells[3].Value = x;
 
 
@@ -66,10 +66,11 @@ namespace Plum.Form.Food
                 int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
                 using (UnitOfWork db = new UnitOfWork())
                 {
-                    Data.Material model = db.MaterialRepositories.GetOne(id);
+                    Data.MaterialPrice model = db.MaterialRepositories.GetOne(id);
                     EditMateril formEdit = new EditMateril();
                     formEdit.Id.Text = id.ToString();
-                    formEdit.FoodName.Text = model.MaterialName;
+                    formEdit.cmdMaterial.SelectedText = model.Material.MaterialName;
+                    formEdit.cmdCompany.SelectedText = model.Company.CompanyName;
                     formEdit.UnitPrice.Text = model.UnitPrice.ToString();
 
                     if (formEdit.ShowDialog() == DialogResult.OK)
@@ -110,7 +111,7 @@ namespace Plum.Form.Food
                     if (RtlMessageBox.Show($"ایا از حذف {name} مطمئن هستید", "توجه", MessageBoxButtons.YesNo,
                             MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
-                        Data.Material model = db.MaterialRepositories.GetOne(id);
+                        Data.MaterialPrice model = db.MaterialRepositories.GetOne(id);
                         if (model.FoodMaterials.Any())
                         {
                             RtlMessageBox.Show("قادر به حذف این کالا نمی باشد زیرا در چندین غذا در حال استفاده است");
@@ -140,8 +141,8 @@ namespace Plum.Form.Food
                 }
                 else
                 {
-                    var model = db.MaterialRepositories.GetMaterials(textBox2.Text);
-                   
+                    var model = db.MaterialRepositories.GetMaterials(textBox2.Text).Where(a => a.Active);
+
                     dataGridView1.DataSource = model;
                     foreach (DataGridViewRow row in dataGridView1.Rows)
                     {
@@ -166,7 +167,7 @@ namespace Plum.Form.Food
             {
                 textBox1.Text = (int.Parse(textBox1.Text) - 1).ToString();
             }
-            
+
         }
     }
 }
