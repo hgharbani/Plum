@@ -41,8 +41,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cmdMaterial = new System.Windows.Forms.ComboBox();
             this.cmdCompany = new System.Windows.Forms.ComboBox();
+            this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // Id
@@ -142,19 +146,34 @@
             // 
             // cmdMaterial
             // 
+            this.cmdMaterial.DataSource = this.materialBindingSource;
+            this.cmdMaterial.DisplayMember = "MaterialName";
             this.cmdMaterial.FormattingEnabled = true;
             this.cmdMaterial.Location = new System.Drawing.Point(129, 157);
             this.cmdMaterial.Name = "cmdMaterial";
             this.cmdMaterial.Size = new System.Drawing.Size(246, 32);
             this.cmdMaterial.TabIndex = 16;
+            this.cmdMaterial.ValueMember = "Id";
+            this.cmdMaterial.SelectedIndexChanged += new System.EventHandler(this.cmdMaterial_SelectedIndexChanged);
             // 
             // cmdCompany
             // 
+            this.cmdCompany.DataSource = this.companyBindingSource;
+            this.cmdCompany.DisplayMember = "CompanyName";
             this.cmdCompany.FormattingEnabled = true;
             this.cmdCompany.Location = new System.Drawing.Point(129, 222);
             this.cmdCompany.Name = "cmdCompany";
             this.cmdCompany.Size = new System.Drawing.Size(246, 32);
             this.cmdCompany.TabIndex = 17;
+            this.cmdCompany.ValueMember = "CompanyId";
+            // 
+            // materialBindingSource
+            // 
+            this.materialBindingSource.DataSource = typeof(Plum.Data.Material);
+            // 
+            // companyBindingSource
+            // 
+            this.companyBindingSource.DataSource = typeof(Plum.Data.Company);
             // 
             // EditMateril
             // 
@@ -179,8 +198,11 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ویرایش";
+            this.Load += new System.EventHandler(this.EditMateril_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,5 +221,7 @@
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.ComboBox cmdMaterial;
         public System.Windows.Forms.ComboBox cmdCompany;
+        private System.Windows.Forms.BindingSource companyBindingSource;
+        private System.Windows.Forms.BindingSource materialBindingSource;
     }
 }

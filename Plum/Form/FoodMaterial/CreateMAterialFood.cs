@@ -18,6 +18,7 @@ namespace Plum.Form.FoodMaterial
             InitializeComponent();
         }
         public int _foodIds;
+        public int company;
         private void CreateMAterialFood_Load(object sender, EventArgs e)
         {
             Material();
@@ -28,7 +29,7 @@ namespace Plum.Form.FoodMaterial
         {
             using (var db = new UnitOfWork())
             {
-                var material = db.MaterialRepositories.GetAll(true);
+                var material = db.MaterialRepositories.GetAll(true, company);
 
                 comboBox1.DataSource = material;
             }

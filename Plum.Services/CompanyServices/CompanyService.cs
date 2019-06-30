@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Plum.Data;
+using Plum.Data.Contex;
 using Plum.Model.Model;
 
 namespace Plum.Services.CompanyServices
@@ -104,19 +105,35 @@ namespace Plum.Services.CompanyServices
             var result = new PlumResult();
             try
             {
-                var foodMaterialModel = GetOne(companyId);
-                if (foodMaterialModel == null)
+                var foodCompanyModel = GetOne(companyId);
+
+                if (foodCompanyModel == null)
                 {
+                    result.IsChange = false;
                     result.Message = "این شرکت حذف شده است";
+                    return result;
                 }
-                result = DeleteCompany(foodMaterialModel);
+
+                if (foodCompanyModel.Foods.Any())
+                {
+                    result.IsChange = false;
+                    result.Message= "قادر به حذف این شرکت نمی باشد زیرا در چندین غذا در حال استفاده است";
+                    return result;
+                  
+                }
+                 if (foodCompanyModel.MaterialsPrices.Any())
+                {
+                    result.IsChange = false;
+                    result.Message = "قادر به حذف این شرکت نمی باشد زیرا در چندین کالا اولیه در حال استفاده است";
+                    return result;
+                }
+                result = DeleteCompany(foodCompanyModel);
                 return result;
             }
             catch (Exception)
             {
                 result.IsChange = false;
                 result.Message = "خطایی رخ داده است";
-
                 return result;
             }
         }

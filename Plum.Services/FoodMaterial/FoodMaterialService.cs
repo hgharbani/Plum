@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using Plum.Data.Contex;
 using Plum.Model.Model;
 
 namespace Plum.Services.FoodMaterial

@@ -142,6 +142,18 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Form\Company\CreateCompany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Company\CreateCompany.Designer.cs">
+      <DependentUpon>CreateCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Company\Index.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Company\Index.Designer.cs">
+      <DependentUpon>Index.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\FoodMaterial\CreateMAterialFood.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,6 +226,18 @@
     <Compile Include="Form\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form\Material\CreateMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Material\CreateMaterial.Designer.cs">
+      <DependentUpon>CreateMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Material\Index.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Material\Index.Designer.cs">
+      <DependentUpon>Index.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\PdfReport\AppPath.cs" />
     <Compile Include="Form\PdfReport\IListPdfReport.cs" />
     <Compile Include="Form\PdfReport\SQLiteDataReaderPdfReport.cs" />
@@ -271,6 +295,12 @@
     <Compile Include="ModifyInMemory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form\Company\CreateCompany.resx">
+      <DependentUpon>CreateCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Company\Index.resx">
+      <DependentUpon>Index.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\FoodMaterial\CreateMAterialFood.resx">
       <DependentUpon>CreateMAterialFood.cs</DependentUpon>
     </EmbeddedResource>
@@ -307,6 +337,12 @@
     <EmbeddedResource Include="Form\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form\Material\CreateMaterial.resx">
+      <DependentUpon>CreateMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Material\Index.resx">
+      <DependentUpon>Index.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\Report\Index.resx">
       <DependentUpon>Index.cs</DependentUpon>
     </EmbeddedResource>
@@ -342,6 +378,7 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\DataSources\Plum.Data.Company.datasource" />
     <None Include="Properties\DataSources\Plum.Data.Food.datasource" />
     <None Include="Properties\DataSources\Plum.Data.Material.datasource" />
     <None Include="Properties\DataSources\Plum.Model.Model.Food.FoodDetailsModel.datasource" />
@@ -425,16 +462,14 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Trash - Empty.ico" />
     <None Include="Resources\Reastor.png" />
     <None Include="Resources\reload.png" />
     <None Include="Resources\iconfinder_business-work_7_2377640.png" />
     <None Include="Resources\iconfinder_business-work_7_2377640%281%29.png" />
     <Content Include="Resources\SaveIcon.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Form\Company\" />
-    <Folder Include="Form\Material\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.110.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.110.0\build\net46\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

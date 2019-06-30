@@ -20,6 +20,7 @@ namespace Plum.Form.FoodMaterial
         public int _foodIds;
         public int _foodMaterilId;
         public int _materialId;
+        public int _companyId;
         private void EditMaterialFood_Load(object sender, EventArgs e)
         {
             Material();
@@ -29,7 +30,7 @@ namespace Plum.Form.FoodMaterial
         {
             using (var db = new UnitOfWork())
             {
-                var material = db.MaterialRepositories.GetAll(true);
+                var material = db.MaterialRepositories.GetAll(true, _companyId);
 
                 comboBox1.DataSource = material;
             }

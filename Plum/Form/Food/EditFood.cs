@@ -18,6 +18,8 @@ namespace Plum.Form.Food
             InitializeComponent();
         }
 
+        public int foodId;
+        public int CompanyId;
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -26,14 +28,14 @@ namespace Plum.Form.Food
                 errorProvider1.SetError(FoodName, "لطفا نام را وارد نمایید");
                 return;
             }
-
-
+            
             using (UnitOfWork db = new UnitOfWork())
             {
                 var model = new Data.Food()
                 {
-                    Id = int.Parse(Id.Text),
+                    Id = foodId,
                     FoodName = FoodName.Text,
+                    CompanyId = CompanyId,
                     Active = true,
                 };
 
@@ -49,6 +51,11 @@ namespace Plum.Form.Food
 
                 }
             }
+        }
+
+        private void EditFood_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

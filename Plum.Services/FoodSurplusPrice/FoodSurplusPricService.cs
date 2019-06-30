@@ -2,6 +2,7 @@
 using Plum.Model.Model;
 using System.Collections.Generic;
 using System.Linq;
+using Plum.Data.Contex;
 
 namespace Plum.Services.FoodSurplusPrice
 {

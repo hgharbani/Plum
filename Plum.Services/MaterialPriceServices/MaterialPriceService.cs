@@ -3,12 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using Plum.Data.Contex;
+
 namespace Plum.Services.MaterialPriceServices
 {
     public class MaterialPriceService : IMaterialPriceService
     {
         private PlumContext db;
-       
+
 
         /// <summary>
         /// 
@@ -25,23 +27,24 @@ namespace Plum.Services.MaterialPriceServices
         /// <returns></returns>
         public MaterialPrice GetOne(int id)
         {
-            return db.MaterialsPrice.AsQueryable().Include(a=>a.FoodMaterials).Include(a=>a.Material).FirstOrDefault(a => a.Id == id );
+            return db.MaterialsPrice.AsQueryable().Include(a => a.FoodMaterials).Include(a => a.Material).FirstOrDefault(a => a.Id == id);
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="id"></param>
         /// <param name="active"></param>
+        /// <param name="companyId"></param>
         /// <returns></returns>
-        public List<MaterialPrice> GetAll(bool active = true)
+        public List<MaterialPrice> GetAll(bool active = true, int companyId = 0)
         {
-            if (active)
-            {
-                return db.MaterialsPrice.Where(a => a.Active).ToList();
+            var result = db.MaterialsPrice.AsNoTracking().Include(a => a.Company).Include(a => a.Material).Where(a => a.Active == active).AsNoTracking();
 
+            if (companyId > 0)
+            {
+                result = result.Where(a => a.CompanyId == companyId);
             }
-            return db.MaterialsPrice.ToList();
+            return result.ToList();
 
         }
 
@@ -50,7 +53,7 @@ namespace Plum.Services.MaterialPriceServices
             try
             {
 
-                if (db.MaterialsPrice.Any(a => a.MaterialId == material.MaterialId && a.Active==material.Active))
+                if (db.MaterialsPrice.Any(a => a.MaterialId == material.MaterialId && a.CompanyId == material.CompanyId && a.Active))
                 {
                     return false;
                 }
@@ -74,13 +77,13 @@ namespace Plum.Services.MaterialPriceServices
             try
             {
                 MaterialPrice materialModel = GetOne(material.Id);
-                if (db.MaterialsPrice.Any(a => a.Id != material.Id && a.MaterialId == material.MaterialId&& a.Active))
+                if (db.MaterialsPrice.Any(a => a.Id != material.Id && a.MaterialId == material.MaterialId && a.CompanyId == material.CompanyId && a.Active))
                 {
                     return false;
                 }
                 if (materialModel.UnitPrice != material.UnitPrice && inHistory)
                 {
-                    var oldMaterial=new MaterialPrice()
+                    var oldMaterial = new MaterialPrice()
                     {
                         MaterialId = materialModel.MaterialId,
                         Active = false,
@@ -89,14 +92,14 @@ namespace Plum.Services.MaterialPriceServices
                         InsertTime = materialModel.InsertTime,
                         MaterialTypeData = materialModel.MaterialTypeData
                     };
-                 
+
                     db.MaterialsPrice.Add(oldMaterial);
                 }
 
                 materialModel.MaterialId = material.MaterialId;
                 materialModel.UnitPrice = material.UnitPrice;
                 materialModel.InsertTime = material.InsertTime;
-                
+
                 //تغییر قیمت یک در لیست مواد اولیه غذاها
                 foreach (var item in materialModel.FoodMaterials.ToList())
                 {
@@ -112,7 +115,7 @@ namespace Plum.Services.MaterialPriceServices
                     //پس از تغییر قیمت کالا قیمت ناهایی کالا نیز تغییر میکند
                     if (item.Food.FoodSurplusPrices.Any())
                     {
-                       
+
                         var foodPRice = item.Food.FoodSurplusPrices.FirstOrDefault(a => a.AdjustKind == 8);
                         var sumfoodMAterialPrice = 0.0;
                         using (var unit = new UnitOfWork())
@@ -128,15 +131,15 @@ namespace Plum.Services.MaterialPriceServices
                                 {
                                     sumfoodMAterialPrice = sumfoodMAterialPrice + foodMaterial.MaterialTotalPrice;
                                 }
-                               
+
                             }
-                           var sumFoodPrice = unit.FoodSurplusPricService.CalculatorFinalPrice(foodId, sumfoodMAterialPrice, 1);
+                            var sumFoodPrice = unit.FoodSurplusPricService.CalculatorFinalPrice(foodId, sumfoodMAterialPrice, 1);
                             if (foodPRice != null) foodPRice.Price = sumFoodPrice;
-                        
+
                         }
                         db.Entry(foodPRice).State = EntityState.Modified;
                     }
-                        
+
                 }
 
                 return true;
@@ -179,9 +182,27 @@ namespace Plum.Services.MaterialPriceServices
             }
         }
 
-        public IEnumerable<MaterialPrice> GetMaterials(string parameter)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <param name="companyId"></param>
+        /// <returns></returns>
+        public IEnumerable<MaterialPrice> GetMaterials(string parameter, int companyId = 0)
         {
-            return db.MaterialsPrice.Where(c => c.Material.MaterialName.Contains(parameter) || c.UnitPrice.ToString().Contains(parameter)&& c.Active).ToList();
+            var result = db.MaterialsPrice.AsNoTracking().Include(a => a.Material).Where(c => c.Active);
+            if (!string.IsNullOrWhiteSpace(parameter))
+            {
+                result = db.MaterialsPrice.AsNoTracking().Include(a => a.Material).Where(c => c.Material.MaterialName.Contains(parameter) || c.UnitPrice.ToString().Contains(parameter));
+
+            }
+
+            if (companyId > 0)
+            {
+                result = result.Where(a => a.CompanyId == companyId);
+            }
+
+            return result.ToList();
         }
     }
 }

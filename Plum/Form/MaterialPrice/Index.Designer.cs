@@ -1,4 +1,4 @@
-﻿namespace Plum.Form.Food
+﻿namespace Plum.Form.MaterialPrice
 {
     partial class Index
     {
@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.TotalCount = new System.Windows.Forms.Label();
@@ -39,10 +39,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.MaterialName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InsertTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -54,6 +50,13 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.MateriaPriceId = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.MaterialName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaterialCompany = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InsertTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -75,7 +78,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 429);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(721, 53);
+            this.panel1.Size = new System.Drawing.Size(1057, 53);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -94,7 +97,7 @@
             this.TotalCount.Location = new System.Drawing.Point(3, 8);
             this.TotalCount.Name = "TotalCount";
             this.TotalCount.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.TotalCount.Size = new System.Drawing.Size(104, 21);
+            this.TotalCount.Size = new System.Drawing.Size(134, 28);
             this.TotalCount.TabIndex = 3;
             this.TotalCount.Text = "رکوردی وجود ندارد";
             this.TotalCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -116,7 +119,7 @@
             this.lable.AutoSize = true;
             this.lable.Location = new System.Drawing.Point(351, 14);
             this.lable.Name = "lable";
-            this.lable.Size = new System.Drawing.Size(17, 21);
+            this.lable.Size = new System.Drawing.Size(22, 28);
             this.lable.TabIndex = 2;
             this.lable.Text = "از";
             this.lable.Visible = false;
@@ -127,7 +130,7 @@
             this.textBox1.Enabled = false;
             this.textBox1.Location = new System.Drawing.Point(393, 11);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(83, 28);
+            this.textBox1.Size = new System.Drawing.Size(83, 35);
             this.textBox1.TabIndex = 1;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox1.Visible = false;
@@ -152,64 +155,17 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
+            this.MateriaPriceId,
             this.MaterialName,
             this.UnitPrice,
+            this.MaterialCompany,
             this.InsertTime});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView1.Location = new System.Drawing.Point(0, 149);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(721, 280);
+            this.dataGridView1.Size = new System.Drawing.Size(1057, 280);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "کد";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // MaterialName
-            // 
-            this.MaterialName.DataPropertyName = "MaterialName";
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("IRANSans", 8.249999F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.MaterialName.DefaultCellStyle = dataGridViewCellStyle1;
-            this.MaterialName.HeaderText = "نام کالا";
-            this.MaterialName.Name = "MaterialName";
-            this.MaterialName.ReadOnly = true;
-            this.MaterialName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.MaterialName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // UnitPrice
-            // 
-            this.UnitPrice.DataPropertyName = "UnitPrice";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("IRANSans", 8.249999F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.UnitPrice.DefaultCellStyle = dataGridViewCellStyle2;
-            this.UnitPrice.HeaderText = "قیمت هر کیلو";
-            this.UnitPrice.Name = "UnitPrice";
-            this.UnitPrice.ReadOnly = true;
-            // 
-            // InsertTime
-            // 
-            this.InsertTime.DataPropertyName = "InsertTime";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("IRANSans", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.Format = "MM yyyy";
-            dataGridViewCellStyle3.NullValue = null;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            this.InsertTime.DefaultCellStyle = dataGridViewCellStyle3;
-            this.InsertTime.HeaderText = "تاریخ ثبت";
-            this.InsertTime.Name = "InsertTime";
-            this.InsertTime.ReadOnly = true;
             // 
             // button4
             // 
@@ -254,7 +210,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(721, 56);
+            this.panel2.Size = new System.Drawing.Size(1057, 56);
             this.panel2.TabIndex = 6;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -267,7 +223,7 @@
             this.label1.Font = new System.Drawing.Font("IRANSans", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label1.Location = new System.Drawing.Point(246, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(281, 42);
+            this.label1.Size = new System.Drawing.Size(352, 58);
             this.label1.TabIndex = 0;
             this.label1.Text = "صفحه مدیریت مواد لازم";
             // 
@@ -280,7 +236,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 56);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(721, 87);
+            this.panel3.Size = new System.Drawing.Size(1057, 87);
             this.panel3.TabIndex = 7;
             // 
             // panel6
@@ -307,12 +263,14 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.GhostWhite;
+            this.panel4.Controls.Add(this.comboBox2);
+            this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.textBox2);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(393, 0);
+            this.panel4.Location = new System.Drawing.Point(395, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(328, 87);
+            this.panel4.Size = new System.Drawing.Size(662, 87);
             this.panel4.TabIndex = 6;
             // 
             // label2
@@ -320,27 +278,103 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.GhostWhite;
             this.label2.ForeColor = System.Drawing.Color.Indigo;
-            this.label2.Location = new System.Drawing.Point(267, 38);
+            this.label2.Location = new System.Drawing.Point(261, 34);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 21);
+            this.label2.Size = new System.Drawing.Size(63, 28);
             this.label2.TabIndex = 1;
             this.label2.Text = "جستجو";
             // 
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("IRANSans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.textBox2.Location = new System.Drawing.Point(9, 31);
+            this.textBox2.Location = new System.Drawing.Point(3, 27);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(252, 37);
+            this.textBox2.Size = new System.Drawing.Size(252, 48);
             this.textBox2.TabIndex = 0;
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // MateriaPriceId
+            // 
+            this.MateriaPriceId.DataPropertyName = "MateriaPriceId";
+            this.MateriaPriceId.HeaderText = "کد";
+            this.MateriaPriceId.Name = "MateriaPriceId";
+            this.MateriaPriceId.ReadOnly = true;
+            this.MateriaPriceId.Visible = false;
+            // 
+            // MaterialName
+            // 
+            this.MaterialName.DataPropertyName = "MateriaName";
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("IRANSans", 8.249999F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            this.MaterialName.DefaultCellStyle = dataGridViewCellStyle7;
+            this.MaterialName.HeaderText = "نام کالا";
+            this.MaterialName.Name = "MaterialName";
+            this.MaterialName.ReadOnly = true;
+            this.MaterialName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.MaterialName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // UnitPrice
+            // 
+            this.UnitPrice.DataPropertyName = "UnitPrice";
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("IRANSans", 8.249999F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            this.UnitPrice.DefaultCellStyle = dataGridViewCellStyle8;
+            this.UnitPrice.HeaderText = "قیمت هر کیلو";
+            this.UnitPrice.Name = "UnitPrice";
+            this.UnitPrice.ReadOnly = true;
+            // 
+            // MaterialCompany
+            // 
+            this.MaterialCompany.DataPropertyName = "MaterialCompany";
+            this.MaterialCompany.HeaderText = "نام شرکت";
+            this.MaterialCompany.Name = "MaterialCompany";
+            this.MaterialCompany.ReadOnly = true;
+            // 
+            // InsertTime
+            // 
+            this.InsertTime.DataPropertyName = "InsertTime";
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("IRANSans", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.Format = "MM yyyy";
+            dataGridViewCellStyle9.NullValue = null;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            this.InsertTime.DefaultCellStyle = dataGridViewCellStyle9;
+            this.InsertTime.HeaderText = "تاریخ ثبت";
+            this.InsertTime.Name = "InsertTime";
+            this.InsertTime.ReadOnly = true;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DisplayMember = "CompanyName";
+            this.comboBox2.Font = new System.Drawing.Font("IRANSans", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(374, 31);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(193, 39);
+            this.comboBox2.TabIndex = 13;
+            this.comboBox2.ValueMember = "CompanyId";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("IRANSans", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(589, 35);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 24);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "شرکت:";
             // 
             // Index
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.GhostWhite;
-            this.ClientSize = new System.Drawing.Size(721, 482);
+            this.ClientSize = new System.Drawing.Size(1057, 482);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dataGridView1);
@@ -390,9 +424,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Id;
+        private System.Windows.Forms.DataGridViewComboBoxColumn MateriaPriceId;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaterialName;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaterialCompany;
         private System.Windows.Forms.DataGridViewTextBoxColumn InsertTime;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label3;
     }
 }

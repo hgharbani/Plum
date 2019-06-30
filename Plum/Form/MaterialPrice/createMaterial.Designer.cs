@@ -39,9 +39,13 @@
             this.cmbMaterial = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -51,7 +55,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("IRANSans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(142, 298);
+            this.button1.Location = new System.Drawing.Point(144, 316);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(148, 54);
             this.button1.TabIndex = 0;
@@ -112,31 +116,45 @@
             // 
             // cmbMaterial
             // 
+            this.cmbMaterial.DataSource = this.materialBindingSource;
+            this.cmbMaterial.DisplayMember = "MaterialName";
             this.cmbMaterial.FormattingEnabled = true;
             this.cmbMaterial.Location = new System.Drawing.Point(84, 77);
             this.cmbMaterial.Name = "cmbMaterial";
             this.cmbMaterial.Size = new System.Drawing.Size(264, 32);
             this.cmbMaterial.TabIndex = 10;
+            this.cmbMaterial.ValueMember = "Id";
             // 
             // comboBox2
             // 
+            this.comboBox2.DataSource = this.companyBindingSource;
+            this.comboBox2.DisplayMember = "CompanyName";
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(84, 149);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(264, 32);
             this.comboBox2.TabIndex = 11;
+            this.comboBox2.ValueMember = "CompanyId";
             // 
             // errorProvider2
             // 
             this.errorProvider2.ContainerControl = this;
             this.errorProvider2.RightToLeft = true;
             // 
+            // materialBindingSource
+            // 
+            this.materialBindingSource.DataSource = typeof(Plum.Data.Material);
+            // 
+            // companyBindingSource
+            // 
+            this.companyBindingSource.DataSource = typeof(Plum.Data.Company);
+            // 
             // createMaterial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(564, 417);
+            this.ClientSize = new System.Drawing.Size(560, 472);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.cmbMaterial);
             this.Controls.Add(this.label3);
@@ -153,9 +171,12 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ویرایش مواد اولیه";
+            this.Load += new System.EventHandler(this.createMaterial_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,5 +194,7 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox cmbMaterial;
         private System.Windows.Forms.ErrorProvider errorProvider2;
+        private System.Windows.Forms.BindingSource companyBindingSource;
+        private System.Windows.Forms.BindingSource materialBindingSource;
     }
 }

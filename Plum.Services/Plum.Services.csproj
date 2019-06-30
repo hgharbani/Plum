@@ -79,6 +79,8 @@
     <Compile Include="FoodSurplusPrice\IFoodSurplusPricService.cs" />
     <Compile Include="MaterialPriceServices\IMaterialPriceService.cs" />
     <Compile Include="MaterialPriceServices\MaterialPriceService.cs" />
+    <Compile Include="MaterialServices\IMaterialService.cs" />
+    <Compile Include="MaterialServices\MaterialService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitOfWork.cs" />
     <Compile Include="UserServices\IUserServices.cs" />
@@ -89,14 +91,16 @@
       <Project>{0e1b959e-60f1-41d8-8afc-18a7fe6b1c43}</Project>
       <Name>Plum.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Plum.Model\Plum.Model.csproj">
+      <Project>{1D702925-6166-48D8-A496-148A0E89D676}</Project>
+      <Name>Plum.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Plum.Utility\Plum.Utility.csproj">
       <Project>{024ce4be-15a1-411a-bb25-cfcf59d0fd4c}</Project>
       <Name>Plum.Utility</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MaterialServices\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

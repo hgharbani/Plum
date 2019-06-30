@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Plum.Data;
+using Plum.Data.Contex;
 
 namespace Plum.Services.FoodServices
 {
@@ -52,7 +53,7 @@ namespace Plum.Services.FoodServices
             try
             {
 
-                if (db.Foods.Any(a => a.FoodName == food.FoodName && a.Active == food.Active))
+                if (db.Foods.Any(a => a.FoodName == food.FoodName &&  a.CompanyId == food.CompanyId && a.Active))
                 {
                     return false;
                 }
@@ -69,7 +70,7 @@ namespace Plum.Services.FoodServices
         {
             try
             {
-                if (db.Foods.Any(a => a.Id != food.Id && a.FoodName == food.FoodName))
+                if (db.Foods.Any(a => a.Id != food.Id && a.FoodName == food.FoodName && a.CompanyId==food.CompanyId && a.Active))
                 {
                     return false;
                 }

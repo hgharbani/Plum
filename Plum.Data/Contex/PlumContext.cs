@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Plum.Data.Contex;
-using SQLite.CodeFirst;
 
-namespace Plum.Data
+namespace Plum.Data.Contex
 {
   public  class PlumContext:DbContext
     {

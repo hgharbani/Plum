@@ -1,14 +1,12 @@
-﻿using Plum.Services;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using PersianDate;
-using Plum.Form.MaterialPrice;
+using Plum.Model.Model.MaterialPrice;
+using Plum.Services;
 
-namespace Plum.Form.Food
+namespace Plum.Form.MaterialPrice
 {
     public partial class Index : System.Windows.Forms.Form
     {
@@ -37,18 +35,26 @@ namespace Plum.Form.Food
             {
                 dataGridView1.AutoGenerateColumns = false;
                 List<Data.MaterialPrice> material = db.MaterialRepositories.GetAll(true);
+                var model = material.Select(a => new MaterialPriceModel()
+                {
+                    MateriaPriceId = a.Id,
+                    MateriaName = a.Material.MaterialName,
+                    MaterialCompany = a.Company.CompanyName,
+                    UnitPrice = a.UnitPrice,
+                    InsertTime = a.InsertTime
+                }).ToList();
                 TotalCount.Text = ((material.Count())).ToString();
                 if (material.Count() <= 15)
                 {
                     button1.Enabled = false;
                 }
-                dataGridView1.DataSource = material;
+                dataGridView1.DataSource = model;
 
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
 
-                    var x = ((DateTime)row.Cells[3].Value).ToFa();
-                    row.Cells[3].Value = x;
+                    var x = ((DateTime)row.Cells[4].Value).ToFa();
+                    row.Cells[4].Value = x;
 
 
                 }
@@ -69,8 +75,8 @@ namespace Plum.Form.Food
                     Data.MaterialPrice model = db.MaterialRepositories.GetOne(id);
                     EditMateril formEdit = new EditMateril();
                     formEdit.Id.Text = id.ToString();
-                    formEdit.cmdMaterial.SelectedText = model.Material.MaterialName;
-                    formEdit.cmdCompany.SelectedText = model.Company.CompanyName;
+                    formEdit.CompanyId = model.CompanyId;
+                    formEdit.MaterialId = model.MaterialId;
                     formEdit.UnitPrice.Text = model.UnitPrice.ToString();
 
                     if (formEdit.ShowDialog() == DialogResult.OK)
@@ -92,6 +98,27 @@ namespace Plum.Form.Food
             textBox1.Enabled = false;
             textBox1.Text = "1";
             ShowMaterialGrid();
+            Getcompany();
+        }
+
+        private void Getcompany()
+        {
+            using (UnitOfWork db = new UnitOfWork())
+            {
+
+                var companymodel = new List<Data.Company>()
+                {
+                    new Data.Company()
+                    {
+                        CompanyId = 0,
+                        CompanyName = "--SELECT--"
+                    }
+                };
+                companymodel.AddRange(db.CompanyService.GetAll()
+                );
+                comboBox2.DataSource = companymodel;
+
+            }
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -135,24 +162,34 @@ namespace Plum.Form.Food
         {
             using (UnitOfWork db = new UnitOfWork())
             {
-                if (textBox2.Text == "")
-                {
-                    ShowMaterialGrid();
-                }
-                else
-                {
-                    var model = db.MaterialRepositories.GetMaterials(textBox2.Text).Where(a => a.Active);
+              
+                    var companyId = 0;
+                    var company = (Data.Company) comboBox2.SelectedItem;
+                    if (company != null)
+                    {
+                        companyId = company.CompanyId;
+                    }
+                    var material = db.MaterialRepositories.GetMaterials(textBox2.Text, companyId).ToList();
 
+                    dataGridView1.AutoGenerateColumns = false;
+                    var model = material.Select(a => new MaterialPriceModel()
+                    {
+                        MateriaPriceId = a.Id,
+                        MateriaName = a.Material.MaterialName,
+                        MaterialCompany = a.Company.CompanyName,
+                        UnitPrice = a.UnitPrice,
+                        InsertTime = a.InsertTime
+                    }).ToList();
                     dataGridView1.DataSource = model;
                     foreach (DataGridViewRow row in dataGridView1.Rows)
                     {
-                        var x = ((DateTime)row.Cells[3].Value).ToFa();
-                        row.Cells[3].Value = x;
+                        var x = ((DateTime)row.Cells[4].Value).ToFa();
+                        row.Cells[4].Value = x;
 
 
                     }
 
-                }
+                
             }
         }
 

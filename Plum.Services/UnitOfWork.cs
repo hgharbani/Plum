@@ -1,9 +1,14 @@
 ﻿using System;
+using System.Runtime.InteropServices.ComTypes;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Plum.Data;
+using Plum.Data.Contex;
+using Plum.Services.CompanyServices;
 using Plum.Services.FoodMaterial;
 using Plum.Services.FoodServices;
 using Plum.Services.FoodSurplusPrice;
 using Plum.Services.MaterialPriceServices;
+using Plum.Services.MaterialServices;
 using Plum.Services.UserServices;
 
 namespace Plum.Services
@@ -17,6 +22,34 @@ namespace Plum.Services
         private IFoodMaterialService _foodMaterialService;
         private IFoodSurplusPricService _foodSurplusPricService;
         private IUserServices _userServices;
+        private ICompanyService _companyService;
+        private IMaterialService _materialService;
+
+        public IMaterialService MaterialService
+        {
+            get
+            {
+                if (_materialService == null)
+                {
+                    return _materialService = new MaterialService(db);
+                }
+
+                return _materialService;
+            }
+        }
+
+        public ICompanyService CompanyService
+        {
+            get
+            {
+                if (_companyService == null)
+                {
+                    return _companyService = new CompanyService(db);
+                }
+
+                return _companyService;
+            }
+        }
         public IFoodService FoodService
         {
             get

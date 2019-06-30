@@ -11,6 +11,8 @@ namespace Plum.Form.MaterialPrice
             InitializeComponent();
         }
 
+        public int MaterialId;
+        public int CompanyId;
         private void button1_Click(object sender, EventArgs e)
         {
             var material = (Data.Material)cmdMaterial.SelectedItem;
@@ -58,6 +60,34 @@ namespace Plum.Form.MaterialPrice
 
                 }
             }
+        }
+
+        private void EditMateril_Load(object sender, EventArgs e)
+        {
+            using (var db = new UnitOfWork())
+            {
+                var material = db.MaterialService.GetAll();
+                cmdMaterial.DataSource = material;
+                var company = db.CompanyService.GetAll();
+                cmdCompany.DataSource = company;
+            }
+
+            SelectMaterial(MaterialId);
+            SelectCompany(CompanyId);
+        }
+        public void SelectMaterial(int materialId)
+        {
+            cmdMaterial.SelectedValue = materialId;
+
+        }
+        public void SelectCompany(int companyId)
+        {
+            cmdCompany.SelectedValue = companyId;
+
+        }
+        private void cmdMaterial_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -88,9 +88,18 @@ namespace Plum.Form.Food
         private void FoodIndex_Load(object sender, EventArgs e)
         {
             ShowFoodGrid();
+            GetCompany();
             MaterialsName.Text = @"برای تعریف چند کالا از علامت - استفاده نمایید";
             MaterialsName.Font = new Font(MaterialsName.Font.FontFamily, 10);
             MaterialsName.ForeColor=Color.Gray;
+        }
+
+        private void GetCompany()
+        {
+            using (UnitOfWork db = new UnitOfWork())
+            {
+                comboBox1.DataSource = db.CompanyService.GetAll();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -107,11 +116,13 @@ namespace Plum.Form.Food
             if (dataGridView1.CurrentRow != null)
             {
                 int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                var companyId = (Data.Company) comboBox1.SelectedItem;
                 using (UnitOfWork db = new UnitOfWork())
                 {
                     Data.Food model = db.FoodService.GetOne(id);
                     EditFood formEdit = new EditFood();
-                    formEdit.Id.Text = id.ToString();
+                    formEdit.foodId = id;
+                    formEdit.CompanyId = companyId.CompanyId;
                     formEdit.FoodName.Text = model.FoodName;
 
                     if (formEdit.ShowDialog() == DialogResult.None)
@@ -290,6 +301,16 @@ namespace Plum.Form.Food
         private void button11_Click(object sender, EventArgs e)
         {
             ShowFoodGrid(true);
+        }
+
+        private void cmbFoodName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

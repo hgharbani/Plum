@@ -44,9 +44,9 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Model\Food\FoodDetailsModel.cs" />
+    <Compile Include="Model\MaterialPrice\MaterialPriceModel.cs" />
     <Compile Include="Model\MAterial\FoodMaterialModel.cs" />
     <Compile Include="Model\MAterial\MaterialModel.cs" />
-    <Compile Include="Model\PlumResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

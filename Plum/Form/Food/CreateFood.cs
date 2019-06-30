@@ -25,12 +25,14 @@ namespace Plum.Form.Food
                 errorProvider1.SetError(FoodName, "لطفا نام را وارد نمایید");
                 return;
             }
-         
+
+            var company = (Data.Company)comboBox1.SelectedItem;
             using (UnitOfWork db = new UnitOfWork())
             {
                 var model = new Data.Food()
                 {
                     FoodName = FoodName.Text,
+                    CompanyId = company.CompanyId,
                     Active = true,
                 };
 
@@ -45,6 +47,26 @@ namespace Plum.Form.Food
                     RtlMessageBox.Show("کالا ثبت نگردید");
 
                 }
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FoodName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CreateFood_Load(object sender, EventArgs e)
+        {
+            using (var db = new UnitOfWork())
+            {
+             
+                var company = db.CompanyService.GetAll();
+                comboBox1.DataSource = company;
             }
         }
     }

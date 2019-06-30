@@ -1,3 +1,5 @@
+using Plum.Data.Contex;
+
 namespace Plum.Form.Report.MasterDetail
 {
     partial class MasterReport
@@ -54,7 +56,7 @@ namespace Plum.Form.Report.MasterDetail
             // entityDataSource1
             // 
             this.entityDataSource1.ConnectionString = "PlumContext";
-            this.entityDataSource1.Context = typeof(Plum.Data.PlumContext);
+            this.entityDataSource1.Context = typeof(PlumContext);
             this.entityDataSource1.ContextMember = "Foods";
             this.entityDataSource1.Name = "entityDataSource1";
             // 

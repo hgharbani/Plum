@@ -14,8 +14,10 @@ using PdfRpt.Core.Helper;
 using PersianDate;
 using Plum.Data;
 using Plum.Form.Food;
+using Plum.Form.MaterialPrice;
 using Plum.Model.Model.Food;
 using Plum.Services;
+using Index = Plum.Form.Material.Index;
 
 namespace Plum
 {
@@ -224,6 +226,17 @@ namespace Plum
                 chart1.Invalidate();
 
             }
+        }
+
+        private void btnCompany_Click(object sender, EventArgs e)
+        {
+            var report = new Form.Company.Index();
+            report.ShowDialog();
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

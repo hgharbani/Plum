@@ -40,6 +40,7 @@ namespace Plum.Form.MaterialPrice
                 {
                     MaterialId = material.Id,
                     UnitPrice = int.Parse(UnitPrice.Value),
+                    CompanyId= company.CompanyId,
                     Active = true,
                     InsertTime = DateTime.Now,
                     ParentId = null,
@@ -70,6 +71,17 @@ namespace Plum.Form.MaterialPrice
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void createMaterial_Load(object sender, EventArgs e)
+        {
+            using (var db = new UnitOfWork())
+            {
+                var material = db.MaterialService.GetAll();
+                cmbMaterial.DataSource = material;
+                var company = db.CompanyService.GetAll();
+                comboBox2.DataSource = company;
+            }
         }
     }
 }

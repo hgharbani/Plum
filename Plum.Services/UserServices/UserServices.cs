@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Plum.Data;
+using Plum.Data.Contex;
 using Plum.Model.Model;
 
 namespace Plum.Services.UserServices

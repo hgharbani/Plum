@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
@@ -85,8 +85,10 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
@@ -193,6 +195,7 @@
             this.btnCompany.Name = "btnCompany";
             this.btnCompany.Size = new System.Drawing.Size(130, 70);
             this.btnCompany.Text = "شرکت ها";
+            this.btnCompany.Click += new System.EventHandler(this.btnCompany_Click);
             // 
             // toolStripSeparator6
             // 
@@ -285,8 +288,8 @@
             this.toolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(171, 70);
-            this.toolStripButton2.Text = "مدیریت کاربران";
+            this.toolStripButton2.Size = new System.Drawing.Size(163, 70);
+            this.toolStripButton2.Text = "تغییر رمز عبور";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // toolStripButton3
@@ -545,21 +548,22 @@
             // chart1
             // 
             this.chart1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(0, 0);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(1236, 547);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
+            this.chart1.Click += new System.EventHandler(this.chart1_Click);
             // 
             // panel8
             // 
@@ -580,7 +584,7 @@
             this.panel13.Controls.Add(this.comboBox3);
             this.panel13.Controls.Add(this.label13);
             this.panel13.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel13.Location = new System.Drawing.Point(305, 0);
+            this.panel13.Location = new System.Drawing.Point(40, 0);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(325, 57);
             this.panel13.TabIndex = 12;
@@ -605,7 +609,7 @@
             this.comboBox3.Items.AddRange(new object[] {
             "ستونی",
             "خطی"});
-            this.comboBox3.Location = new System.Drawing.Point(114, 12);
+            this.comboBox3.Location = new System.Drawing.Point(114, 9);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(126, 42);
             this.comboBox3.TabIndex = 11;
@@ -625,7 +629,7 @@
             this.panel12.Controls.Add(this.comboBox2);
             this.panel12.Controls.Add(this.label9);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel12.Location = new System.Drawing.Point(630, 0);
+            this.panel12.Location = new System.Drawing.Point(365, 0);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(265, 57);
             this.panel12.TabIndex = 9;
@@ -640,7 +644,7 @@
             "سه ساله",
             "چهار ساله",
             "پنج ساله"});
-            this.comboBox2.Location = new System.Drawing.Point(3, 13);
+            this.comboBox2.Location = new System.Drawing.Point(6, 9);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(164, 42);
             this.comboBox2.TabIndex = 6;
@@ -657,13 +661,41 @@
             // 
             // panel11
             // 
+            this.panel11.Controls.Add(this.label15);
+            this.panel11.Controls.Add(this.comboBox4);
             this.panel11.Controls.Add(this.comboBox1);
             this.panel11.Controls.Add(this.label7);
             this.panel11.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel11.Location = new System.Drawing.Point(895, 0);
+            this.panel11.Location = new System.Drawing.Point(630, 0);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(341, 57);
+            this.panel11.Size = new System.Drawing.Size(606, 57);
             this.panel11.TabIndex = 8;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("IRANSans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label15.Location = new System.Drawing.Point(524, 17);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(63, 28);
+            this.label15.TabIndex = 6;
+            this.label15.Text = "شرکت :";
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.materialBindingSource, "Id", true));
+            this.comboBox4.DataSource = this.materialBindingSource;
+            this.comboBox4.DisplayMember = "MaterialName";
+            this.comboBox4.Font = new System.Drawing.Font("IRANSans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(350, 9);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(155, 42);
+            this.comboBox4.TabIndex = 7;
+            // 
+            // materialBindingSource
+            // 
+            this.materialBindingSource.DataSource = typeof(Plum.Data.Material);
             // 
             // comboBox1
             // 
@@ -672,20 +704,16 @@
             this.comboBox1.DisplayMember = "MaterialName";
             this.comboBox1.Font = new System.Drawing.Font("IRANSans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 12);
+            this.comboBox1.Location = new System.Drawing.Point(6, 10);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(213, 42);
             this.comboBox1.TabIndex = 5;
-            // 
-            // materialBindingSource
-            // 
-            this.materialBindingSource.DataSource = typeof(Plum.Data.Material);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("IRANSans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label7.Location = new System.Drawing.Point(278, 18);
+            this.label7.Location = new System.Drawing.Point(237, 17);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 28);
             this.label7.TabIndex = 2;
@@ -718,7 +746,7 @@
             this.Name = "Form1";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "نرم افزار مدیریت مخارج آلو";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -807,6 +835,8 @@
         private System.Windows.Forms.ToolStripButton btnCompany;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox comboBox4;
     }
 }
 

@@ -38,6 +38,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -51,7 +52,7 @@
             this.UnitPrice.Location = new System.Drawing.Point(105, 154);
             this.UnitPrice.MaxLength = 25;
             this.UnitPrice.Name = "UnitPrice";
-            this.UnitPrice.Size = new System.Drawing.Size(292, 33);
+            this.UnitPrice.Size = new System.Drawing.Size(292, 41);
             this.UnitPrice.TabIndex = 26;
             // 
             // Quantity
@@ -61,7 +62,7 @@
             this.Quantity.Location = new System.Drawing.Point(105, 215);
             this.Quantity.MaxLength = 25;
             this.Quantity.Name = "Quantity";
-            this.Quantity.Size = new System.Drawing.Size(292, 33);
+            this.Quantity.Size = new System.Drawing.Size(292, 41);
             this.Quantity.TabIndex = 25;
             // 
             // comboBox1
@@ -73,7 +74,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(105, 84);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(292, 33);
+            this.comboBox1.Size = new System.Drawing.Size(292, 42);
             this.comboBox1.TabIndex = 24;
             this.comboBox1.ValueMember = "Id";
             // 
@@ -88,7 +89,7 @@
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(443, 221);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 21);
+            this.label4.Size = new System.Drawing.Size(73, 28);
             this.label4.TabIndex = 23;
             this.label4.Text = "مقدار لازم";
             // 
@@ -99,7 +100,7 @@
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(416, 154);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 21);
+            this.label3.Size = new System.Drawing.Size(103, 28);
             this.label3.TabIndex = 22;
             this.label3.Text = "قیمت هر کیلو";
             // 
@@ -110,7 +111,7 @@
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(449, 84);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 21);
+            this.label2.Size = new System.Drawing.Size(67, 28);
             this.label2.TabIndex = 21;
             this.label2.Text = "مواد لازم";
             // 
@@ -133,12 +134,23 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Window;
+            this.label1.Location = new System.Drawing.Point(280, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 25);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "label1";
+            // 
             // EditMaterialFood
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(588, 377);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.UnitPrice);
             this.Controls.Add(this.Quantity);
             this.Controls.Add(this.comboBox1);
@@ -170,5 +182,6 @@
         public NumericTextBox.NumericTextBox Quantity;
         public System.Windows.Forms.ComboBox comboBox1;
         public NumericTextBox.NumericTextBox UnitPrice;
+        private System.Windows.Forms.Label label1;
     }
 }

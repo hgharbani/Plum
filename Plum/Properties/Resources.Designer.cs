@@ -245,6 +245,16 @@ namespace Plum.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Trash___Empty {
+            get {
+                object obj = ResourceManager.GetObject("Trash - Empty", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap turkey {
             get {
                 object obj = ResourceManager.GetObject("turkey", resourceCulture);

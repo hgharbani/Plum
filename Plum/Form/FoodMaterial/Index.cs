@@ -18,6 +18,7 @@ namespace Plum.Form.FoodMaterial
 
 
         public int _foodIds;
+        public int companyId;
 
         private void Index_Load(object sender, EventArgs e)
         {
@@ -65,9 +66,11 @@ namespace Plum.Form.FoodMaterial
         {
             CreateMAterialFood createMaterialFoods = new CreateMAterialFood
             {
-                _foodIds = _foodIds
+                _foodIds = _foodIds,
+                company= companyId
             };
             DialogResult result = createMaterialFoods.ShowDialog();
+            
             if (result == DialogResult.OK)
             {
                 ShowMaterialFoodGrid(_foodIds);
@@ -123,6 +126,8 @@ namespace Plum.Form.FoodMaterial
                     formEdit._foodIds = model.FoodId;
                     formEdit.Quantity.Text = model.Quantity.ToString();
                     formEdit._materialId=model.MaterialId ;
+                    formEdit._companyId=companyId;
+
                     formEdit.UnitPrice.Text = model.MaterialPrice.UnitPrice.ToString();
                     if (formEdit.ShowDialog() == DialogResult.OK)
                     {

@@ -15,16 +15,17 @@ namespace Plum.Services.MaterialPriceServices
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="id"></param>
         /// <param name="active"></param>
+        /// <param name="companyId"></param>
         /// <returns></returns>
-        List<MaterialPrice> GetAll(bool active=true);
+        List<MaterialPrice> GetAll(bool active = true, int companyId = 0);
 
         bool InsertMaterial(MaterialPrice material);
         bool UpdateMaterial(MaterialPrice material, bool inHistory);
         bool DeleteMaterial(MaterialPrice material);
         bool DeleteMaterial(int materialId);
-        IEnumerable<MaterialPrice> GetMaterials(string parameter);
-        
+        IEnumerable<MaterialPrice> GetMaterials(string parameter, int companyId);
+
+
     }
 }
