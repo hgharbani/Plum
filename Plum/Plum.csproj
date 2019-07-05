@@ -142,6 +142,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Form\AboutMe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\AboutMe.Designer.cs">
+      <DependentUpon>AboutMe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\Company\CreateCompany.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +177,12 @@
     </Compile>
     <Compile Include="Form\FoodMaterial\Index.Designer.cs">
       <DependentUpon>Index.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FoodPrice\EditFoodsPric.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FoodPrice\EditFoodsPric.Designer.cs">
+      <DependentUpon>EditFoodsPric.cs</DependentUpon>
     </Compile>
     <Compile Include="Form\FoodPrice\Index.cs">
       <SubType>Form</SubType>
@@ -295,6 +307,9 @@
     <Compile Include="ModifyInMemory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form\AboutMe.resx">
+      <DependentUpon>AboutMe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\Company\CreateCompany.resx">
       <DependentUpon>CreateCompany.cs</DependentUpon>
     </EmbeddedResource>
@@ -309,6 +324,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FoodMaterial\Index.resx">
       <DependentUpon>Index.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FoodPrice\EditFoodsPric.resx">
+      <DependentUpon>EditFoodsPric.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FoodPrice\Index.resx">
       <DependentUpon>Index.cs</DependentUpon>
@@ -469,6 +487,8 @@
     <None Include="Resources\reload.png" />
     <None Include="Resources\iconfinder_business-work_7_2377640.png" />
     <None Include="Resources\iconfinder_business-work_7_2377640%281%29.png" />
+    <None Include="Resources\iconfinder_simpline_35_2305625.png" />
+    <None Include="Resources\iconfinder_simpline_35_2305625%281%29.png" />
     <Content Include="Resources\SaveIcon.png" />
   </ItemGroup>
   <ItemGroup />

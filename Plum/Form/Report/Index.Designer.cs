@@ -31,8 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.foodDetailsModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.count = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,15 +45,26 @@
             this.foodBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.numericTextBox1 = new NumericTextBox.NumericTextBox();
             this.numericTextBox2 = new NumericTextBox.NumericTextBox();
-            this.foodDetailsModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button3 = new System.Windows.Forms.Button();
+            this.foodMaterialsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.materialPriceModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.foodDetailsModelBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.foodIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.foodNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaterialPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FinalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.foodDetailsModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.foodBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.foodBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.foodDetailsModelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.foodMaterialsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.materialPriceModelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.foodDetailsModelBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -61,7 +75,7 @@
             this.button1.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.button1.Location = new System.Drawing.Point(12, 18);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 36);
+            this.button1.Size = new System.Drawing.Size(110, 44);
             this.button1.TabIndex = 0;
             this.button1.Text = "اضافه کردن";
             this.button1.UseVisualStyleBackColor = false;
@@ -77,20 +91,26 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.foodIdDataGridViewTextBoxColumn,
             this.foodNameDataGridViewTextBoxColumn,
-            this.quantityDataGridViewTextBoxColumn});
+            this.MaterialPrice,
+            this.quantityDataGridViewTextBoxColumn,
+            this.FinalPrice});
             this.dataGridView1.DataSource = this.foodDetailsModelBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 74);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 77);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(528, 250);
+            this.dataGridView1.Size = new System.Drawing.Size(713, 279);
             this.dataGridView1.TabIndex = 2;
+            // 
+            // foodDetailsModelBindingSource
+            // 
+            this.foodDetailsModelBindingSource.DataSource = typeof(Plum.Model.Model.Food.FoodDetailsModel);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(517, 26);
+            this.label1.Location = new System.Drawing.Point(499, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(26, 21);
+            this.label1.Size = new System.Drawing.Size(33, 28);
             this.label1.TabIndex = 3;
             this.label1.Text = "غذا";
             // 
@@ -99,16 +119,16 @@
             this.count.AutoSize = true;
             this.count.Location = new System.Drawing.Point(244, 26);
             this.count.Name = "count";
-            this.count.Size = new System.Drawing.Size(37, 21);
+            this.count.Size = new System.Drawing.Size(47, 28);
             this.count.TabIndex = 4;
             this.count.Text = "تعداد";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(467, 339);
+            this.label2.Location = new System.Drawing.Point(628, 388);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 21);
+            this.label2.Size = new System.Drawing.Size(97, 28);
             this.label2.TabIndex = 6;
             this.label2.Text = "درصد مالیات";
             // 
@@ -118,12 +138,13 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("IRANSans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.BlueViolet;
-            this.button2.Location = new System.Drawing.Point(157, 331);
+            this.button2.Location = new System.Drawing.Point(182, 371);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(139, 36);
+            this.button2.Size = new System.Drawing.Size(149, 59);
             this.button2.TabIndex = 8;
             this.button2.Text = "هزینه نهایی ";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // foodBindingSource
             // 
@@ -131,16 +152,15 @@
             // 
             // cmbFoodName
             // 
-            this.cmbFoodName.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.foodBindingSource, "Id", true));
-            this.cmbFoodName.DataSource = this.foodBindingSource1;
+            this.cmbFoodName.DataSource = this.foodBindingSource;
             this.cmbFoodName.DisplayMember = "FoodName";
             this.cmbFoodName.Font = new System.Drawing.Font("IRANSans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.cmbFoodName.FormattingEnabled = true;
-            this.cmbFoodName.Location = new System.Drawing.Point(319, 20);
+            this.cmbFoodName.Location = new System.Drawing.Point(296, 20);
             this.cmbFoodName.Name = "cmbFoodName";
-            this.cmbFoodName.Size = new System.Drawing.Size(193, 33);
+            this.cmbFoodName.Size = new System.Drawing.Size(193, 42);
             this.cmbFoodName.TabIndex = 9;
-            this.cmbFoodName.ValueMember = "FoodName";
+            this.cmbFoodName.ValueMember = "Id";
             // 
             // foodBindingSource1
             // 
@@ -153,21 +173,17 @@
             this.numericTextBox1.Location = new System.Drawing.Point(138, 20);
             this.numericTextBox1.MaxLength = 25;
             this.numericTextBox1.Name = "numericTextBox1";
-            this.numericTextBox1.Size = new System.Drawing.Size(100, 33);
+            this.numericTextBox1.Size = new System.Drawing.Size(100, 41);
             this.numericTextBox1.TabIndex = 10;
             // 
             // numericTextBox2
             // 
             this.numericTextBox2.FormatType = NumericTextBox.FormatType.Long;
-            this.numericTextBox2.Location = new System.Drawing.Point(319, 336);
+            this.numericTextBox2.Location = new System.Drawing.Point(451, 385);
             this.numericTextBox2.MaxLength = 25;
             this.numericTextBox2.Name = "numericTextBox2";
-            this.numericTextBox2.Size = new System.Drawing.Size(142, 28);
+            this.numericTextBox2.Size = new System.Drawing.Size(171, 35);
             this.numericTextBox2.TabIndex = 11;
-            // 
-            // foodDetailsModelBindingSource
-            // 
-            this.foodDetailsModelBindingSource.DataSource = typeof(Plum.Model.Model.Food.FoodDetailsModel);
             // 
             // button3
             // 
@@ -175,13 +191,52 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("IRANSans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button3.Location = new System.Drawing.Point(12, 331);
+            this.button3.Location = new System.Drawing.Point(12, 371);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(139, 36);
+            this.button3.Size = new System.Drawing.Size(147, 59);
             this.button3.TabIndex = 12;
             this.button3.Text = "حذف کردن";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // foodMaterialsBindingSource
+            // 
+            this.foodMaterialsBindingSource.DataMember = "FoodMaterials";
+            this.foodMaterialsBindingSource.DataSource = this.foodDetailsModelBindingSource;
+            // 
+            // materialPriceModelBindingSource
+            // 
+            this.materialPriceModelBindingSource.DataSource = typeof(Plum.Model.Model.MaterialPrice.MaterialPriceModel);
+            // 
+            // foodDetailsModelBindingSource1
+            // 
+            this.foodDetailsModelBindingSource1.DataSource = typeof(Plum.Model.Model.Food.FoodDetailsModel);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DataSource = this.companyBindingSource;
+            this.comboBox1.DisplayMember = "CompanyName";
+            this.comboBox1.Font = new System.Drawing.Font("IRANSans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(538, 20);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(131, 42);
+            this.comboBox1.TabIndex = 14;
+            this.comboBox1.ValueMember = "CompanyId";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(677, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 28);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "شرکت";
+            // 
+            // companyBindingSource
+            // 
+            this.companyBindingSource.DataSource = typeof(Plum.Data.Company);
             // 
             // foodIdDataGridViewTextBoxColumn
             // 
@@ -206,28 +261,60 @@
             this.foodNameDataGridViewTextBoxColumn.Name = "foodNameDataGridViewTextBoxColumn";
             this.foodNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // MaterialPrice
+            // 
+            this.MaterialPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.MaterialPrice.DataPropertyName = "MaterialPrice";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("IRANSans Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.BlueViolet;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.MaterialPrice.DefaultCellStyle = dataGridViewCellStyle2;
+            this.MaterialPrice.HeaderText = "قیمت هر پرس";
+            this.MaterialPrice.Name = "MaterialPrice";
+            this.MaterialPrice.ReadOnly = true;
+            // 
             // quantityDataGridViewTextBoxColumn
             // 
             this.quantityDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("IRANSans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = "0";
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.BlueViolet;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("IRANSans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = "0";
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.BlueViolet;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.quantityDataGridViewTextBoxColumn.HeaderText = " تعداد هر پرس";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
             this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // FinalPrice
+            // 
+            this.FinalPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.FinalPrice.DataPropertyName = "FinalPrice";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("IRANSans Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.BlueViolet;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.FinalPrice.DefaultCellStyle = dataGridViewCellStyle4;
+            this.FinalPrice.HeaderText = "قیمت نهایی";
+            this.FinalPrice.Name = "FinalPrice";
+            this.FinalPrice.ReadOnly = true;
             // 
             // Index
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(557, 385);
+            this.ClientSize = new System.Drawing.Size(737, 442);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.numericTextBox2);
             this.Controls.Add(this.numericTextBox1);
@@ -249,9 +336,13 @@
             this.Text = "گزارشات";
             this.Load += new System.EventHandler(this.Index_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.foodDetailsModelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.foodBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.foodBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.foodDetailsModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.foodMaterialsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.materialPriceModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.foodDetailsModelBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -272,8 +363,16 @@
         private NumericTextBox.NumericTextBox numericTextBox2;
         private System.Windows.Forms.BindingSource foodDetailsModelBindingSource;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.BindingSource foodDetailsModelBindingSource1;
+        private System.Windows.Forms.BindingSource foodMaterialsBindingSource;
+        private System.Windows.Forms.BindingSource materialPriceModelBindingSource;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.BindingSource companyBindingSource;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn foodIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn foodNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaterialPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FinalPrice;
     }
 }

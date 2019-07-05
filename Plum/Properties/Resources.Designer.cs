@@ -163,6 +163,26 @@ namespace Plum.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_simpline_35_2305625 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_simpline_35_2305625", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_simpline_35_2305625_1_ {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_simpline_35_2305625(1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap kisspng_common_plum_stock_photography_leaf_red_plums_5aa8a567bcd959_3660422215210018317735 {
             get {
                 object obj = ResourceManager.GetObject("kisspng-common-plum-stock-photography-leaf-red-plums-5aa8a567bcd959.3660422215210" +

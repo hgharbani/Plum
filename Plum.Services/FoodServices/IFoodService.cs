@@ -21,6 +21,7 @@ namespace Plum.Services.FoodServices
         /// <returns></returns>
         List<Food> GetAll(bool active = true);
 
+        List<Food> GetAllByCompanyId(int companyId);
         bool InsertFood(Food food);
         bool UpdateFood(Food food);
         bool DeleteFood(Food food);

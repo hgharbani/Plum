@@ -49,6 +49,17 @@ namespace Plum.Services.FoodServices
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="companyId"></param>
+        /// <returns></returns>
+        public List<Food> GetAllByCompanyId(int companyId)
+        {
+           
+            return db.Foods.AsNoTracking().Include(a => a.FoodMaterials).Include(a => a.FoodSurplusPrices).Where(a => a.Active == true && a.CompanyId== companyId).ToList();
+
+        }
         public bool InsertFood(Food food)
         {
             try
@@ -151,7 +162,7 @@ namespace Plum.Services.FoodServices
 
             }
 
-            if (!string.IsNullOrWhiteSpace(parameter))
+            if (parameter!="برای تعریف چند کالا از علامت - استفاده نمایید")
             {
                 var materials = parameter.Trim().Replace(",", "-").Split('-');
                 model = model.Where(a =>

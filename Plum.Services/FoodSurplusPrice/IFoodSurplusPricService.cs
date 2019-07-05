@@ -15,6 +15,12 @@ namespace Plum.Services.FoodSurplusPrice
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="companyId"></param>
+        /// <returns></returns>
+        ICollection<Data.FoodSurplusPrice> GetFoodSurplusPricesByCompany(int companyId);
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="foodSurplusPrices"></param>
         /// <returns></returns>
         PlumResult AddFoodSurplusPrice(ICollection<Data.FoodSurplusPrice> foodSurplusPrices);

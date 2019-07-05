@@ -52,7 +52,7 @@ namespace Plum.Form.Food
                 {
                     var food = (int) cmbFoodName.SelectedValue;
                     var company = (int) comboBox1.SelectedValue;
-                    var foods = db.FoodService.GetFoodsbyFoodDetails("", company, food);
+                    var foods = db.FoodService.GetFoodsbyFoodDetails(MaterialsName.Text, company, food);
                     if (!string.IsNullOrWhiteSpace(PriceFrom.Text) )
                     {
                         var fromPrice = Convert.ToDouble(PriceFrom.Text);
@@ -61,7 +61,7 @@ namespace Plum.Form.Food
                     if (!string.IsNullOrWhiteSpace(PriceTo.Text) )
                     {
                         var fromPrice = Convert.ToDouble(PriceTo.Text);
-                        foods = foods.Where(a => a.FinalPrice >= fromPrice).ToList();
+                        foods = foods.Where(a => a.FinalPrice <= fromPrice).ToList();
 
                     }
                     dataGridView1.DataSource = foods;
@@ -315,8 +315,27 @@ namespace Plum.Form.Food
         {
             using (UnitOfWork db = new UnitOfWork())
             {
-              
-                cmbFoodName.DataSource = db.FoodService.GetAll().Where(a=>a.CompanyId==(int)comboBox1.SelectedValue).ToList();
+              var model =new List<Data.Food>()
+              {
+                  new Data.Food()
+                  {
+                      Id = 0,
+                      FoodName = "همه"
+                  }
+              };
+              model.AddRange(db.FoodService.GetAll().Where(a => a.CompanyId == (int)comboBox1.SelectedValue).ToList());
+
+              cmbFoodName.DataSource = model;
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            FoodPrice.EditFoodsPric frm = new FoodPrice.EditFoodsPric();
+         var createMaterialFoods = frm.ShowDialog();
+            if (createMaterialFoods == DialogResult.Cancel)
+            {
+                ShowFoodGrid(false);
             }
         }
     }

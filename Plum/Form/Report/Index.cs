@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Windows.Forms;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
+using PdfRpt.Core.Helper;
 using Plum.Form.PdfReport;
 using Plum.Form.Report.Reports;
 using Plum.Model.Model.Food;
@@ -23,29 +24,30 @@ namespace Plum.Form.Report
         public Index()
         {
             InitializeComponent();
-            using (UnitOfWork db = new UnitOfWork())
-            {
-                List<Data.Food> foods = db.FoodService.GetAll(true);
-                cmbFoodName.DataSource = foods;
-            }
+            _listFoodDetail=new BindingList<FoodDetailsModel>();
 
         }
 
-        
+      private readonly BindingList<FoodDetailsModel> _listFoodDetail;
         private void button1_Click(object sender, EventArgs e)
         {
             var food = (Data.Food) cmbFoodName.SelectedItem;
-            var listFoodDetail=new BindingList< FoodDetailsModel>();
+          
             if (int.Parse(numericTextBox1.Value) == 0 || int.Parse(numericTextBox1.Value) < 0)
             {
                 RtlMessageBox.Show("تعداد نمیتواند صفر باشد");
                 return;
             }
+
+            var finalprice = food.FoodSurplusPrices.Where(a => a.AdjustKind == 8).Select(a => a.Price).First() *
+                             int.Parse(numericTextBox1.Value);
             FoodDetailsModel items=new FoodDetailsModel()
             {
                 FoodId = food.Id,
                 FoodName = food.FoodName,
-                Quantity = int.Parse(numericTextBox1.Value)
+                MaterialPrice = food.FoodSurplusPrices.Where(a => a.AdjustKind == 8).Select(a => a.Price).FirstOrDefault(),
+                Quantity = int.Parse(numericTextBox1.Value),
+                FinalPrice = finalprice
             };
             
             for (int i = 0; i < dataGridView1.RowCount ; i++) //compare data
@@ -59,14 +61,19 @@ namespace Plum.Form.Report
                 }
                
             }
-            listFoodDetail.Add(items);
+            _listFoodDetail.Add(items);
             dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.DataSource = listFoodDetail;
+        
+            dataGridView1.DataSource = _listFoodDetail;
         }
 
         private void Index_Load(object sender, EventArgs e)
         {
-
+            using (UnitOfWork db = new UnitOfWork())
+            {
+               var company = db.CompanyService.GetAll();
+                comboBox1.DataSource = company;
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -74,6 +81,25 @@ namespace Plum.Form.Report
             if (this.dataGridView1.SelectedRows.Count > 0)
             {
                 dataGridView1.Rows.RemoveAt(this.dataGridView1.SelectedRows[0].Index);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+          var sumRow= dataGridView1.Rows.Cast<DataGridViewRow>()
+              .Sum(t => Convert.ToInt32(t.Cells[4].Value));
+          var percent = double.Parse(numericTextBox1.Value) / 100;
+          var finalsumpercewnt = sumRow * percent;
+          MessageBox.Show(finalsumpercewnt.ToString());
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(comboBox1.SelectedValue==null)return;
+            using (UnitOfWork db = new UnitOfWork())
+            {
+                List<Data.Food> foods = db.FoodService.GetAllByCompanyId((int)comboBox1.SelectedValue);
+                cmbFoodName.DataSource = foods;
             }
         }
     }

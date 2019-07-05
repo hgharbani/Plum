@@ -253,5 +253,11 @@ namespace Plum
                     : "غذایی تعریف نشده است";
             }
         }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            var report = new AboutMe();
+            report.ShowDialog();
+        }
     }
 }

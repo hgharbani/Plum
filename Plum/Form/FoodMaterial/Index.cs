@@ -32,6 +32,7 @@ namespace Plum.Form.FoodMaterial
         {
             using (UnitOfWork db = new UnitOfWork())
             {
+                dataGridView1.AutoGenerateColumns = false;
                 _foodIds = foodId;
                 List<FoodMaterialModel> model = new System.Collections.Generic.List<FoodMaterialModel>();
                 ICollection<Data.FoodMaterial> foodMaterial = db.FoodMaterialService.GetOneByFoodId(foodId);

@@ -32,6 +32,15 @@ namespace Plum.Services.FoodSurplusPrice
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="companyId"></param>
+        /// <returns></returns>
+        public ICollection<Data.FoodSurplusPrice> GetFoodSurplusPricesByCompany(int companyId)
+        {
+            return db.FoodSurplusPrices.Where(a => a.Food.CompanyId == companyId).ToList();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="foodSurplusPrices"></param>
         /// <returns></returns>
         public PlumResult AddFoodSurplusPrice(ICollection<Data.FoodSurplusPrice> foodSurplusPrices)

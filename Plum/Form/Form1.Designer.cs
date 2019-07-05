@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
@@ -52,6 +52,8 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.ExpenciveFoodPrice = new System.Windows.Forms.Label();
@@ -87,12 +89,12 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.materialPriceModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label7 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.materialPriceModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.materialPriceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -108,9 +110,9 @@
             this.panel13.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.materialPriceModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.materialPriceModelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materialPriceBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -184,7 +186,9 @@
             this.btnImport,
             this.toolStripSeparator5,
             this.toolStripButton2,
-            this.toolStripButton3});
+            this.toolStripButton3,
+            this.toolStripSeparator7,
+            this.toolStripButton4});
             this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -195,6 +199,7 @@
             // btnCompany
             // 
             this.btnCompany.AutoSize = false;
+            this.btnCompany.Font = new System.Drawing.Font("IRANSans", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCompany.Image = global::Plum.Properties.Resources.iconfinder_business_work_7_2377640_1_;
             this.btnCompany.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnCompany.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -211,6 +216,7 @@
             // btnMaterial
             // 
             this.btnMaterial.AutoSize = false;
+            this.btnMaterial.Font = new System.Drawing.Font("IRANSans", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMaterial.Image = global::Plum.Properties.Resources.diet;
             this.btnMaterial.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnMaterial.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -227,6 +233,7 @@
             // btnFood
             // 
             this.btnFood.AutoSize = false;
+            this.btnFood.Font = new System.Drawing.Font("IRANSans", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFood.Image = global::Plum.Properties.Resources.turkey;
             this.btnFood.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnFood.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -243,6 +250,7 @@
             // toolStripButton1
             // 
             this.toolStripButton1.AutoSize = false;
+            this.toolStripButton1.Font = new System.Drawing.Font("IRANSans", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripButton1.Image = global::Plum.Properties.Resources.rgb;
             this.toolStripButton1.ImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -260,6 +268,7 @@
             // btnBackup
             // 
             this.btnBackup.AutoSize = false;
+            this.btnBackup.Font = new System.Drawing.Font("IRANSans", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBackup.Image = global::Plum.Properties.Resources.SaveIcon;
             this.btnBackup.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnBackup.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -275,11 +284,12 @@
             // 
             // btnImport
             // 
+            this.btnImport.Font = new System.Drawing.Font("IRANSans", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImport.Image = global::Plum.Properties.Resources.Reastor;
             this.btnImport.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnImport.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(177, 70);
+            this.btnImport.Size = new System.Drawing.Size(170, 70);
             this.btnImport.Text = "بازیابی اطلاعات";
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
@@ -290,11 +300,12 @@
             // 
             // toolStripButton2
             // 
+            this.toolStripButton2.Font = new System.Drawing.Font("IRANSans", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripButton2.Image = global::Plum.Properties.Resources.man;
             this.toolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(163, 70);
+            this.toolStripButton2.Size = new System.Drawing.Size(158, 70);
             this.toolStripButton2.Text = "تغییر رمز عبور";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
@@ -306,6 +317,25 @@
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(23, 70);
             this.toolStripButton3.Text = "toolStripButton3";
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 73);
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.toolStripButton4.Font = new System.Drawing.Font("IRANSans", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripButton4.Image = global::Plum.Properties.Resources.iconfinder_simpline_35_2305625_1_;
+            this.toolStripButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolStripButton4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(128, 70);
+            this.toolStripButton4.Text = "درباره ما";
+            this.toolStripButton4.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // panel2
             // 
@@ -554,18 +584,18 @@
             // chart1
             // 
             this.chart1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            chartArea4.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea4);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend4.Name = "Legend1";
-            this.chart1.Legends.Add(legend4);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(0, 0);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chart1.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(1236, 547);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -700,9 +730,9 @@
             this.comboBox4.ValueMember = "CompanyId";
             this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
             // 
-            // materialBindingSource
+            // companyBindingSource
             // 
-            this.materialBindingSource.DataSource = typeof(Plum.Data.Material);
+            this.companyBindingSource.DataSource = typeof(Plum.Data.Company);
             // 
             // comboBox1
             // 
@@ -715,6 +745,10 @@
             this.comboBox1.Size = new System.Drawing.Size(213, 42);
             this.comboBox1.TabIndex = 5;
             this.comboBox1.ValueMember = "MateriaPriceId";
+            // 
+            // materialPriceModelBindingSource
+            // 
+            this.materialPriceModelBindingSource.DataSource = typeof(Plum.Model.Model.MaterialPrice.MaterialPriceModel);
             // 
             // label7
             // 
@@ -733,13 +767,9 @@
             this.panel9.Size = new System.Drawing.Size(200, 100);
             this.panel9.TabIndex = 1;
             // 
-            // materialPriceModelBindingSource
+            // materialBindingSource
             // 
-            this.materialPriceModelBindingSource.DataSource = typeof(Plum.Model.Model.MaterialPrice.MaterialPriceModel);
-            // 
-            // companyBindingSource
-            // 
-            this.companyBindingSource.DataSource = typeof(Plum.Data.Company);
+            this.materialBindingSource.DataSource = typeof(Plum.Data.Material);
             // 
             // materialPriceBindingSource
             // 
@@ -790,9 +820,9 @@
             this.panel12.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.materialPriceModelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.materialPriceModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.materialPriceBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -862,6 +892,8 @@
         private System.Windows.Forms.BindingSource companyBindingSource;
         private System.Windows.Forms.BindingSource materialPriceModelBindingSource;
         private System.Windows.Forms.BindingSource materialPriceBindingSource;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripButton toolStripButton4;
     }
 }
 
