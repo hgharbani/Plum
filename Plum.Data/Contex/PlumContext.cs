@@ -11,6 +11,12 @@ namespace Plum.Data.Contex
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<FoodMaterial>().
+            HasRequired<MaterialPrice>(x => x.MaterialPrice)
+                .WithMany(y => y.FoodMaterials)
+                .HasForeignKey(x => x.MaterialPriceId);
+
+
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             var initializer = new InitialDb(modelBuilder);
             Database.SetInitializer(initializer);

@@ -39,6 +39,7 @@ namespace Plum.Form.FoodMaterial
                 //گرفتن لیست مواد لازم یک کالا
                 foreach (Data.FoodMaterial item in foodMaterial)
                 {
+                    dataGridView1.AutoGenerateColumns = false;
                     FoodMaterialModel foodmaterial = new FoodMaterialModel()
                     {
                         Id = item.Id,
@@ -125,7 +126,7 @@ namespace Plum.Form.FoodMaterial
                     formEdit._foodMaterilId = id;
                     formEdit._foodIds = model.FoodId;
                     formEdit.Quantity.Text = model.Quantity.ToString();
-                    formEdit._materialId=model.MaterialId ;
+                    formEdit._materialId=model.MaterialPrice.Id;
                     formEdit._companyId=companyId;
 
                     formEdit.UnitPrice.Text = model.MaterialPrice.UnitPrice.ToString();
@@ -140,6 +141,11 @@ namespace Plum.Form.FoodMaterial
             {
                 RtlMessageBox.Show("آیتمی انتخاب نشده است");
             }
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

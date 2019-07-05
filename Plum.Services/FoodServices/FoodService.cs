@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Plum.Data;
 using Plum.Data.Contex;
+using Plum.Model.Model.Food;
 
 namespace Plum.Services.FoodServices
 {
@@ -129,6 +130,44 @@ namespace Plum.Services.FoodServices
             return db.Foods.Where(c => c.FoodName.Contains(parameter)&& c.Active).ToList();
         }
 
-      
+        /// <summary>
+        /// گرفتن لیست غذاها با توجه به مواد لازم نام غذا و شرکت
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <param name="companyId"></param>
+        /// <param name="foodId"></param>
+        /// <returns></returns>
+        public IEnumerable<FoodDetailsModel> GetFoodsbyFoodDetails(string parameter,int companyId=0,int foodId=0)
+        {
+            var model= db.Foods.Where(c =>  c.Active).AsNoTracking();
+            if (foodId > 0)
+            {
+                model = model.Where(a => a.Id == foodId);
+            }
+
+            if (companyId > 0)
+            {
+                model = model.Where(a => a.CompanyId == companyId);
+
+            }
+
+            if (!string.IsNullOrWhiteSpace(parameter))
+            {
+                var materials = parameter.Trim().Replace(",", "-").Split('-');
+                model = model.Where(a =>
+                    a.FoodMaterials.Any(b => materials.Contains(b.MaterialPrice.Material.MaterialName)));
+            }
+            var result = model.Select(a => new FoodDetailsModel()
+            {
+                FoodId = a.Id,
+                FoodName = a.FoodName,
+                CompanyName = a.Company.CompanyName,
+                MaterialPrice = a.FoodMaterials.Any()? a.FoodMaterials.Sum(b => b.MaterialTotalPrice):0,
+                FinalPrice = a.FoodSurplusPrices.Any(b => b.AdjustKind == 8) ? a.FoodSurplusPrices.Where(b => b.AdjustKind == 8).Select(b => b.Price).FirstOrDefault() : 0
+            }).ToList();
+            return result.ToList();
+        }
+        
+
     }
 }

@@ -16,6 +16,7 @@ using Plum.Data;
 using Plum.Form.Food;
 using Plum.Form.MaterialPrice;
 using Plum.Model.Model.Food;
+using Plum.Model.Model.MaterialPrice;
 using Plum.Services;
 using Index = Plum.Form.Material.Index;
 
@@ -71,42 +72,11 @@ namespace Plum
 
         public void Statistics()
         {
-            using (var db=new UnitOfWork())
+            using (var db = new UnitOfWork())
             {
-                var food = db.FoodService.GetAll(true);
-                var foodDetail = food.Select(a => new FoodDetailsModel()
-                {
-                    FoodName = a.FoodName,
-                    FinalPrice = a.FoodSurplusPrices.Any(b => b.AdjustKind == 8)
-                        ? a.FoodSurplusPrices.First(b => b.AdjustKind == 8).Price
-                        : 0,
-
-                }).ToList();
-                var material = db.MaterialRepositories.GetAll();
-                
-                comboBox1.DataSource = material.Where(a => a.Active).ToList();
-                
-                LbMaterial.Text=material.Count(a=>a.Active).ToString();
-                SumMaterialPrice.Text=material.Where(a=>a.Active).Sum(a=>a.UnitPrice).ToString(CultureInfo.InvariantCulture);
-                FoodTotal.Text = food.Count().ToString();
-                SumFoodPrice.Text = foodDetail.Sum(a => a.FinalPrice).ToString(CultureInfo.InvariantCulture);
-
-                CheapFood.Text = foodDetail.Any()
-                    ? foodDetail.OrderBy(a => a.FinalPrice).Select(a => a.FoodName).First()
-                    : "غذایی تعریف نشده است";
-
-                CheapFoodPrice.Text = foodDetail.Any()
-                    ? foodDetail.OrderBy(a => a.FinalPrice).Select(a => a.FinalPrice).First().ToString(CultureInfo.InvariantCulture)
-                    : "غذایی تعریف نشده است";
-
-                ExpensiveFood.Text = foodDetail.Any()
-                    ? foodDetail.OrderByDescending(a => a.FinalPrice).Select(a => a.FoodName).First()
-                    : "غذایی تعریف نشده است";
-                ExpenciveFoodPrice.Text  = foodDetail.Any()
-                    ? foodDetail.OrderByDescending(a => a.FinalPrice).Select(a => a.FinalPrice).First().ToString(CultureInfo.InvariantCulture)
-                    : "غذایی تعریف نشده است";
+                comboBox4.DataSource = db.CompanyService.GetAll();
             }
-        }
+                    }
         private void Form1_Load(object sender, EventArgs e)
         {
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -188,15 +158,15 @@ namespace Plum
             using (var db = new UnitOfWork())
             {
                 chart1.Series.Clear();
-                var materialComboBox = (Material) comboBox1.SelectedItem;
+                var materialComboBox = (MaterialPriceModel) comboBox1.SelectedItem;
                 var firsYear = comboBox2.SelectedIndex+1;
                 var selectDate = DateTime.Now.AddYears(-firsYear);
-                var material = db.MaterialRepositories.GetAll(false);
+                var material = db.MaterialRepositories.GetAll(false, (int)comboBox4.SelectedValue);
                
-                material = material.OrderBy(a=>a.InsertTime).Where(a => a.InsertTime >= selectDate && a.Material.MaterialName== materialComboBox.MaterialName).ToList();
+                material = material.OrderBy(a=>a.InsertTime).Where(a => a.InsertTime >= selectDate && a.Material.MaterialName.Contains(materialComboBox.MateriaName)).ToList();
                 var series1 = new System.Windows.Forms.DataVisualization.Charting.Series
                 {
-                    Name = materialComboBox.MaterialName,
+                    Name = materialComboBox.MateriaName,
                     Color = System.Drawing.Color.MediumSlateBlue,
                     IsVisibleInLegend = false,
                     IsXValueIndexed = true,
@@ -237,6 +207,51 @@ namespace Plum
         private void chart1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox4.SelectedValue == null) return;
+            using (var db = new UnitOfWork())
+            {
+                var food = db.FoodService.GetAll(true).Where(a=>a.CompanyId==(int) comboBox4.SelectedValue);
+                var foodDetail = food.Select(a => new FoodDetailsModel()
+                {
+                    FoodName = a.FoodName,
+                    FinalPrice = a.FoodSurplusPrices.Any(b => b.AdjustKind == 8)
+                        ? a.FoodSurplusPrices.First(b => b.AdjustKind == 8).Price
+                        : 0,
+
+                }).ToList();
+                var material = db.MaterialRepositories.GetAll(true,(int) comboBox4.SelectedValue).Select(a=>new MaterialPriceModel()
+                {
+                    MateriaPriceId = a.Id,
+                    MateriaName = a.Material.MaterialName,
+                    UnitPrice = a.UnitPrice
+                }).ToList();
+
+                comboBox1.DataSource = material.ToList();
+
+                LbMaterial.Text = material.Count().ToString();
+                SumMaterialPrice.Text = material.Sum(a => a.UnitPrice).ToString(CultureInfo.InvariantCulture);
+                FoodTotal.Text = food.Count().ToString();
+                SumFoodPrice.Text = foodDetail.Sum(a => a.FinalPrice).ToString(CultureInfo.InvariantCulture);
+
+                CheapFood.Text = foodDetail.Any()
+                    ? foodDetail.OrderBy(a => a.FinalPrice).Select(a => a.FoodName).First()
+                    : "غذایی تعریف نشده است";
+
+                CheapFoodPrice.Text = foodDetail.Any()
+                    ? foodDetail.OrderBy(a => a.FinalPrice).Select(a => a.FinalPrice).First().ToString(CultureInfo.InvariantCulture)
+                    : "غذایی تعریف نشده است";
+
+                ExpensiveFood.Text = foodDetail.Any()
+                    ? foodDetail.OrderByDescending(a => a.FinalPrice).Select(a => a.FoodName).First()
+                    : "غذایی تعریف نشده است";
+                ExpenciveFoodPrice.Text = foodDetail.Any()
+                    ? foodDetail.OrderByDescending(a => a.FinalPrice).Select(a => a.FinalPrice).First().ToString(CultureInfo.InvariantCulture)
+                    : "غذایی تعریف نشده است";
+            }
         }
     }
 }

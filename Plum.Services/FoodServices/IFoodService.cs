@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Plum.Data;
+using Plum.Model.Model.Food;
 
 namespace Plum.Services.FoodServices
 {
@@ -25,5 +26,6 @@ namespace Plum.Services.FoodServices
         bool DeleteFood(Food food);
         bool DeleteFood(int foodId);
         IEnumerable<Food> GetFoods(string parameter);
+        IEnumerable<FoodDetailsModel> GetFoodsbyFoodDetails(string parameter, int companyId = 0, int foodId = 0);
     }
 }

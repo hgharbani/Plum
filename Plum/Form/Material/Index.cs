@@ -61,42 +61,21 @@ namespace Plum.Form.Material
 
         private void Index_Load(object sender, EventArgs e)
         {
-            GetCompany();
+          
             ShowMaterialGrid();
             dataGridView2.ClearSelection();
             dataGridView2.CurrentCell = null;
 
         }
 
-        private void GetCompany()
-        {
-            using (UnitOfWork db = new UnitOfWork())
-            {
-
-                var companymodel = new List<Data.Company>()
-                {
-                    new Data.Company()
-                    {
-                        CompanyId = -1,
-                        CompanyName = "--SELECT--"
-                    }
-                };
-                companymodel.AddRange(db.CompanyService.GetAll()
-                );
-                cmbCompany.DataSource = companymodel;
-
-            }
-        }
 
 
         private void ShowMaterialGrid()
         {
 
-            var company = (Data.Company)cmbCompany.SelectedItem;
             var mdel = new MaterialModel()
             {
-                MaterialName = txtMaterialName.Text,
-                CompanyId = company?.CompanyId ?? 0
+                MaterialName = txtMaterialName.Text
             };
             using (UnitOfWork db = new UnitOfWork())
             {
@@ -141,12 +120,10 @@ namespace Plum.Form.Material
 
         private void txtMaterialName_TextChanged(object sender, EventArgs e)
         {
-            var company = (Data.Company)cmbCompany.SelectedItem;
 
             var materialMode = new MaterialModel()
             {
                 MaterialName = txtMaterialName.Text,
-                CompanyId = company?.CompanyId ?? 0
             };
             using (UnitOfWork db = new UnitOfWork())
             {

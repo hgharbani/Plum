@@ -49,7 +49,7 @@ namespace Plum.Services.FoodMaterial
         /// <returns></returns>
         public Data.FoodMaterial GetOneByMaterialId(int foodId,int materialId)
         {
-            Data.FoodMaterial result = _db.FoodMaterials.AsNoTracking().Include(a => a.MaterialPrice).Include(a => a.Food).FirstOrDefault(a =>a.FoodId==foodId&& a.MaterialId == materialId);
+            Data.FoodMaterial result = _db.FoodMaterials.AsNoTracking().Include(a => a.MaterialPrice).Include(a => a.Food).FirstOrDefault(a =>a.FoodId==foodId&& a.MaterialPrice.Id == materialId);
             return result;
         }
 
@@ -60,7 +60,7 @@ namespace Plum.Services.FoodMaterial
         /// <returns></returns>
         public ICollection<Data.FoodMaterial> GetFoodMaterialsByMaterialId(int materialId)
         {
-            var result = _db.FoodMaterials.AsNoTracking().Include(a => a.MaterialPrice).Include(a => a.Food).Where(a =>  a.MaterialId == materialId).ToList();
+            var result = _db.FoodMaterials.AsNoTracking().Include(a => a.MaterialPrice).Include(a => a.Food).Where(a =>  a.MaterialPrice.Id == materialId).ToList();
             return result;
         }
 
@@ -72,7 +72,7 @@ namespace Plum.Services.FoodMaterial
         /// <returns></returns>
         public ICollection<Data.FoodMaterial> GetFoodMaterialsByMaterialId(int[] materialIds)
         {
-            var result = _db.FoodMaterials.AsNoTracking().Include(a => a.MaterialPrice).Include(a => a.Food).Where(a => materialIds.Contains(a.MaterialId)).ToList();
+            var result = _db.FoodMaterials.AsNoTracking().Include(a => a.MaterialPrice).Include(a => a.Food).Where(a => materialIds.Contains(a.MaterialPrice.Id)).ToList();
             return result;
         }
 
@@ -90,7 +90,7 @@ namespace Plum.Services.FoodMaterial
         /// <returns></returns>
         public bool IsAnyMaterial(int foodId, int materialId)
         {
-            return _db.FoodMaterials.Any(a => a.FoodId == foodId && a.MaterialId == materialId);
+            return _db.FoodMaterials.Any(a => a.FoodId == foodId && a.MaterialPriceId == materialId);
         }
 
         /// <summary>
@@ -101,14 +101,14 @@ namespace Plum.Services.FoodMaterial
         /// <returns></returns>
         public bool IsAnyMaterial(int Id, int foodId, int materialId)
         {
-            return _db.FoodMaterials.Any(a => a.Id != Id && a.FoodId == foodId && a.MaterialId == materialId);
+            return _db.FoodMaterials.Any(a => a.Id != Id && a.FoodId == foodId && a.MaterialPrice.Id == materialId);
         }
 
         public bool AddFoodMaterial(Data.FoodMaterial foodMaterial)
         {
             try
             {
-                if (IsAnyMaterial(foodMaterial.FoodId, foodMaterial.MaterialId) == true)
+                if (IsAnyMaterial(foodMaterial.FoodId, foodMaterial.MaterialPriceId) == true)
                 {
                     return false;
                 }
@@ -125,7 +125,7 @@ namespace Plum.Services.FoodMaterial
         {
             try
             {
-                if (IsAnyMaterial(foodMaterial.Id,foodMaterial.FoodId, foodMaterial.MaterialId) == true)
+                if (IsAnyMaterial(foodMaterial.Id,foodMaterial.FoodId, foodMaterial.MaterialPriceId) == true)
                 {
                     return false;
                 }

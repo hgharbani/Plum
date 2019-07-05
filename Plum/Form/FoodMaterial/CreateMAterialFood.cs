@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Plum.Model.Model.MaterialPrice;
 using Plum.Services;
 
 namespace Plum.Form.FoodMaterial
@@ -30,8 +32,13 @@ namespace Plum.Form.FoodMaterial
             using (var db = new UnitOfWork())
             {
                 var material = db.MaterialRepositories.GetAll(true, company);
-
-                comboBox1.DataSource = material;
+                var model = material.Select(a => new MaterialPriceModel()
+                {
+                    MateriaPriceId = a.Id,
+                    MateriaName = a.Material.MaterialName,
+                    UnitPrice = a.UnitPrice
+                }).ToList();
+                comboBox1.DataSource = model;
             }
 
         }
@@ -45,7 +52,7 @@ namespace Plum.Form.FoodMaterial
                     errorProvider1.RightToLeft = true;
                     errorProvider1.SetError(Quantity, "لطفا مقدار لازم را وارد را وارد نمایید");
                 }
-                var material = (Data.MaterialPrice)comboBox1.SelectedItem;
+                var material = (MaterialPriceModel)comboBox1.SelectedItem;
                 //مبلغ هرکیلو تقسیم بر 1000=مبلغ هر گرم
                 var unitPrice = material.UnitPrice / 1000;
                 var quantity = double.Parse(Quantity.Value);
@@ -53,7 +60,7 @@ namespace Plum.Form.FoodMaterial
                 
                 var foodMaterial = new Data.FoodMaterial()
                 {
-                    MaterialId = material.Id,
+                    MaterialPriceId = material.MateriaPriceId,
                     UnitPrice = material.UnitPrice,
                     Quantity = double.Parse(Quantity.Value),
                     FoodId = _foodIds,
@@ -78,17 +85,11 @@ namespace Plum.Form.FoodMaterial
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            using (UnitOfWork db = new UnitOfWork())
+            using (var db = new UnitOfWork())
             {
-                var materialId =(Data.MaterialPrice) comboBox1.SelectedItem;
-                if (materialId.Id>0)
-                {
-                    
-                    UnitPrice.Text = materialId.UnitPrice.ToString();
-                }
-              
+                var price = db.MaterialRepositories.GetOne((int)comboBox1.SelectedValue);
+                UnitPrice.Text = price.UnitPrice.ToString(CultureInfo.InvariantCulture);
             }
         }
-
     }
 }

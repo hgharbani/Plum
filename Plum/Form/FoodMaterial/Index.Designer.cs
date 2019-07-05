@@ -81,7 +81,7 @@
             this.textBox2.Location = new System.Drawing.Point(12, 10);
             this.textBox2.MaxLength = 25;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(347, 33);
+            this.textBox2.Size = new System.Drawing.Size(347, 41);
             this.textBox2.TabIndex = 4;
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -91,7 +91,7 @@
             this.label3.ForeColor = System.Drawing.Color.DarkOrchid;
             this.label3.Location = new System.Drawing.Point(366, 13);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 19);
+            this.label3.Size = new System.Drawing.Size(76, 25);
             this.label3.TabIndex = 3;
             this.label3.Text = "قیمت کل :";
             // 
@@ -209,6 +209,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(942, 56);
             this.panel3.TabIndex = 15;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // label2
             // 
@@ -220,7 +221,7 @@
             this.label2.Location = new System.Drawing.Point(326, 9);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label2.Size = new System.Drawing.Size(281, 42);
+            this.label2.Size = new System.Drawing.Size(352, 58);
             this.label2.TabIndex = 0;
             this.label2.Text = "صفحه مدیریت مواد لازم";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

@@ -34,12 +34,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.materialPriceModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.Quantity = new NumericTextBox.NumericTextBox();
             this.UnitPrice = new NumericTextBox.NumericTextBox();
+            this.materialBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.materialPriceModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -62,7 +66,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("IRANSans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(451, 86);
+            this.label2.Location = new System.Drawing.Point(487, 86);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 28);
             this.label2.TabIndex = 13;
@@ -73,7 +77,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("IRANSans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(418, 156);
+            this.label3.Location = new System.Drawing.Point(451, 156);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(103, 28);
             this.label3.TabIndex = 14;
@@ -86,22 +90,26 @@
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(445, 223);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 28);
+            this.label4.Size = new System.Drawing.Size(112, 28);
             this.label4.TabIndex = 16;
-            this.label4.Text = "مقدار لازم";
+            this.label4.Text = "مقدار لازم(گرم)";
             // 
             // comboBox1
             // 
-            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.materialBindingSource, "Id", true));
-            this.comboBox1.DataSource = this.materialBindingSource;
-            this.comboBox1.DisplayMember = "MaterialName";
+            this.comboBox1.DataSource = this.materialPriceModelBindingSource;
+            this.comboBox1.DisplayMember = "MateriaName";
             this.comboBox1.Font = new System.Drawing.Font("IRANSans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(107, 86);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(292, 42);
             this.comboBox1.TabIndex = 17;
+            this.comboBox1.ValueMember = "MateriaPriceId";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // materialPriceModelBindingSource
+            // 
+            this.materialPriceModelBindingSource.DataSource = typeof(Plum.Model.Model.MaterialPrice.MaterialPriceModel);
             // 
             // materialBindingSource
             // 
@@ -133,6 +141,10 @@
             this.UnitPrice.Size = new System.Drawing.Size(292, 41);
             this.UnitPrice.TabIndex = 19;
             // 
+            // materialBindingSource1
+            // 
+            this.materialBindingSource1.DataSource = typeof(Plum.Data.Material);
+            // 
             // CreateMAterialFood
             // 
             this.AcceptButton = this.button1;
@@ -157,8 +169,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "تعریف مواد لازم";
             this.Load += new System.EventHandler(this.CreateMAterialFood_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.materialPriceModelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,5 +189,7 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private NumericTextBox.NumericTextBox Quantity;
         private NumericTextBox.NumericTextBox UnitPrice;
+        private System.Windows.Forms.BindingSource materialBindingSource1;
+        private System.Windows.Forms.BindingSource materialPriceModelBindingSource;
     }
 }

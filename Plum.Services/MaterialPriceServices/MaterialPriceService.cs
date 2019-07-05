@@ -38,8 +38,11 @@ namespace Plum.Services.MaterialPriceServices
         /// <returns></returns>
         public List<MaterialPrice> GetAll(bool active = true, int companyId = 0)
         {
-            var result = db.MaterialsPrice.AsNoTracking().Include(a => a.Company).Include(a => a.Material).Where(a => a.Active == active).AsNoTracking();
-
+            var result = db.MaterialsPrice.AsNoTracking().Include(a => a.Company).Include(a => a.Material).AsNoTracking();
+            if (active)
+            {
+                result = result.Where(a => a.Active == active);
+            }
             if (companyId > 0)
             {
                 result = result.Where(a => a.CompanyId == companyId);

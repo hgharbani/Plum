@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Plum.Model.Model.MaterialPrice;
 using Plum.Services;
 
 namespace Plum.Form.FoodMaterial
@@ -17,22 +19,30 @@ namespace Plum.Form.FoodMaterial
         {
             InitializeComponent();
         }
+
         public int _foodIds;
         public int _foodMaterilId;
         public int _materialId;
         public int _companyId;
+
         private void EditMaterialFood_Load(object sender, EventArgs e)
         {
             Material();
             SelectMaterial(_materialId);
         }
+
         public void Material()
         {
             using (var db = new UnitOfWork())
             {
                 var material = db.MaterialRepositories.GetAll(true, _companyId);
-
-                comboBox1.DataSource = material;
+                var model = material.Select(a => new MaterialPriceModel()
+                {
+                    MateriaPriceId = a.Id,
+                    MateriaName = a.Material.MaterialName,
+                    UnitPrice = a.UnitPrice
+                }).ToList();
+                comboBox1.DataSource = model;
             }
 
         }
@@ -47,12 +57,13 @@ namespace Plum.Form.FoodMaterial
         {
             using (var db = new UnitOfWork())
             {
-                if (string.IsNullOrWhiteSpace(Quantity.Value) && Quantity.Text=="0")
+                if (string.IsNullOrWhiteSpace(Quantity.Value) && Quantity.Text == "0")
                 {
                     errorProvider1.RightToLeft = true;
                     errorProvider1.SetError(Quantity, "لطفا مقدار لازم را وارد را وارد نمایید");
                 }
-                var material = (Data.MaterialPrice)comboBox1.SelectedItem;
+
+                var material = (MaterialPriceModel) comboBox1.SelectedItem;
                 //مبلغ هرکیلو تقسیم بر 1000=مبلغ هر گرم
                 var unitPrice = material.UnitPrice / 1000;
                 var quantity = double.Parse(Quantity.Value);
@@ -61,7 +72,7 @@ namespace Plum.Form.FoodMaterial
                 var foodMaterial = new Data.FoodMaterial()
                 {
                     Id = _foodMaterilId,
-                    MaterialId = material.Id,
+                    MaterialPriceId = material.MateriaPriceId,
                     UnitPrice = material.UnitPrice,
                     Quantity = double.Parse(Quantity.Value),
                     FoodId = _foodIds,
@@ -81,6 +92,44 @@ namespace Plum.Form.FoodMaterial
 
                 }
 
+            }
+        }
+
+        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            using (var db = new UnitOfWork())
+            {
+                var priceId = 0;
+                if (comboBox1.SelectedValue != null)
+                {
+                    priceId = (int) comboBox1.SelectedValue;
+                }
+                else
+                {
+                    priceId = _materialId;
+                }
+                var price = db.MaterialRepositories.GetOne(priceId);
+                if(price==null) return;
+                UnitPrice.Text = price.UnitPrice.ToString(CultureInfo.CurrentCulture);
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (var db = new UnitOfWork())
+            {
+                var priceId = 0;
+                if (comboBox1.SelectedValue != null)
+                {
+                    priceId = (int)comboBox1.SelectedValue;
+                }
+                else
+                {
+                    priceId = _materialId;
+                }
+                var price = db.MaterialRepositories.GetOne(priceId);
+                if (price == null) return;
+                UnitPrice.Text = price.UnitPrice.ToString(CultureInfo.CurrentCulture);
             }
         }
     }

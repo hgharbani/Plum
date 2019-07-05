@@ -40,43 +40,35 @@ namespace Plum.Form.Food
             {
                 var model=new List<FoodDetailsModel>();
                 dataGridView1.AutoGenerateColumns = false;
-               
 
-                List<Data.Food> foods = db.FoodService.GetAll(true);
 
-            
-                if (!string.IsNullOrWhiteSpace(MaterialsName.Text)&&isAll==false)
+                if (isAll == true)
                 {
-                    var materials = MaterialsName.Text.Trim().Replace(",","-").Split('-');
-                    foods = foods.Where(a => a.FoodMaterials.Any(b => materials.Contains(b.MaterialPrice.Material.MaterialName))).ToList();
+                    var foods = db.FoodService.GetFoodsbyFoodDetails("", 0, 0);
+                    dataGridView1.DataSource = foods;
+                 
                 }
-                var result = foods.Select(a => new FoodDetailsModel()
+                else
                 {
-                    FoodId = a.Id,
-                    FoodName = a.FoodName,
-                    MaterialPrice = a.FoodMaterials.Sum(b => b.MaterialTotalPrice),
-                    FinalPrice = a.FoodSurplusPrices.Any(b => b.AdjustKind == 8) ? a.FoodSurplusPrices.Where(b => b.AdjustKind == 8).Select(b => b.Price).FirstOrDefault() : 0
-                }).ToList();
+                    var food = (int) cmbFoodName.SelectedValue;
+                    var company = (int) comboBox1.SelectedValue;
+                    var foods = db.FoodService.GetFoodsbyFoodDetails("", company, food);
+                    if (!string.IsNullOrWhiteSpace(PriceFrom.Text) )
+                    {
+                        var fromPrice = Convert.ToDouble(PriceFrom.Text);
+                        foods = foods.Where(a => a.FinalPrice >= fromPrice).ToList();
+                    }
+                    if (!string.IsNullOrWhiteSpace(PriceTo.Text) )
+                    {
+                        var fromPrice = Convert.ToDouble(PriceTo.Text);
+                        foods = foods.Where(a => a.FinalPrice >= fromPrice).ToList();
 
-                if (!string.IsNullOrWhiteSpace(PriceFrom.Text)&& isAll == false)
-                {
-                    var fromPrice = Convert.ToDouble(PriceFrom.Text);
-                    result = result.Where(a => a.FinalPrice >= fromPrice).ToList();
+                    }
+                    dataGridView1.DataSource = foods;
+
                 }
-                if (!string.IsNullOrWhiteSpace(PriceTo.Text) && isAll == false)
-                {
-                    var fromPrice = Convert.ToDouble(PriceTo.Text);
-                    result = result.Where(a => a.FinalPrice >= fromPrice).ToList();
-                }
-                TotalCount.Text = ((result.Count())).ToString();
-              
                 
-                if (foods.Count() <= 15)
-                {
-                    //button1.Enabled = false;
-                }
-                dataGridView1.DataSource = result;
-                cmbFoodName.DataSource = foods;
+              
                 
             }
 
@@ -87,11 +79,16 @@ namespace Plum.Form.Food
 
         private void FoodIndex_Load(object sender, EventArgs e)
         {
-            ShowFoodGrid();
+           
             GetCompany();
             MaterialsName.Text = @"برای تعریف چند کالا از علامت - استفاده نمایید";
             MaterialsName.Font = new Font(MaterialsName.Font.FontFamily, 10);
             MaterialsName.ForeColor=Color.Gray;
+        }
+
+        private void GetFood()
+        {
+          
         }
 
         private void GetCompany()
@@ -170,11 +167,12 @@ namespace Plum.Form.Food
             
                 FoodMaterial.Index frm = new FoodMaterial.Index();
                 frm._foodIds= int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                frm.companyId = (int) comboBox1.SelectedValue;
                 frm.label2.Text = " صفحه مدیریت مواد لازم غذا:" + "  "+ dataGridView1.CurrentRow.Cells[1].Value.ToString();
                 var createMaterialFoods = frm.ShowDialog();
-                if (createMaterialFoods == DialogResult.OK)
+                if (createMaterialFoods == DialogResult.Cancel)
                 {
-                    ShowFoodGrid();
+                    ShowFoodGrid(false);
                 }
             }
             else
@@ -245,7 +243,7 @@ namespace Plum.Form.Food
                     var createMaterialFoods = frm.ShowDialog();
                     if (createMaterialFoods == DialogResult.OK)
                     {
-                        ShowFoodGrid();
+                        ShowFoodGrid(false);
                     }
                     
                 }
@@ -311,6 +309,15 @@ namespace Plum.Form.Food
         private void panel4_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (UnitOfWork db = new UnitOfWork())
+            {
+              
+                cmbFoodName.DataSource = db.FoodService.GetAll().Where(a=>a.CompanyId==(int)comboBox1.SelectedValue).ToList();
+            }
         }
     }
 }

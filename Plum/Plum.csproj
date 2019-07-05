@@ -381,7 +381,9 @@
     <None Include="Properties\DataSources\Plum.Data.Company.datasource" />
     <None Include="Properties\DataSources\Plum.Data.Food.datasource" />
     <None Include="Properties\DataSources\Plum.Data.Material.datasource" />
+    <None Include="Properties\DataSources\Plum.Data.MaterialPrice.datasource" />
     <None Include="Properties\DataSources\Plum.Model.Model.Food.FoodDetailsModel.datasource" />
+    <None Include="Properties\DataSources\Plum.Model.Model.MaterialPrice.MaterialPriceModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

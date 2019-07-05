@@ -16,7 +16,7 @@ namespace Plum.Data
         /// <summary>
         /// 
         /// </summary>
-        public int MaterialId { get; set; }
+        public int MaterialPriceId { get; set; }
 
         /// <summary>
         /// 
