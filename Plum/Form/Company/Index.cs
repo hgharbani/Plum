@@ -56,7 +56,7 @@ namespace Plum.Form.Company
                 {
                     Data.Company model = db.CompanyService.GetOne(id);
                     CreateCompany formEdit = new CreateCompany();
-                    formEdit._ModelCompany.CompanyId = model.CompanyId;
+                    formEdit.companyId = model.CompanyId;
                     formEdit.txtCompanyName.Text = model.CompanyName;
 
                     if (formEdit.ShowDialog() == DialogResult.OK)

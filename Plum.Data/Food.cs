@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Plum.Data
 {
@@ -26,6 +27,7 @@ namespace Plum.Data
         /// </summary>
         public bool Active { get; set; }
 
+        [ForeignKey("CompanyId")]
         public virtual Company Company { get; set; }
 
         /// <summary>

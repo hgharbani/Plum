@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Plum.Data
 {
@@ -41,11 +42,13 @@ namespace Plum.Data
         /// <summary>
         /// 
         /// </summary>
+        [ForeignKey("MaterialPriceId")]
         public virtual MaterialPrice MaterialPrice { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
+        [ForeignKey("FoodId")]
         public virtual Food Food { get; set; }
     }
 }

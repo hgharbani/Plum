@@ -16,9 +16,10 @@ namespace Plum.Data.Contex
                 .WithMany(y => y.FoodMaterials)
                 .HasForeignKey(x => x.MaterialPriceId);
 
-
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            var initializer = new InitialDb(modelBuilder);
+            var initializer = new InitialDb();
             Database.SetInitializer(initializer);
         }
         public DbSet<Company> Companies { get; set; }

@@ -10,11 +10,12 @@ using Plum.Utility;
 namespace Plum.Data.Contex
 {
 
-    public class InitialDb: SQLite.CodeFirst.SqliteCreateDatabaseIfNotExists<PlumContext>
+    public class InitialDb: System.Data.Entity.CreateDatabaseIfNotExists<PlumContext>
     {
-        public InitialDb(DbModelBuilder modelBuilder) : base(modelBuilder)
-        {
-        }
+        //SQLite.CodeFirst.SqliteCreateDatabaseIfNotExists<PlumContext> این برای استفاده از sqllite می باشد
+        //public InitialDb(DbModelBuilder modelBuilder) : base(modelBuilder)
+        //{
+        //}
         string _data = "jelveh";
         byte[] hash;
         protected override void Seed(PlumContext context)

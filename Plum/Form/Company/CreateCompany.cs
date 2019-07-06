@@ -14,10 +14,13 @@ namespace Plum.Form.Company
     public partial class CreateCompany : System.Windows.Forms.Form
     {
         public readonly Data.Company _ModelCompany;
+        public int companyId;
+     
         public CreateCompany()
         {
             InitializeComponent();
-        }
+            _ModelCompany=new Data.Company();
+        } 
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -30,7 +33,7 @@ namespace Plum.Form.Company
             using (UnitOfWork db = new UnitOfWork())
             {
              
-                if (_ModelCompany == null)
+                if (companyId==0)
                 {
                     var model = new Data.Company()
                     {
@@ -55,7 +58,7 @@ namespace Plum.Form.Company
                 {
                     var model = new Data.Company()
                     {
-                        CompanyId = _ModelCompany.CompanyId,
+                        CompanyId = companyId,
                         CompanyName = txtCompanyName.Text,
 
                     };
