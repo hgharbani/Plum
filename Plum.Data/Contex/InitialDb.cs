@@ -29,11 +29,6 @@ namespace Plum.Data.Contex
                 Password = userPassword.ToHashCode()
             });
 
-            defaultStandards.Add(new User()
-            {
-                UserName = "Hossein",
-                Password = addMinPassword.ToHashCode()
-            });
             context.Users.AddRange(defaultStandards);
             base.Seed(context);
         }

@@ -23,12 +23,11 @@ namespace Plum.Services.UserServices
        /// <summary>
        /// 
        /// </summary>
-       /// <param name="userName"></param>
-       /// <param name="pasword"></param>
+       /// <param name="user"></param>
        /// <returns></returns>
        public User GetUser(User user)
        {
-           return db.Users.AsNoTracking().FirstOrDefault(a =>(a.UserName.ToLower() == user.UserName && a.Password == user.Password)||a.UserId==user.UserId );
+           return db.Users.AsNoTracking().FirstOrDefault(a =>(a.UserName.ToLower() == user.UserName && a.Password == user.Password)||a.UserId== user.UserId);
        }
 
        public PlumResult AddUser(User user)
@@ -57,6 +56,7 @@ namespace Plum.Services.UserServices
            var md5data = md5.ComputeHash(data);
            var hashedPassword = Encoding.UTF8.GetString(md5data);
            user.Password = hashedPassword;
+           user.UserId = userName.UserId;
            db.Entry(user).State = EntityState.Modified;
 
                result.Message = "کاربر تعریف شدرمز عبور با موفقیت تغییر  یافت";

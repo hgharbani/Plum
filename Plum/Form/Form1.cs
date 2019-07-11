@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SQLite;
+using System.Data.SqlClient;
+//using System.Data.SQLite;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -46,8 +47,8 @@ namespace Plum
         /// <param name="e"></param>
         private void btnMaterial_Click_1(object sender, EventArgs e)
         {
-            var materialIndex=new Index();
-          var result=  materialIndex.ShowDialog();
+            var materialIndex = new Index();
+            var result = materialIndex.ShowDialog();
             if (result == DialogResult.None)
             {
                 Statistics();
@@ -61,10 +62,10 @@ namespace Plum
         /// <param name="e"></param>
         private void btnFood_Click(object sender, EventArgs e)
         {
-          
+
             var FoodIndex = new FoodIndex();
-          var result=  FoodIndex.ShowDialog();
-            if (result == DialogResult.None)
+            var result = FoodIndex.ShowDialog();
+            if (result == DialogResult.Cancel)
             {
                 Statistics();
             }
@@ -76,7 +77,7 @@ namespace Plum
             {
                 comboBox4.DataSource = db.CompanyService.GetAll();
             }
-                    }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -92,7 +93,11 @@ namespace Plum
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             var report = new Form.Report.Index();
-            report.ShowDialog();
+          var result=  report.ShowDialog();
+          if (result == DialogResult.Cancel)
+          {
+              Statistics();
+          }
         }
 
         /// <summary>
@@ -102,20 +107,30 @@ namespace Plum
         /// <param name="e"></param>
         private void btnBackup_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFiledialog=new SaveFileDialog();
-            saveFiledialog.Filter = "Database Db|*.db";
+            SaveFileDialog saveFiledialog = new SaveFileDialog();
+            saveFiledialog.Filter = @"Database Bak|*.bak";
             saveFiledialog.Title = "Save Backup File";
             saveFiledialog.FileName = "data" + DateTime.Now.ToFa().Replace("/", "-");
             saveFiledialog.ShowDialog();
             if (saveFiledialog.FileName != "")
             {
-                using (var source = new SQLiteConnection(@"Data Source=C:\PlumFood\DataBase\localDB.db"))
-                using (var destionotion= new SQLiteConnection(@"Data Source="+saveFiledialog.FileName+";"))
-                {
-                    source.Open();
-                    destionotion.Open();
-                    source.BackupDatabase(destionotion, "main","main",-1,null,0);
-                }
+
+                string command = @"BACKUP DATABASE PlumDB TO DISK='" + saveFiledialog.FileName + "'";
+                SqlCommand oCommand = null;
+                SqlConnection oConnection = null;
+                oConnection = new SqlConnection("Data Source=./SQLEXPRESS;Initial Catalog=PlumDB;Integrated Security=True");
+                if (oConnection.State != ConnectionState.Open)
+                    oConnection.Open();
+                oCommand = new SqlCommand(command, oConnection);
+                oCommand.ExecuteNonQuery();
+
+                //using (var source = new SQLiteConnection(@"Data Source=C:\PlumFood\DataBase\localDB.db"))
+                //using (var destionotion = new SQLiteConnection(@"Data Source=" + saveFiledialog.FileName + ";"))
+                //{
+                //    source.Open();
+                //    destionotion.Open();
+                //    source.BackupDatabase(destionotion, "main", "main", -1, null, 0);
+                //}
             }
         }
 
@@ -126,8 +141,8 @@ namespace Plum
         /// <param name="e"></param>
         private void btnImport_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog=new OpenFileDialog();
-            openFileDialog.Filter= "Database File(*.db)|*.db";
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Database File(*.db)|*.db";
             openFileDialog.FilterIndex = 1;
             openFileDialog.RestoreDirectory = true;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -146,7 +161,7 @@ namespace Plum
         {
             var report = new Form.User.ChangePassword();
             report.userId = UserId;
-           var result= report.ShowDialog();
+            var result = report.ShowDialog();
             if (result == DialogResult.OK)
             {
                 DialogResult = DialogResult.None;
@@ -158,39 +173,39 @@ namespace Plum
             using (var db = new UnitOfWork())
             {
                 chart1.Series.Clear();
-                var materialComboBox = (MaterialPriceModel) comboBox1.SelectedItem;
-                var firsYear = comboBox2.SelectedIndex+1;
+                var materialComboBox = (MaterialPriceModel)comboBox1.SelectedItem;
+                var firsYear = comboBox2.SelectedIndex + 1;
                 var selectDate = DateTime.Now.AddYears(-firsYear);
                 var material = db.MaterialRepositories.GetAll(false, (int)comboBox4.SelectedValue);
-               
-                material = material.OrderBy(a=>a.InsertTime).Where(a => a.InsertTime >= selectDate && a.Material.MaterialName.Contains(materialComboBox.MateriaName)).ToList();
+
+                material = material.OrderBy(a => a.InsertTime).Where(a => a.InsertTime >= selectDate && a.Material.MaterialName.Contains(materialComboBox.MateriaName)).ToList();
                 var series1 = new System.Windows.Forms.DataVisualization.Charting.Series
                 {
                     Name = materialComboBox.MateriaName,
                     Color = System.Drawing.Color.MediumSlateBlue,
                     IsVisibleInLegend = false,
                     IsXValueIndexed = true,
-                   
+
                 };
                 var chartype = comboBox3.SelectedIndex;
                 switch (chartype)
                 {
                     case 0:
-                    {
-                        series1.ChartType = SeriesChartType.Column;
-                        break;
-                    }
+                        {
+                            series1.ChartType = SeriesChartType.Column;
+                            break;
+                        }
                     case 1:
-                    {
-                        series1.ChartType = SeriesChartType.Line;
-                        break;
-                    }
-                   
+                        {
+                            series1.ChartType = SeriesChartType.Line;
+                            break;
+                        }
+
                 }
                 this.chart1.Series.Add(series1);
                 foreach (var material1 in material)
                 {
-                    series1.Points.AddXY(material1.InsertTime , material1.UnitPrice);
+                    series1.Points.AddXY(material1.InsertTime, material1.UnitPrice);
                 }
                 chart1.Refresh();
                 chart1.Invalidate();
@@ -201,7 +216,11 @@ namespace Plum
         private void btnCompany_Click(object sender, EventArgs e)
         {
             var report = new Form.Company.Index();
-            report.ShowDialog();
+          var result=  report.ShowDialog();
+          if (result == DialogResult.Cancel)
+          {
+              Statistics();
+          }
         }
 
         private void chart1_Click(object sender, EventArgs e)
@@ -214,7 +233,7 @@ namespace Plum
             if (comboBox4.SelectedValue == null) return;
             using (var db = new UnitOfWork())
             {
-                var food = db.FoodService.GetAll(true).Where(a=>a.CompanyId==(int) comboBox4.SelectedValue);
+                var food = db.FoodService.GetAll(true).Where(a => a.CompanyId == (int)comboBox4.SelectedValue);
                 var foodDetail = food.Select(a => new FoodDetailsModel()
                 {
                     FoodName = a.FoodName,
@@ -223,7 +242,7 @@ namespace Plum
                         : 0,
 
                 }).ToList();
-                var material = db.MaterialRepositories.GetAll(true,(int) comboBox4.SelectedValue).Select(a=>new MaterialPriceModel()
+                var material = db.MaterialRepositories.GetAll(true, (int)comboBox4.SelectedValue).Select(a => new MaterialPriceModel()
                 {
                     MateriaPriceId = a.Id,
                     MateriaName = a.Material.MaterialName,

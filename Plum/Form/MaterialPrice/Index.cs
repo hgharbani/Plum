@@ -145,10 +145,18 @@ namespace Plum.Form.MaterialPrice
                         }
                         else
                         {
-                            bool result = db.MaterialRepositories.DeleteMaterial(id);
-                            db.Save();
+                            var result = db.MaterialRepositories.DeleteMaterial(id);
+                            if (result.IsChange)
+                            {
+                                db.Save();
+                                MessageBox.Show(result.Message);
 
-                            RtlMessageBox.Show("کالا با موفقیت حذف شد");
+                            }
+                            else
+                            {
+                                MessageBox.Show(result.Message);
+                            }
+
                         }
                     }
 

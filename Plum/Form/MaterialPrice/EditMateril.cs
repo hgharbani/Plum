@@ -47,16 +47,16 @@ namespace Plum.Form.MaterialPrice
                     ParentId = null,
                     MaterialTypeData = Data.MaterialPrice.TypeMAterial.Edit
                 };
-
-                if (db.MaterialRepositories.UpdateMaterial(model, checkBox1.Checked))
+                var result = db.MaterialRepositories.UpdateMaterial(model, checkBox1.Checked);
+                if (result.IsChange)
                 {
                     db.Save();
-                    RtlMessageBox.Show("عملیات با موفقیت انجام شد");
+                    RtlMessageBox.Show(result.Message);
                     DialogResult = DialogResult.OK;
                 }
                 else
                 {
-                    MessageBox.Show("کالا ثبت نگردید");
+                    RtlMessageBox.Show(result.Message);
 
                 }
             }

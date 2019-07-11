@@ -46,16 +46,16 @@ namespace Plum.Form.MaterialPrice
                     ParentId = null,
                     MaterialTypeData = Data.MaterialPrice.TypeMAterial.Create
                 };
-                
-                if (db.MaterialRepositories.InsertMaterial(model))
+                var result = db.MaterialRepositories.InsertMaterial(model);
+                if (result.IsChange)
                 {
                     db.Save();
-                    RtlMessageBox.Show("عملیات با موفقیت انجام شد");
+                    RtlMessageBox.Show(result.Message);
                     DialogResult = DialogResult.OK;
                 }
                 else
                 {
-                    RtlMessageBox.Show("کالا ثبت نگردید");
+                    RtlMessageBox.Show(result.Message);
 
                 }
             }

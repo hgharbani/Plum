@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Plum.Data.Contex;
+using Plum.Model.Model;
 
 namespace Plum.Services.MaterialPriceServices
 {
@@ -51,21 +52,28 @@ namespace Plum.Services.MaterialPriceServices
 
         }
 
-        public bool InsertMaterial(MaterialPrice material)
+        public PlumResult InsertMaterial(MaterialPrice material)
         {
+            var result = new PlumResult();
             try
             {
 
                 if (db.MaterialsPrice.Any(a => a.MaterialId == material.MaterialId && a.CompanyId == material.CompanyId && a.Active))
                 {
-                    return false;
+                    result.IsChange=false;
+                    result.Message = "کالای وارد شده قبلا قیمت گذاری شده است";
+                    return result;
                 }
                 db.MaterialsPrice.Add(material);
-                return true;
+                result.Message = "عملیات با موفقیت انجام شد";
+                return result;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return false;
+                result.IsChange = false;
+
+                result.Message = e.Message;
+                return result;
             }
         }
 
@@ -75,14 +83,18 @@ namespace Plum.Services.MaterialPriceServices
         /// <param name="material"></param>
         /// <param name="inHistory"></param>
         /// <returns></returns>
-        public bool UpdateMaterial(MaterialPrice material, bool inHistory)
+        public PlumResult UpdateMaterial(MaterialPrice material, bool inHistory)
         {
+            var result = new PlumResult();
+
             try
             {
                 MaterialPrice materialModel = GetOne(material.Id);
                 if (db.MaterialsPrice.Any(a => a.Id != material.Id && a.MaterialId == material.MaterialId && a.CompanyId == material.CompanyId && a.Active))
                 {
-                    return false;
+                    result.IsChange = false;
+                    result.Message = "کالای وارد شده قبلا قیمت گذاری شده است";
+                    return result;
                 }
                 if (materialModel.UnitPrice != material.UnitPrice && inHistory)
                 {
@@ -90,6 +102,7 @@ namespace Plum.Services.MaterialPriceServices
                     {
                         MaterialId = materialModel.MaterialId,
                         Active = false,
+                        CompanyId = materialModel.CompanyId,
                         ParentId = materialModel.Id,
                         UnitPrice = materialModel.UnitPrice,
                         InsertTime = materialModel.InsertTime,
@@ -145,43 +158,55 @@ namespace Plum.Services.MaterialPriceServices
 
                 }
 
-                return true;
+                result.Message = "عملیات با موفقیت انجام شد";
+                return result;
             }
             catch (Exception e)
             {
-                var x = e;
-                return false;
+                result.IsChange = false;
+
+                result.Message =e.Message;
+                return result;
             }
         }
 
-        public bool DeleteMaterial(MaterialPrice material)
+        public PlumResult DeleteMaterial(MaterialPrice material)
         {
+            var result = new PlumResult();
             try
             {
                 db.Entry(material).State = EntityState.Deleted;
-                return true;
+                result.Message = "کالا با موفقیت حذف شد";
+                return result;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return false;
+                result.IsChange = false;
+                result.Message = e.Message;
+                return result;
             }
         }
 
-        public bool DeleteMaterial(int materialId)
+        public PlumResult DeleteMaterial(int materialId)
         {
+            var result=new PlumResult();
             var material = GetOne(materialId);
             if (material.FoodMaterials.Any())
             {
-                return false;
+                result.IsChange = false;
+                result.Message = "قادر به حذف این کالا نمی باشید زیرا در بعضی از غذاها استفاده شده است";
+                return result;
             }
             try
             {
-                DeleteMaterial(material);
-                return true;
+              result=  DeleteMaterial(material);
+                return result;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return false;
+                result.IsChange = false;
+                result.Message = e.Message;
+                return result;
             }
         }
 

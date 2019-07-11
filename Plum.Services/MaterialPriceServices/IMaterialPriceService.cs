@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Plum.Data;
+using Plum.Model.Model;
 
 namespace Plum.Services.MaterialPriceServices
 {
@@ -20,10 +21,10 @@ namespace Plum.Services.MaterialPriceServices
         /// <returns></returns>
         List<MaterialPrice> GetAll(bool active = true, int companyId = 0);
 
-        bool InsertMaterial(MaterialPrice material);
-        bool UpdateMaterial(MaterialPrice material, bool inHistory);
-        bool DeleteMaterial(MaterialPrice material);
-        bool DeleteMaterial(int materialId);
+        PlumResult InsertMaterial(MaterialPrice material);
+        PlumResult UpdateMaterial(MaterialPrice material, bool inHistory);
+        PlumResult DeleteMaterial(MaterialPrice material);
+        PlumResult DeleteMaterial(int materialId);
         IEnumerable<MaterialPrice> GetMaterials(string parameter, int companyId);
 
 
