@@ -29,12 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.foodIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.foodNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaterialPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FinalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.foodDetailsModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.count = new System.Windows.Forms.Label();
@@ -50,13 +55,8 @@
             this.materialPriceModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.foodDetailsModelBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.foodIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.foodNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaterialPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FinalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.foodDetailsModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.foodBindingSource)).BeginInit();
@@ -101,6 +101,76 @@
             this.dataGridView1.Size = new System.Drawing.Size(713, 279);
             this.dataGridView1.TabIndex = 2;
             // 
+            // foodIdDataGridViewTextBoxColumn
+            // 
+            this.foodIdDataGridViewTextBoxColumn.DataPropertyName = "FoodId";
+            this.foodIdDataGridViewTextBoxColumn.HeaderText = "FoodId";
+            this.foodIdDataGridViewTextBoxColumn.Name = "foodIdDataGridViewTextBoxColumn";
+            this.foodIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.foodIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // foodNameDataGridViewTextBoxColumn
+            // 
+            this.foodNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.foodNameDataGridViewTextBoxColumn.DataPropertyName = "FoodName";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("IRANSans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.BlueViolet;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            this.foodNameDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            this.foodNameDataGridViewTextBoxColumn.HeaderText = "نام غذا";
+            this.foodNameDataGridViewTextBoxColumn.Name = "foodNameDataGridViewTextBoxColumn";
+            this.foodNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // MaterialPrice
+            // 
+            this.MaterialPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.MaterialPrice.DataPropertyName = "MaterialPrice";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("IRANSans Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.BlueViolet;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            this.MaterialPrice.DefaultCellStyle = dataGridViewCellStyle6;
+            this.MaterialPrice.HeaderText = "قیمت هر پرس";
+            this.MaterialPrice.Name = "MaterialPrice";
+            this.MaterialPrice.ReadOnly = true;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("IRANSans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle7.Format = "N0";
+            dataGridViewCellStyle7.NullValue = "0";
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.BlueViolet;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            this.quantityDataGridViewTextBoxColumn.HeaderText = " تعداد هر پرس";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // FinalPrice
+            // 
+            this.FinalPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.FinalPrice.DataPropertyName = "FinalPrice";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("IRANSans Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.BlueViolet;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            this.FinalPrice.DefaultCellStyle = dataGridViewCellStyle8;
+            this.FinalPrice.HeaderText = "قیمت نهایی";
+            this.FinalPrice.Name = "FinalPrice";
+            this.FinalPrice.ReadOnly = true;
+            // 
             // foodDetailsModelBindingSource
             // 
             this.foodDetailsModelBindingSource.DataSource = typeof(Plum.Model.Model.Food.FoodDetailsModel);
@@ -142,7 +212,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(149, 59);
             this.button2.TabIndex = 8;
-            this.button2.Text = "هزینه نهایی ";
+            this.button2.Text = "اکسل";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -225,6 +295,10 @@
             this.comboBox1.ValueMember = "CompanyId";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // companyBindingSource
+            // 
+            this.companyBindingSource.DataSource = typeof(Plum.Data.Company);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -233,80 +307,6 @@
             this.label3.Size = new System.Drawing.Size(54, 28);
             this.label3.TabIndex = 13;
             this.label3.Text = "شرکت";
-            // 
-            // companyBindingSource
-            // 
-            this.companyBindingSource.DataSource = typeof(Plum.Data.Company);
-            // 
-            // foodIdDataGridViewTextBoxColumn
-            // 
-            this.foodIdDataGridViewTextBoxColumn.DataPropertyName = "FoodId";
-            this.foodIdDataGridViewTextBoxColumn.HeaderText = "FoodId";
-            this.foodIdDataGridViewTextBoxColumn.Name = "foodIdDataGridViewTextBoxColumn";
-            this.foodIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.foodIdDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // foodNameDataGridViewTextBoxColumn
-            // 
-            this.foodNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.foodNameDataGridViewTextBoxColumn.DataPropertyName = "FoodName";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("IRANSans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.BlueViolet;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.foodNameDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.foodNameDataGridViewTextBoxColumn.HeaderText = "نام غذا";
-            this.foodNameDataGridViewTextBoxColumn.Name = "foodNameDataGridViewTextBoxColumn";
-            this.foodNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // MaterialPrice
-            // 
-            this.MaterialPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.MaterialPrice.DataPropertyName = "MaterialPrice";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("IRANSans Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.BlueViolet;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.MaterialPrice.DefaultCellStyle = dataGridViewCellStyle2;
-            this.MaterialPrice.HeaderText = "قیمت هر پرس";
-            this.MaterialPrice.Name = "MaterialPrice";
-            this.MaterialPrice.ReadOnly = true;
-            // 
-            // quantityDataGridViewTextBoxColumn
-            // 
-            this.quantityDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("IRANSans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.Format = "N0";
-            dataGridViewCellStyle3.NullValue = "0";
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.BlueViolet;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.quantityDataGridViewTextBoxColumn.HeaderText = " تعداد هر پرس";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // FinalPrice
-            // 
-            this.FinalPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.FinalPrice.DataPropertyName = "FinalPrice";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("IRANSans Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.BlueViolet;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.FinalPrice.DefaultCellStyle = dataGridViewCellStyle4;
-            this.FinalPrice.HeaderText = "قیمت نهایی";
-            this.FinalPrice.Name = "FinalPrice";
-            this.FinalPrice.ReadOnly = true;
             // 
             // Index
             // 

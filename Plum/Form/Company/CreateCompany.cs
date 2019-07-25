@@ -45,7 +45,7 @@ namespace Plum.Form.Company
                     {
                         db.Save();
                         RtlMessageBox.Show(result.Message);
-                        DialogResult = DialogResult.OK;
+                        
                     }
                     else
                     {

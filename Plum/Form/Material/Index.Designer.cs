@@ -38,10 +38,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.companyBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.txtMaterialName = new System.Windows.Forms.TextBox();
+            this.companyBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel5.SuspendLayout();
@@ -151,14 +151,6 @@
             this.panel1.TabIndex = 7;
             this.panel1.Click += new System.EventHandler(this.panel1_Click);
             // 
-            // companyBindingSource1
-            // 
-            this.companyBindingSource1.DataSource = typeof(Plum.Data.Company);
-            // 
-            // companyBindingSource
-            // 
-            this.companyBindingSource.DataSource = typeof(Plum.Data.Company);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -179,7 +171,16 @@
             this.txtMaterialName.Name = "txtMaterialName";
             this.txtMaterialName.Size = new System.Drawing.Size(318, 48);
             this.txtMaterialName.TabIndex = 14;
+            this.txtMaterialName.Click += new System.EventHandler(this.txtMaterialName_Click);
             this.txtMaterialName.TextChanged += new System.EventHandler(this.txtMaterialName_TextChanged);
+            // 
+            // companyBindingSource1
+            // 
+            this.companyBindingSource1.DataSource = typeof(Plum.Data.Company);
+            // 
+            // companyBindingSource
+            // 
+            this.companyBindingSource.DataSource = typeof(Plum.Data.Company);
             // 
             // Index
             // 

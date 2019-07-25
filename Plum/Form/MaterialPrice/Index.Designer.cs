@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.TotalCount = new System.Windows.Forms.Label();
@@ -55,10 +55,10 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -181,11 +181,11 @@
             // MaterialName
             // 
             this.MaterialName.DataPropertyName = "MateriaName";
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("IRANSans", 8.249999F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.MaterialName.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("IRANSans", 8.249999F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.MaterialName.DefaultCellStyle = dataGridViewCellStyle4;
             this.MaterialName.HeaderText = "نام کالا";
             this.MaterialName.Name = "MaterialName";
             this.MaterialName.ReadOnly = true;
@@ -195,11 +195,11 @@
             // UnitPrice
             // 
             this.UnitPrice.DataPropertyName = "UnitPrice";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("IRANSans", 8.249999F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.UnitPrice.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("IRANSans", 8.249999F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            this.UnitPrice.DefaultCellStyle = dataGridViewCellStyle5;
             this.UnitPrice.HeaderText = "قیمت هر کیلو";
             this.UnitPrice.Name = "UnitPrice";
             this.UnitPrice.ReadOnly = true;
@@ -214,13 +214,13 @@
             // InsertTime
             // 
             this.InsertTime.DataPropertyName = "InsertTime";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("IRANSans", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.Format = "MM yyyy";
-            dataGridViewCellStyle3.NullValue = null;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            this.InsertTime.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("IRANSans", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.Format = "MM yyyy";
+            dataGridViewCellStyle6.NullValue = null;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            this.InsertTime.DefaultCellStyle = dataGridViewCellStyle6;
             this.InsertTime.HeaderText = "تاریخ ثبت";
             this.InsertTime.Name = "InsertTime";
             this.InsertTime.ReadOnly = true;
@@ -337,17 +337,22 @@
             this.comboBox2.DisplayMember = "CompanyName";
             this.comboBox2.Font = new System.Drawing.Font("IRANSans", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(374, 31);
+            this.comboBox2.Location = new System.Drawing.Point(409, 31);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(193, 39);
             this.comboBox2.TabIndex = 13;
             this.comboBox2.ValueMember = "CompanyId";
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
+            // companyBindingSource
+            // 
+            this.companyBindingSource.DataSource = typeof(Plum.Data.Company);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("IRANSans", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(589, 35);
+            this.label3.Location = new System.Drawing.Point(605, 35);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 24);
             this.label3.TabIndex = 12;
@@ -358,7 +363,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.GhostWhite;
             this.label2.ForeColor = System.Drawing.Color.Indigo;
-            this.label2.Location = new System.Drawing.Point(261, 34);
+            this.label2.Location = new System.Drawing.Point(343, 34);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 28);
             this.label2.TabIndex = 1;
@@ -367,16 +372,12 @@
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("IRANSans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.textBox2.Location = new System.Drawing.Point(3, 27);
+            this.textBox2.Location = new System.Drawing.Point(17, 26);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(252, 48);
+            this.textBox2.Size = new System.Drawing.Size(323, 48);
             this.textBox2.TabIndex = 0;
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
-            // companyBindingSource
-            // 
-            this.companyBindingSource.DataSource = typeof(Plum.Data.Company);
             // 
             // Index
             // 

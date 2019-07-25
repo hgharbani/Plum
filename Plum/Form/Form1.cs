@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using Microsoft.SqlServer.Management.Smo;
 using PdfRpt.Core.Helper;
 using PersianDate;
 using Plum.Data;
@@ -118,7 +119,7 @@ namespace Plum
                 string command = @"BACKUP DATABASE PlumDB TO DISK='" + saveFiledialog.FileName + "'";
                 SqlCommand oCommand = null;
                 SqlConnection oConnection = null;
-                oConnection = new SqlConnection("Data Source=./SQLEXPRESS;Initial Catalog=PlumDB;Integrated Security=True");
+                oConnection = new SqlConnection(@"Data Source=.\SQLExpress;AttachDbFilename=|DataDirectory|PlumDB.mdf;Database=PlumDB;Trusted_Connection=Yes;");
                 if (oConnection.State != ConnectionState.Open)
                     oConnection.Open();
                 oCommand = new SqlCommand(command, oConnection);
@@ -142,14 +143,36 @@ namespace Plum
         private void btnImport_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Database File(*.db)|*.db";
+            openFileDialog.Filter = "Database File(*.bak)|*.bak";
             openFileDialog.FilterIndex = 1;
             openFileDialog.RestoreDirectory = true;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+                
+                string command = @"RESTORE DATABASE PlumDB FROM DISK='" + openFileDialog.FileName + "'"+ " WITH NOUNLOAD, REPLACE, STATS = 10";
+
+                SqlCommand oCommand = null;
+                SqlCommand oCommand1 = null;
+                SqlConnection oConnection = null;
+                oConnection = new SqlConnection(@"Data Source=.\SQLExpress;AttachDbFilename=|DataDirectory|PlumDB.mdf;Database=PlumDB;Trusted_Connection=Yes;");
+                if (oConnection.State != ConnectionState.Open)
+                    oConnection.Open();
+                
+                oCommand = new SqlCommand(command, oConnection);
+
+              var  command1 = "USE master ALTER DATABASE PlumDB SET SINGLE_USER WITH ROLLBACK IMMEDIATE; ";
+              command1 += "\n" + "ALTER DATABASE PlumDB SET MULTI_USER; ";
+                
+                oCommand1 = new SqlCommand(command1, oConnection);
+                oCommand1.ExecuteNonQuery();
+
+                oCommand.ExecuteNonQuery();
+
                 System.IO.File.Copy(openFileDialog.FileName, @"C:\PlumFood\DataBase\localDB.db", true);
                 MessageBox.Show("بازگردانی انجام شد");
             }
+
+
         }
 
         /// <summary>
@@ -172,7 +195,10 @@ namespace Plum
         {
             using (var db = new UnitOfWork())
             {
+                this.chart1.Series.Remove(chart1.Series.Take(1).First());
                 chart1.Series.Clear();
+                chart1.Refresh();
+                chart1.Invalidate();
                 var materialComboBox = (MaterialPriceModel)comboBox1.SelectedItem;
                 var firsYear = comboBox2.SelectedIndex + 1;
                 var selectDate = DateTime.Now.AddYears(-firsYear);
@@ -184,7 +210,7 @@ namespace Plum
                     Name = materialComboBox.MateriaName,
                     Color = System.Drawing.Color.MediumSlateBlue,
                     IsVisibleInLegend = false,
-                    IsXValueIndexed = true,
+                    IsXValueIndexed = false,
 
                 };
                 var chartype = comboBox3.SelectedIndex;
@@ -207,9 +233,11 @@ namespace Plum
                 {
                     series1.Points.AddXY(material1.InsertTime, material1.UnitPrice);
                 }
+      
                 chart1.Refresh();
                 chart1.Invalidate();
-
+              
+                //series1.Points.DataBindXY(null);
             }
         }
 

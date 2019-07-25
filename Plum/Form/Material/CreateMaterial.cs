@@ -98,7 +98,7 @@ namespace Plum.Form.Material
                     {
                         db.Save();
                         RtlMessageBox.Show(result.Message);
-                        DialogResult = DialogResult.OK;
+                        
                     }
                     else
                     {

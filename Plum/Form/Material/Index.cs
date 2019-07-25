@@ -34,8 +34,8 @@ namespace Plum.Form.Material
                     CreateMaterial formEdit = new CreateMaterial();
                     formEdit.MaterialId = id;
                     formEdit.MaterialName.Text = model.MaterialName;
-
-                    if (formEdit.ShowDialog() == DialogResult.OK)
+                    formEdit.label2.Text="ویرایش نام "+ model.MaterialName;
+                    if (formEdit.ShowDialog() == DialogResult.Cancel)
                     {
                         ShowMaterialGrid();
                         dataGridView2.ClearSelection();
@@ -49,7 +49,7 @@ namespace Plum.Form.Material
                 var materialIndex = new CreateMaterial();
                 materialIndex.deleteMAterial.Visible = false;
                 var result = materialIndex.ShowDialog();
-                if (result == DialogResult.OK)
+                if (result == DialogResult.Cancel)
                 {
                     ShowMaterialGrid();
                     dataGridView2.ClearSelection();
@@ -63,6 +63,7 @@ namespace Plum.Form.Material
         {
           
             ShowMaterialGrid();
+
             dataGridView2.ClearSelection();
             dataGridView2.CurrentCell = null;
 
@@ -72,6 +73,8 @@ namespace Plum.Form.Material
 
         private void ShowMaterialGrid()
         {
+            dataGridView2.ClearSelection();
+            dataGridView2.CurrentCell = null;
 
             var mdel = new MaterialModel()
             {
@@ -84,6 +87,7 @@ namespace Plum.Form.Material
 
                 dataGridView2.DataSource = material;
 
+               
             }
         }
 
@@ -120,7 +124,8 @@ namespace Plum.Form.Material
 
         private void txtMaterialName_TextChanged(object sender, EventArgs e)
         {
-
+            dataGridView2.ClearSelection();
+            dataGridView2.CurrentCell = null;
             var materialMode = new MaterialModel()
             {
                 MaterialName = txtMaterialName.Text,
@@ -135,6 +140,10 @@ namespace Plum.Form.Material
             }
         }
 
-
+        private void txtMaterialName_Click(object sender, EventArgs e)
+        {
+            dataGridView2.ClearSelection();
+            dataGridView2.CurrentCell = null;
+        }
     }
 }

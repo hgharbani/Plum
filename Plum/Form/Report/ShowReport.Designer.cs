@@ -71,7 +71,7 @@
             this.logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logoPictureBox.Image = global::Plum.Properties.Resources.plum_fruit_food_blue_healthy_wallpaper_preview;
             this.logoPictureBox.Location = new System.Drawing.Point(674, 4);
-            this.logoPictureBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.logoPictureBox.Margin = new System.Windows.Forms.Padding(4);
             this.logoPictureBox.Name = "logoPictureBox";
             this.tableLayoutPanel.SetRowSpan(this.logoPictureBox, 4);
             this.logoPictureBox.Size = new System.Drawing.Size(311, 525);
@@ -91,7 +91,7 @@
             this.tableLayoutPanel.Controls.Add(this.labelCompanyName, 1, 3);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(12, 11);
-            this.tableLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 4;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.85681F));
@@ -140,7 +140,7 @@
             this.ClientSize = new System.Drawing.Size(1013, 555);
             this.Controls.Add(this.tableLayoutPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ShowReport";

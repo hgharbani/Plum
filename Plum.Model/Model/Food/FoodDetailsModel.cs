@@ -9,7 +9,8 @@ namespace Plum.Model.Model.Food
     {
         public FoodDetailsModel()
         {
-            FoodMaterials = new List<FoodMaterialModel>();
+            FoodMaterials = new List<FoodMaterial>();
+            FoodMaterialsModel = new List<FoodMaterialModel>();
             FoodSurplusPrices = new List<FoodSurplusPrice>();
         }
         /// <summary>
@@ -47,7 +48,12 @@ namespace Plum.Model.Model.Food
         /// <summary>
         /// 
         /// </summary>
-        public List<FoodMaterialModel> FoodMaterials { get; set; }
+        public ICollection<FoodMaterial> FoodMaterials { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ICollection<FoodMaterialModel> FoodMaterialsModel { get; set; }
 
         /// <summary>
         /// 

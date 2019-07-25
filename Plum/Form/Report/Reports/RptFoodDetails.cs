@@ -43,11 +43,11 @@ namespace Plum.Form.Report.Reports
             // Required for telerik Reporting designer support
             //
             InitializeComponent();
-            objectDataSource2.DataSource = foodDetailsModels.FoodMaterials;
+            objectDataSource2.DataSource = foodDetailsModels.FoodMaterialsModel;
             objectDataSource1.DataSource = foodDetailsModels.FoodSurplusPrices;
             table2.DataSource = foodDetailsModels.FoodSurplusPrices;
             textBox28.Value = foodDetailsModels.FoodName;
-            textBox9.Value = foodDetailsModels.FoodMaterials.Sum(a => a.TotalPrice).ToString("c0", cultureInfo);
+            textBox9.Value = foodDetailsModels.FoodMaterials.Sum(a => a.MaterialTotalPrice).ToString("c0", cultureInfo);
         
             //
             // TODO: Add any constructor code after InitializeComponent call

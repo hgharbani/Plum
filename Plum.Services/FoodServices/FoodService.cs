@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Plum.Data;
 using Plum.Data.Contex;
 using Plum.Model.Model.Food;
+using Plum.Model.Model.MAterial;
 
 namespace Plum.Services.FoodServices
 {
@@ -113,22 +114,29 @@ namespace Plum.Services.FoodServices
         {
             try
             {
-                Food foodModel = db.Foods.AsQueryable().Include(a => a.FoodMaterials).Include(a => a.FoodSurplusPrices)
+                Food foodModel = db.Foods.Include(a => a.FoodMaterials).Include(a => a.FoodSurplusPrices)
                     .FirstOrDefault(a => a.Id == foodId);
-                foreach (var foodMaterial in foodModel.FoodMaterials)
+                if (foodModel != null)
                 {
-                    db.FoodMaterials.Remove(foodMaterial);
+                    foreach (var foodMaterial in foodModel.FoodMaterials.ToList())
+                    {
+                        db.FoodMaterials.Remove(foodMaterial);
 
+                    }
+
+                    foreach (var foodModelFoodSurplusPrice in foodModel.FoodSurplusPrices.ToList())
+                    {
+
+                        db.FoodSurplusPrices.Remove(foodModelFoodSurplusPrice);
+
+                    }
+
+                    DeleteFood(foodModel);
+                    return true;
                 }
 
-                foreach (var foodModelFoodSurplusPrice in foodModel.FoodSurplusPrices)
-                {
+                return false;
 
-                    db.FoodSurplusPrices.Remove(foodModelFoodSurplusPrice);
-
-                }
-                DeleteFood(foodModel);
-                return true;
             }
             catch (Exception)
             {
@@ -173,9 +181,12 @@ namespace Plum.Services.FoodServices
                 FoodId = a.Id,
                 FoodName = a.FoodName,
                 CompanyName = a.Company.CompanyName,
+                FoodMaterials = a.FoodMaterials,
+                FoodSurplusPrices = a.FoodSurplusPrices.ToList(),
                 MaterialPrice = a.FoodMaterials.Any()? a.FoodMaterials.Sum(b => b.MaterialTotalPrice):0,
                 FinalPrice = a.FoodSurplusPrices.Any(b => b.AdjustKind == 8) ? a.FoodSurplusPrices.Where(b => b.AdjustKind == 8).Select(b => b.Price).FirstOrDefault() : 0
             }).ToList();
+
             return result.ToList();
         }
         

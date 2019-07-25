@@ -23,7 +23,7 @@ namespace Plum.Form.Company
         private void btnCreate_Click(object sender, EventArgs e)
         {
             DialogResult createMaterial = new CreateCompany().ShowDialog();
-            if (createMaterial == DialogResult.OK)
+            if (createMaterial == DialogResult.Cancel)
             {
                 ShowMaterialGrid();
             }

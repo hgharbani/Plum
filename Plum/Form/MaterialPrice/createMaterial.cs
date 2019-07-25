@@ -51,7 +51,7 @@ namespace Plum.Form.MaterialPrice
                 {
                     db.Save();
                     RtlMessageBox.Show(result.Message);
-                    DialogResult = DialogResult.OK;
+                   
                 }
                 else
                 {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Plum.Data;
 using Plum.Form.Report.MasterDetail;
 using Plum.Model.Model.Food;
@@ -27,13 +28,14 @@ namespace Plum.Form.Report.Reports
         {
             using (var db = new UnitOfWork())
             {
+                
                 var food = db.FoodService.GetOne(foodId);
 
                 var model = new FoodDetailsModel()
                 {
                     FoodId = food.Id,
                     FoodName = food.FoodName,
-                    FoodMaterials = new List<FoodMaterialModel>(),
+                    FoodMaterials = food.FoodMaterials,
                     FoodSurplusPrices = food.FoodSurplusPrices.ToList()
                 };
 
@@ -49,7 +51,7 @@ namespace Plum.Form.Report.Reports
                         TotalPrice = matetrial.MaterialTotalPrice,
 
                     };
-                    model.FoodMaterials.Add(foodMaterialModel);
+                    model.FoodMaterialsModel.Add(foodMaterialModel);
                 }
                 return new RptFoodDetails(model);
             }

@@ -40,39 +40,3 @@ namespace Plum.Form.Report.MasterDetail
 
     }
 
-public class dataSource
-{
-    public FoodDetailsModel getDataSurce(int foodId)
-    {
-        using (var db = new UnitOfWork())
-        {
-            //var foodId =(int) this.ReportParameters["FoodId"].Value;
-            var food = db.FoodService.GetOne(0);
-
-            var model = new FoodDetailsModel()
-            {
-                FoodId = food.Id,
-                FoodName = food.FoodName,
-                FoodMaterials = new List<FoodMaterialModel>(),
-                FoodSurplusPrices = food.FoodSurplusPrices.ToList()
-            };
-
-
-
-            foreach (var matetrial in food.FoodMaterials)
-            {
-                var foodMaterialModel = new FoodMaterialModel()
-                {
-                    MaterialName = matetrial.MaterialPrice.Material.MaterialName,
-                    Price = matetrial.UnitPrice,
-                    Quantity = matetrial.Quantity,
-                    TotalPrice = matetrial.MaterialTotalPrice,
-
-                };
-                model.FoodMaterials.Add(foodMaterialModel);
-            }
-
-            return model;
-        }
-    }
-}

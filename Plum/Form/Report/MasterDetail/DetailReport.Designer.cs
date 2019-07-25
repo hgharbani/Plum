@@ -25,7 +25,6 @@ namespace Plum.Form.Report.MasterDetail
             Telerik.Reporting.Drawing.StyleRule styleRule1 = new Telerik.Reporting.Drawing.StyleRule();
             this.textBox1 = new Telerik.Reporting.TextBox();
             this.textBox2 = new Telerik.Reporting.TextBox();
-            this.textBox3 = new Telerik.Reporting.TextBox();
             this.textBox4 = new Telerik.Reporting.TextBox();
             this.textBox11 = new Telerik.Reporting.TextBox();
             this.textBox12 = new Telerik.Reporting.TextBox();
@@ -36,17 +35,18 @@ namespace Plum.Form.Report.MasterDetail
             this.table1 = new Telerik.Reporting.Table();
             this.textBox5 = new Telerik.Reporting.TextBox();
             this.textBox6 = new Telerik.Reporting.TextBox();
-            this.textBox7 = new Telerik.Reporting.TextBox();
             this.textBox8 = new Telerik.Reporting.TextBox();
-            this.objectDataSource2 = new Telerik.Reporting.ObjectDataSource();
+            this.entityDataSource1 = new Telerik.Reporting.EntityDataSource();
             this.table2 = new Telerik.Reporting.Table();
             this.textBox13 = new Telerik.Reporting.TextBox();
             this.textBox14 = new Telerik.Reporting.TextBox();
+            this.objectDataSource1 = new Telerik.Reporting.ObjectDataSource();
             this.textBox9 = new Telerik.Reporting.TextBox();
             this.textBox10 = new Telerik.Reporting.TextBox();
+            this.objectDataSource2 = new Telerik.Reporting.ObjectDataSource();
             this.objectDataSource3 = new Telerik.Reporting.ObjectDataSource();
-            this.objectDataSource1 = new Telerik.Reporting.ObjectDataSource();
-            this.entityDataSource1 = new Telerik.Reporting.EntityDataSource();
+            this.textBox15 = new Telerik.Reporting.TextBox();
+            this.textBox16 = new Telerik.Reporting.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // textBox1
@@ -62,13 +62,6 @@ namespace Plum.Form.Report.MasterDetail
             this.textBox2.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.235D), Telerik.Reporting.Drawing.Unit.Inch(0.336D));
             this.textBox2.StyleName = "Normal.TableHeader";
             this.textBox2.Value = "مقدار لازم";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.943D), Telerik.Reporting.Drawing.Unit.Inch(0.336D));
-            this.textBox3.StyleName = "Normal.TableHeader";
-            this.textBox3.Value = "قیمت هرکیلو";
             // 
             // textBox4
             // 
@@ -104,19 +97,19 @@ namespace Plum.Form.Report.MasterDetail
             // 
             // textBox27
             // 
-            this.textBox27.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(6.056D), Telerik.Reporting.Drawing.Unit.Inch(0.1D));
+            this.textBox27.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(5.557D), Telerik.Reporting.Drawing.Unit.Inch(0.1D));
             this.textBox27.Name = "textBox27";
-            this.textBox27.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.901D), Telerik.Reporting.Drawing.Unit.Inch(0.4D));
+            this.textBox27.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(2.4D), Telerik.Reporting.Drawing.Unit.Inch(0.4D));
             this.textBox27.Style.Font.Name = "B Titr";
             this.textBox27.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(14D);
             this.textBox27.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
-            this.textBox27.Value = "هزینه های کلی یک پرس";
+            this.textBox27.Value = "ریز اجزای تشکیل دهنده یک پرس";
             // 
             // textBox28
             // 
             this.textBox28.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0D), Telerik.Reporting.Drawing.Unit.Inch(0.1D));
             this.textBox28.Name = "textBox28";
-            this.textBox28.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(6.056D), Telerik.Reporting.Drawing.Unit.Inch(0.4D));
+            this.textBox28.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(5.556D), Telerik.Reporting.Drawing.Unit.Inch(0.4D));
             this.textBox28.Style.Font.Name = "B Titr";
             this.textBox28.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(14D);
             this.textBox28.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;
@@ -137,20 +130,20 @@ namespace Plum.Form.Report.MasterDetail
             // table1
             // 
             this.table1.Body.Columns.Add(new Telerik.Reporting.TableBodyColumn(Telerik.Reporting.Drawing.Unit.Inch(3.073D)));
+            this.table1.Body.Columns.Add(new Telerik.Reporting.TableBodyColumn(Telerik.Reporting.Drawing.Unit.Inch(1.95D)));
             this.table1.Body.Columns.Add(new Telerik.Reporting.TableBodyColumn(Telerik.Reporting.Drawing.Unit.Inch(1.235D)));
-            this.table1.Body.Columns.Add(new Telerik.Reporting.TableBodyColumn(Telerik.Reporting.Drawing.Unit.Inch(1.943D)));
             this.table1.Body.Columns.Add(new Telerik.Reporting.TableBodyColumn(Telerik.Reporting.Drawing.Unit.Inch(1.656D)));
             this.table1.Body.Rows.Add(new Telerik.Reporting.TableBodyRow(Telerik.Reporting.Drawing.Unit.Inch(0.336D)));
             this.table1.Body.SetCellContent(0, 0, this.textBox5);
-            this.table1.Body.SetCellContent(0, 1, this.textBox6);
-            this.table1.Body.SetCellContent(0, 2, this.textBox7);
+            this.table1.Body.SetCellContent(0, 2, this.textBox6);
             this.table1.Body.SetCellContent(0, 3, this.textBox8);
+            this.table1.Body.SetCellContent(0, 1, this.textBox16);
             tableGroup1.Name = "totalPrice";
             tableGroup1.ReportItem = this.textBox1;
-            tableGroup2.Name = "quantity";
-            tableGroup2.ReportItem = this.textBox2;
-            tableGroup3.Name = "price";
-            tableGroup3.ReportItem = this.textBox3;
+            tableGroup2.Name = "group";
+            tableGroup2.ReportItem = this.textBox15;
+            tableGroup3.Name = "quantity";
+            tableGroup3.ReportItem = this.textBox2;
             tableGroup4.Name = "materialName";
             tableGroup4.ReportItem = this.textBox4;
             this.table1.ColumnGroups.Add(tableGroup1);
@@ -162,18 +155,18 @@ namespace Plum.Form.Report.MasterDetail
             this.table1.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
             this.textBox5,
             this.textBox6,
-            this.textBox7,
             this.textBox8,
             this.textBox1,
             this.textBox2,
-            this.textBox3,
-            this.textBox4});
+            this.textBox4,
+            this.textBox15,
+            this.textBox16});
             this.table1.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0D), Telerik.Reporting.Drawing.Unit.Inch(0D));
             this.table1.Name = "table1";
             tableGroup5.Groupings.Add(new Telerik.Reporting.Grouping(null));
             tableGroup5.Name = "detail";
             this.table1.RowGroups.Add(tableGroup5);
-            this.table1.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(7.907D), Telerik.Reporting.Drawing.Unit.Inch(0.672D));
+            this.table1.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(7.914D), Telerik.Reporting.Drawing.Unit.Inch(0.672D));
             this.table1.Style.Font.Bold = true;
             this.table1.Style.Font.Name = "IRANSans";
             this.table1.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
@@ -195,15 +188,6 @@ namespace Plum.Form.Report.MasterDetail
             this.textBox6.StyleName = "Normal.TableBody";
             this.textBox6.Value = "= Fields.Quantity";
             // 
-            // textBox7
-            // 
-            this.textBox7.Culture = new System.Globalization.CultureInfo("fa-IR");
-            this.textBox7.Format = "{0:N0}";
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.943D), Telerik.Reporting.Drawing.Unit.Inch(0.336D));
-            this.textBox7.StyleName = "Normal.TableBody";
-            this.textBox7.Value = "= Fields.Price";
-            // 
             // textBox8
             // 
             this.textBox8.Name = "textBox8";
@@ -211,10 +195,12 @@ namespace Plum.Form.Report.MasterDetail
             this.textBox8.StyleName = "Normal.TableBody";
             this.textBox8.Value = "= Fields.MaterialName";
             // 
-            // objectDataSource2
+            // entityDataSource1
             // 
-            this.objectDataSource2.DataSource = typeof(Plum.Model.Model.MAterial.FoodMaterialModel);
-            this.objectDataSource2.Name = "objectDataSource2";
+            this.entityDataSource1.ConnectionString = "PlumContext";
+            this.entityDataSource1.Context = typeof(Plum.Data.Contex.PlumContext);
+            this.entityDataSource1.ContextMember = "Foods";
+            this.entityDataSource1.Name = "entityDataSource1";
             // 
             // table2
             // 
@@ -285,6 +271,11 @@ namespace Plum.Form.Report.MasterDetail
             this.textBox14.StyleName = "BlueOpal.TableBody";
             this.textBox14.Value = "= Fields.CostTitle";
             // 
+            // objectDataSource1
+            // 
+            this.objectDataSource1.DataSource = typeof(Plum.Data.FoodSurplusPrice);
+            this.objectDataSource1.Name = "objectDataSource1";
+            // 
             // textBox9
             // 
             this.textBox9.Culture = new System.Globalization.CultureInfo("fa-IR");
@@ -313,22 +304,29 @@ namespace Plum.Form.Report.MasterDetail
             this.textBox10.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.textBox10.Value = "جمع کل";
             // 
+            // objectDataSource2
+            // 
+            this.objectDataSource2.DataSource = typeof(Plum.Model.Model.MAterial.FoodMaterialModel);
+            this.objectDataSource2.Name = "objectDataSource2";
+            // 
             // objectDataSource3
             // 
             this.objectDataSource3.DataSource = typeof(Plum.Model.Model.Food.FoodDetailsModel);
             this.objectDataSource3.Name = "objectDataSource3";
             // 
-            // objectDataSource1
+            // textBox15
             // 
-            this.objectDataSource1.DataSource = typeof(Plum.Data.FoodSurplusPrice);
-            this.objectDataSource1.Name = "objectDataSource1";
+            this.textBox15.Name = "textBox15";
+            this.textBox15.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.95D), Telerik.Reporting.Drawing.Unit.Inch(0.336D));
+            this.textBox15.StyleName = "Normal.TableHeader";
+            this.textBox15.Value = "قیمت هر کیلو";
             // 
-            // entityDataSource1
+            // textBox16
             // 
-            this.entityDataSource1.ConnectionString = "PlumContext";
-            this.entityDataSource1.Context = typeof(PlumContext);
-            this.entityDataSource1.ContextMember = "Foods";
-            this.entityDataSource1.Name = "entityDataSource1";
+            this.textBox16.Name = "textBox16";
+            this.textBox16.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.95D), Telerik.Reporting.Drawing.Unit.Inch(0.336D));
+            this.textBox16.StyleName = "Normal.TableBody";
+            this.textBox16.Value = "= Fields.Price";
             // 
             // DetailReport
             // 
@@ -367,11 +365,9 @@ namespace Plum.Form.Report.MasterDetail
         private Telerik.Reporting.Table table1;
         private Telerik.Reporting.TextBox textBox5;
         private Telerik.Reporting.TextBox textBox6;
-        private Telerik.Reporting.TextBox textBox7;
         private Telerik.Reporting.TextBox textBox8;
         private Telerik.Reporting.TextBox textBox1;
         private Telerik.Reporting.TextBox textBox2;
-        private Telerik.Reporting.TextBox textBox3;
         private Telerik.Reporting.TextBox textBox4;
         private Telerik.Reporting.Table table2;
         private Telerik.Reporting.TextBox textBox13;
@@ -382,5 +378,7 @@ namespace Plum.Form.Report.MasterDetail
         private Telerik.Reporting.TextBox textBox10;
         public Telerik.Reporting.DetailSection detail;
         private Telerik.Reporting.EntityDataSource entityDataSource1;
+        private Telerik.Reporting.TextBox textBox16;
+        private Telerik.Reporting.TextBox textBox15;
     }
 }

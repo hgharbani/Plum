@@ -35,6 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.MaterialName = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -104,11 +105,21 @@
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.RightToLeft = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("IRANSans", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(291, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 24);
+            this.label2.TabIndex = 21;
+            // 
             // CreateMaterial
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.GhostWhite;
             this.ClientSize = new System.Drawing.Size(576, 240);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.MaterialName);
             this.Controls.Add(this.panel1);
@@ -137,5 +148,6 @@
         public System.Windows.Forms.TextBox MaterialName;
         public System.Windows.Forms.Button deleteMAterial;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        public System.Windows.Forms.Label label2;
     }
 }

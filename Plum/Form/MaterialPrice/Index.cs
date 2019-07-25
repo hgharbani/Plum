@@ -20,7 +20,7 @@ namespace Plum.Form.MaterialPrice
         private void button3_Click(object sender, EventArgs e)
         {
             DialogResult createMaterial = new createMaterial().ShowDialog();
-            if (createMaterial == DialogResult.OK)
+            if (createMaterial == DialogResult.Cancel)
             {
                 ShowMaterialGrid();
             }
@@ -213,6 +213,41 @@ namespace Plum.Form.MaterialPrice
                 textBox1.Text = (int.Parse(textBox1.Text) - 1).ToString();
             }
 
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (UnitOfWork db = new UnitOfWork())
+            {
+
+                var companyId = 0;
+                var company = (Data.Company)comboBox2.SelectedItem;
+                if (company != null)
+                {
+                    companyId = company.CompanyId;
+                }
+                var material = db.MaterialRepositories.GetMaterials(textBox2.Text, companyId).ToList();
+
+                dataGridView1.AutoGenerateColumns = false;
+                var model = material.Select(a => new MaterialPriceModel()
+                {
+                    MateriaPriceId = a.Id,
+                    MateriaName = a.Material.MaterialName,
+                    MaterialCompany = a.Company.CompanyName,
+                    UnitPrice = a.UnitPrice,
+                    InsertTime = a.InsertTime
+                }).ToList();
+                dataGridView1.DataSource = model;
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    var x = ((DateTime)row.Cells[4].Value).ToFa();
+                    row.Cells[4].Value = x;
+
+
+                }
+
+
+            }
         }
     }
 }
