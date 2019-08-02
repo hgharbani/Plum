@@ -111,7 +111,42 @@ namespace Plum.Form.Company
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            using (UnitOfWork db = new UnitOfWork())
+            {
 
+                int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                var findCompany = db.CompanyService.GetOne(id);
+                string name = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                var form = new CreateCompany();
+                form.companyId = id;
+                form.txtCompanyName.Text = findCompany.CompanyName;
+
+                DialogResult createMaterial = form.ShowDialog();
+                if (createMaterial == DialogResult.OK)
+                {
+                    ShowMaterialGrid();
+                }
+            }
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            using (UnitOfWork db = new UnitOfWork())
+            {
+
+                int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                var findCompany = db.CompanyService.GetOne(id);
+                string name = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                var form = new CreateCompany();
+                form.companyId = id;
+                form.txtCompanyName.Text = findCompany.CompanyName;
+                DialogResult createMaterial = form.ShowDialog();
+               
+                if (createMaterial == DialogResult.OK)
+                {
+                    ShowMaterialGrid();
+                }
+            }
         }
     }
 }

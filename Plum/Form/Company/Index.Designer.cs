@@ -63,8 +63,8 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(1277, 479);
             this.dataGridView1.TabIndex = 2;
-            this.dataGridView1.UseWaitCursor = true;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
             // 
             // CompanyId
@@ -101,7 +101,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1277, 93);
             this.panel3.TabIndex = 8;
-            this.panel3.UseWaitCursor = true;
             // 
             // groupBox2
             // 
@@ -118,7 +117,6 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "جستجو";
-            this.groupBox2.UseWaitCursor = true;
             // 
             // button1
             // 
@@ -145,7 +143,6 @@
             this.label1.Size = new System.Drawing.Size(70, 29);
             this.label1.TabIndex = 1;
             this.label1.Text = "نام شرکت";
-            this.label1.UseWaitCursor = true;
             // 
             // txtCompanyName
             // 
@@ -154,7 +151,6 @@
             this.txtCompanyName.Name = "txtCompanyName";
             this.txtCompanyName.Size = new System.Drawing.Size(364, 37);
             this.txtCompanyName.TabIndex = 0;
-            this.txtCompanyName.UseWaitCursor = true;
             // 
             // groupBox1
             // 
@@ -169,7 +165,6 @@
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "شرکت ها";
-            this.groupBox1.UseWaitCursor = true;
             // 
             // btnDelete
             // 
@@ -186,7 +181,6 @@
             this.btnDelete.Text = "حذف شرکت";
             this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.UseWaitCursor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnCreate
@@ -203,7 +197,6 @@
             this.btnCreate.Text = "شرکت جدید";
             this.btnCreate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCreate.UseVisualStyleBackColor = false;
-            this.btnCreate.UseWaitCursor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // Index
@@ -224,7 +217,6 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "شرکت ها";
-            this.UseWaitCursor = true;
             this.Load += new System.EventHandler(this.Index_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel3.ResumeLayout(false);

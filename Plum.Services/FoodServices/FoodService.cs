@@ -170,7 +170,7 @@ namespace Plum.Services.FoodServices
 
             }
 
-            if (parameter!="برای تعریف چند کالا از علامت - استفاده نمایید")
+            if (parameter!="برای تعریف چند کالا از علامت - استفاده نمایید" && parameter!="")
             {
                 var materials = parameter.Trim().Replace(",", "-").Split('-');
                 model = model.Where(a =>

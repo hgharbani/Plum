@@ -527,6 +527,9 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Untitled-11.png" />
+    <None Include="Resources\Untitled-1.jpg" />
+    <None Include="Resources\Untitled-1.png" />
     <None Include="Resources\Trash-icon.png" />
     <None Include="Resources\Search-icon.png" />
     <None Include="Resources\Trash - Empty.ico" />
@@ -542,6 +545,7 @@
     <None Include="Resources\delete-icon34.png" />
     <None Include="Resources\sale.png" />
     <None Include="Resources\discount.png" />
+    <None Include="Resources\photo-1511690656952-34342bb7c2f2.jpg" />
     <Content Include="Resources\SaveIcon.png" />
   </ItemGroup>
   <ItemGroup />

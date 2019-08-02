@@ -150,6 +150,35 @@ namespace Plum.Form.FoodMaterial
                 ShowMaterialFoodGrid(_foodIds);
             }
         }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                using (UnitOfWork db = new UnitOfWork())
+                {
+                    Data.FoodMaterial model = db.FoodMaterialService.GetOne(id);
+                    EditMaterialFood formEdit = new EditMaterialFood();
+                    formEdit._foodMaterilId = id;
+                    formEdit._foodIds = model.FoodId;
+                    formEdit.Quantity.Text = model.Quantity.ToString();
+                    formEdit._materialId = model.MaterialPrice.Id;
+                    formEdit._companyId = companyId;
+
+                    formEdit.UnitPrice.Text = model.MaterialPrice.UnitPrice.ToString();
+                    if (formEdit.ShowDialog() == DialogResult.OK)
+                    {
+                        ShowMaterialFoodGrid(_foodIds);
+                    }
+                }
+
+            }
+            else
+            {
+                RtlMessageBox.Show("آیتمی انتخاب نشده است");
+            }
+        }
     }
 }
 

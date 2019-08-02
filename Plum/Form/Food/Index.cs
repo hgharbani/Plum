@@ -21,29 +21,7 @@ namespace Plum.Form.Food
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.CurrentRow != null)
-            {
-                int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-                var companyId = (Data.Company)comboBox1.SelectedItem;
-                using (UnitOfWork db = new UnitOfWork())
-                {
-                    Data.Food model = db.FoodService.GetOne(id);
-                    EditFood formEdit = new EditFood();
-                    formEdit.foodId = id;
-                    formEdit.CompanyId = companyId.CompanyId;
-                    formEdit.FoodName.Text = model.FoodName;
-
-                    if (formEdit.ShowDialog() == DialogResult.None)
-                    {
-                        ShowFoodGrid();
-                    }
-                }
-
-            }
-            else
-            {
-                RtlMessageBox.Show("آیتمی انتخاب نشده است");
-            }
+          
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -82,16 +60,7 @@ namespace Plum.Form.Food
                 comboBox1.DataSource = db.CompanyService.GetAll();
             }
         }
-        private void Getfood()
-        {
-            using (UnitOfWork db = new UnitOfWork())
-            {
-                var foods= db.FoodService.GetAll();
-                cmbFoodName.ValueMember = "Id";
-                cmbFoodName.DisplayMember = "FoodName";
-                cmbFoodName.DataSource = foods;
-            }
-        }
+       
 
         /// <summary>
         /// 
@@ -114,7 +83,7 @@ namespace Plum.Form.Food
         private void Index_Load(object sender, EventArgs e)
         {
             GetCompany();
-            Getfood();
+         
             ShowFoodGrid();
         }
 
@@ -123,7 +92,6 @@ namespace Plum.Form.Food
             var createFoods = new CreateFood().ShowDialog();
             if (createFoods == DialogResult.Cancel)
             {
-                Getfood();
                 ShowFoodGrid();
             }
         }
@@ -131,6 +99,51 @@ namespace Plum.Form.Food
         private void button1_Click(object sender, EventArgs e)
         {
             ShowFoodGrid();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (UnitOfWork db = new UnitOfWork())
+            {
+                var model = new List<Data.Food>()
+                {
+                    new Data.Food()
+                    {
+                        Id = 0,
+                        FoodName = "همه"
+                    }
+                };
+                model.AddRange(db.FoodService.GetAll().Where(a => a.CompanyId == (int)comboBox1.SelectedValue).ToList());
+
+                cmbFoodName.DataSource = model;
+            }
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                var companyId = (Data.Company)comboBox1.SelectedItem;
+                using (UnitOfWork db = new UnitOfWork())
+                {
+                    Data.Food model = db.FoodService.GetOne(id);
+                    EditFood formEdit = new EditFood();
+                    formEdit.foodId = id;
+                    formEdit.CompanyId = companyId.CompanyId;
+                    formEdit.FoodName.Text = model.FoodName;
+
+                    if (formEdit.ShowDialog() == DialogResult.None)
+                    {
+                        ShowFoodGrid();
+                    }
+                }
+
+            }
+            else
+            {
+                RtlMessageBox.Show("آیتمی انتخاب نشده است");
+            }
         }
     }
 }

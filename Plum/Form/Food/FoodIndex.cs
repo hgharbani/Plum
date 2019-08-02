@@ -89,12 +89,7 @@ namespace Plum.Form.Food
             MaterialsName.Font = new Font(MaterialsName.Font.FontFamily, 10);
             MaterialsName.ForeColor = Color.Gray;
         }
-
-        private void GetFood()
-        {
-
-        }
-
+        
         private void GetCompany()
         {
             using (UnitOfWork db = new UnitOfWork())
@@ -102,39 +97,7 @@ namespace Plum.Form.Food
                 comboBox1.DataSource = db.CompanyService.GetAll();
             }
         }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            var createFoods = new CreateFood().ShowDialog();
-            if (createFoods == DialogResult.OK)
-            {
-                ShowFoodGrid();
-            }
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-          
-        }
-
         
-        private void button9_Click(object sender, EventArgs e)
-        {
-            
-
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            ShowFoodGrid(false);
-        }
-
         private void MaterialsName_Enter(object sender, EventArgs e)
         {
             if (MaterialsName.Text == @"برای تعریف چند کالا از علامت - استفاده نمایید")
@@ -160,22 +123,7 @@ namespace Plum.Form.Food
             MaterialsName.ForeColor = Color.Black;
             MaterialsName.Font = new Font(MaterialsName.Font.FontFamily, 12);
         }
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-            ShowFoodGrid(true);
-        }
-
-        private void cmbFoodName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+        
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             using (UnitOfWork db = new UnitOfWork())
@@ -193,22 +141,12 @@ namespace Plum.Form.Food
                 cmbFoodName.DataSource = model;
             }
         }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-           
-        }
-
+        
         private void label6_Click(object sender, EventArgs e)
         {
 
         }
-
-        private void button7_Click(object sender, EventArgs e)
-        { 
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+ void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridView1.CurrentCell.ColumnIndex == 5)
             {

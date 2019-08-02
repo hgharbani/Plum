@@ -272,7 +272,6 @@
             this.cmbFoodName.Size = new System.Drawing.Size(386, 42);
             this.cmbFoodName.TabIndex = 8;
             this.cmbFoodName.ValueMember = "Id";
-            this.cmbFoodName.SelectedIndexChanged += new System.EventHandler(this.cmbFoodName_SelectedIndexChanged);
             // 
             // label1
             // 

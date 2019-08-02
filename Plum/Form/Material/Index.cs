@@ -163,5 +163,30 @@ namespace Plum.Form.Material
                 dataGridView2.CurrentCell = null;
             }
         }
+
+        private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView2.CurrentRow != null)
+            {
+                int id = int.Parse(dataGridView2.CurrentRow.Cells[0].Value.ToString());
+                using (UnitOfWork db = new UnitOfWork())
+                {
+                    Data.Material model = db.MaterialService.GetOne(id);
+                    CreateMaterial formEdit = new CreateMaterial();
+                    formEdit.MaterialId = model.Id;
+                    formEdit.MaterialName.Text = model.MaterialName;
+
+                    if (formEdit.ShowDialog() == DialogResult.OK)
+                    {
+                        ShowMaterialGrid();
+                    }
+                }
+
+            }
+            else
+            {
+                RtlMessageBox.Show("آیتمی انتخاب نشده است");
+            }
+        }
     }
 }

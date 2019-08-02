@@ -234,5 +234,32 @@ namespace Plum.Form.MaterialPrice
 
             }
         }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                using (UnitOfWork db = new UnitOfWork())
+                {
+                    Data.MaterialPrice model = db.MaterialRepositories.GetOne(id);
+                    EditMateril formEdit = new EditMateril();
+                    formEdit.Id.Text = id.ToString();
+                    formEdit.CompanyId = model.CompanyId;
+                    formEdit.MaterialId = model.MaterialId;
+                    formEdit.UnitPrice.Text = model.UnitPrice.ToString();
+
+                    if (formEdit.ShowDialog() == DialogResult.OK)
+                    {
+                        ShowMaterialGrid();
+                    }
+                }
+
+            }
+            else
+            {
+                RtlMessageBox.Show("آیتمی انتخاب نشده است");
+            }
+        }
     }
 }
