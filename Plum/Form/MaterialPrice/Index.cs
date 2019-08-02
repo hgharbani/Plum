@@ -14,18 +14,7 @@ namespace Plum.Form.MaterialPrice
         {
             InitializeComponent();
         }
-
-
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            DialogResult createMaterial = new createMaterial().ShowDialog();
-            if (createMaterial == DialogResult.Cancel)
-            {
-                ShowMaterialGrid();
-            }
-        }
-
+        
         /// <summary>
         /// 
         /// </summary>
@@ -43,11 +32,7 @@ namespace Plum.Form.MaterialPrice
                     UnitPrice = a.UnitPrice,
                     InsertTime = a.InsertTime
                 }).ToList();
-                TotalCount.Text = ((material.Count())).ToString();
-                if (material.Count() <= 15)
-                {
-                    button1.Enabled = false;
-                }
+               
                 dataGridView1.DataSource = model;
 
                 foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -65,38 +50,9 @@ namespace Plum.Form.MaterialPrice
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.CurrentRow != null)
-            {
-                int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-                using (UnitOfWork db = new UnitOfWork())
-                {
-                    Data.MaterialPrice model = db.MaterialRepositories.GetOne(id);
-                    EditMateril formEdit = new EditMateril();
-                    formEdit.Id.Text = id.ToString();
-                    formEdit.CompanyId = model.CompanyId;
-                    formEdit.MaterialId = model.MaterialId;
-                    formEdit.UnitPrice.Text = model.UnitPrice.ToString();
-
-                    if (formEdit.ShowDialog() == DialogResult.OK)
-                    {
-                        ShowMaterialGrid();
-                    }
-                }
-
-            }
-            else
-            {
-                RtlMessageBox.Show("آیتمی انتخاب نشده است");
-            }
-
-        }
-
         private void FoodIndex_Load(object sender, EventArgs e)
         {
-            textBox1.Enabled = false;
-            textBox1.Text = "1";
+          
             ShowMaterialGrid();
             Getcompany();
         }
@@ -125,8 +81,86 @@ namespace Plum.Form.MaterialPrice
         {
 
         }
+        
 
-        private void button5_Click(object sender, EventArgs e)
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (UnitOfWork db = new UnitOfWork())
+            {
+
+                var companyId = 0;
+                var company = (Data.Company)comboBox2.SelectedItem;
+                if (company != null)
+                {
+                    companyId = company.CompanyId;
+                }
+                var material = db.MaterialRepositories.GetMaterials(textBox2.Text, companyId).ToList();
+
+                dataGridView1.AutoGenerateColumns = false;
+                var model = material.Select(a => new MaterialPriceModel()
+                {
+                    MateriaPriceId = a.Id,
+                    MateriaName = a.Material.MaterialName,
+                    MaterialCompany = a.Company.CompanyName,
+                    UnitPrice = a.UnitPrice,
+                    InsertTime = a.InsertTime
+                }).ToList();
+                dataGridView1.DataSource = model;
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    var x = ((DateTime)row.Cells[4].Value).ToFa();
+                    row.Cells[4].Value = x;
+
+
+                }
+
+
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                using (UnitOfWork db = new UnitOfWork())
+                {
+                    Data.MaterialPrice model = db.MaterialRepositories.GetOne(id);
+                    EditMateril formEdit = new EditMateril();
+                    formEdit.Id.Text = id.ToString();
+                    formEdit.CompanyId = model.CompanyId;
+                    formEdit.MaterialId = model.MaterialId;
+                    formEdit.UnitPrice.Text = model.UnitPrice.ToString();
+
+                    if (formEdit.ShowDialog() == DialogResult.OK)
+                    {
+                        ShowMaterialGrid();
+                    }
+                }
+
+            }
+            else
+            {
+                RtlMessageBox.Show("آیتمی انتخاب نشده است");
+            }
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            DialogResult createMaterial = new createMaterial().ShowDialog();
+            if (createMaterial == DialogResult.Cancel)
+            {
+                ShowMaterialGrid();
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
         {
             if (dataGridView1.RowCount > 0)
             {
@@ -166,56 +200,7 @@ namespace Plum.Form.MaterialPrice
             }
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-            using (UnitOfWork db = new UnitOfWork())
-            {
-              
-                    var companyId = 0;
-                    var company = (Data.Company) comboBox2.SelectedItem;
-                    if (company != null)
-                    {
-                        companyId = company.CompanyId;
-                    }
-                    var material = db.MaterialRepositories.GetMaterials(textBox2.Text, companyId).ToList();
-
-                    dataGridView1.AutoGenerateColumns = false;
-                    var model = material.Select(a => new MaterialPriceModel()
-                    {
-                        MateriaPriceId = a.Id,
-                        MateriaName = a.Material.MaterialName,
-                        MaterialCompany = a.Company.CompanyName,
-                        UnitPrice = a.UnitPrice,
-                        InsertTime = a.InsertTime
-                    }).ToList();
-                    dataGridView1.DataSource = model;
-                    foreach (DataGridViewRow row in dataGridView1.Rows)
-                    {
-                        var x = ((DateTime)row.Cells[4].Value).ToFa();
-                        row.Cells[4].Value = x;
-
-
-                    }
-
-                
-            }
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (int.Parse(textBox1.Text) > 1)
-            {
-                textBox1.Text = (int.Parse(textBox1.Text) - 1).ToString();
-            }
-
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void button3_Click_1(object sender, EventArgs e)
         {
             using (UnitOfWork db = new UnitOfWork())
             {

@@ -114,170 +114,18 @@ namespace Plum.Form.Food
 
         private void button8_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentRow != null)
-            {
-                int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-                var companyId = (Data.Company)comboBox1.SelectedItem;
-                using (UnitOfWork db = new UnitOfWork())
-                {
-                    Data.Food model = db.FoodService.GetOne(id);
-                    EditFood formEdit = new EditFood();
-                    formEdit.foodId = id;
-                    formEdit.CompanyId = companyId.CompanyId;
-                    formEdit.FoodName.Text = model.FoodName;
-
-                    if (formEdit.ShowDialog() == DialogResult.None)
-                    {
-                        ShowFoodGrid();
-                    }
-                }
-
-            }
-            else
-            {
-                RtlMessageBox.Show("آیتمی انتخاب نشده است");
-            }
+            
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.RowCount > 0)
-            {
-                using (UnitOfWork db = new UnitOfWork())
-                {
-
-                    int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-                    string name = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                    if (RtlMessageBox.Show($"ایا از حذف {name} مطمئن هستید", "توجه", MessageBoxButtons.YesNo,
-                            MessageBoxIcon.Warning) == DialogResult.Yes)
-                    {
-                        bool result = db.FoodService.DeleteFood(id);
-                        if (result)
-                        {
-                            db.Save();
-
-                            RtlMessageBox.Show("کالا با موفقیت حذف شد");
-                        }
-                        RtlMessageBox.Show("کالا  حذف نشد");
-
-                    }
-
-                }
-
-                ShowFoodGrid();
-            }
+          
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.CurrentRow != null)
-            {
-
-                FoodMaterial.Index frm = new FoodMaterial.Index();
-                frm._foodIds = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-                frm.companyId = (int)comboBox1.SelectedValue;
-                frm.label2.Text = " صفحه مدیریت مواد لازم غذا:" + "  " + dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                var createMaterialFoods = frm.ShowDialog();
-                if (createMaterialFoods == DialogResult.Cancel)
-                {
-                    ShowFoodGrid(false);
-                }
-            }
-            else
-            {
-                RtlMessageBox.Show("لطفا ابتدا نام غذا را از جدول زیر انتخاب نمایید.");
-            }
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.CurrentRow != null)
-            {
-                using (UnitOfWork db = new UnitOfWork())
-                {
-                    int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-                    FoodPrice.Index frm = new FoodPrice.Index();
-                    frm._foodId = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-                    var model = db.FoodMaterialService.GetOneByFoodId(id);
-                    var totalPrice = model.Sum(a => a.MaterialTotalPrice);
-                    frm.TotalPrice.Text = totalPrice.ToString();
-                    frm.label1.Text = " هزینه های مازاد یک پرس :" + "  " +
-                                      dataGridView1.CurrentRow.Cells[1].Value.ToString();
-
-                    //گرفتن لیست هزینه های مازاد یک پرس غذا 
-                    var foodsurplus = db.FoodSurplusPricService.GetFoodSurplusPricesByFoodId(id);
-                    if (foodsurplus.Any())
-                    {
-                        frm._IsUpdate = true; //فعال سازی مود اپدیت کردن
-
-                    }
-                    else
-                    {
-                        frm._IsUpdate = false; //فعال سازی مود ثبت کردن
-                    }
-
-                    frm.person.Text = foodsurplus.Any(a => a.AdjustKind == 1)
-                        ? foodsurplus.First(a => a.AdjustKind == 1).Price.ToString()
-                        : "0";
-
-                    frm.Chashni.Text = foodsurplus.Any(a => a.AdjustKind == 2)
-                        ? foodsurplus.First(a => a.AdjustKind == 2).Price.ToString()
-                        : "0";
-                    frm.Clean.Text = foodsurplus.Any(a => a.AdjustKind == 3)
-                        ? foodsurplus.First(a => a.AdjustKind == 3).Price.ToString()
-                        : "0";
-                    frm.Box.Text = foodsurplus.Any(a => a.AdjustKind == 4)
-                        ? foodsurplus.First(a => a.AdjustKind == 4).Price.ToString()
-                        : "0";
-                    frm.Parent.Text = foodsurplus.Any(a => a.AdjustKind == 5)
-                        ? foodsurplus.First(a => a.AdjustKind == 5).Price.ToString(CultureInfo.InvariantCulture)
-                        : "0";
-                    if (foodsurplus.Any(a => a.AdjustKind == 6))
-                    {
-                        var x = foodsurplus.First(a => a.AdjustKind == 6).Price.ToString(CultureInfo.InvariantCulture);
-                        frm.bimeh.Text = x.ToString();
-                    }
-                    else
-                    {
-                        frm.bimeh.Text = "0";
-                    }
-
-                    frm.tax.Text = foodsurplus.Any(a => a.AdjustKind == 7)
-                        ? foodsurplus.First(a => a.AdjustKind == 7).Price.ToString(CultureInfo.InvariantCulture)
-                        : "0";
-                    frm.Calculator();
-
-                    var createMaterialFoods = frm.ShowDialog();
-                    if (createMaterialFoods == DialogResult.OK)
-                    {
-                        ShowFoodGrid(false);
-                    }
-
-                }
-            }
-            else
-            {
-                MessageBox.Show("لطفا ابتدا نام غذا را از جدول زیر انتخاب نمایید.");
-            }
-
-        }
-
+        
         private void button9_Click(object sender, EventArgs e)
         {
             
-                var reportViewver = new ReportViewer();
-            var food = (Data.Food)cmbFoodName.SelectedItem;
-            if (food.Id > 0)
-            {
-                reportViewver.foodId = food.Id;
-                reportViewver.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("لطفا نام کالا را انتخاب کنید");
-            }
-        
 
 
         }
@@ -348,12 +196,7 @@ namespace Plum.Form.Food
 
         private void button6_Click(object sender, EventArgs e)
         {
-            FoodPrice.EditFoodsPric frm = new FoodPrice.EditFoodsPric();
-            var createMaterialFoods = frm.ShowDialog();
-            if (createMaterialFoods == DialogResult.Cancel)
-            {
-                ShowFoodGrid(false);
-            }
+           
         }
 
         private void label6_Click(object sender, EventArgs e)
@@ -362,7 +205,134 @@ namespace Plum.Form.Food
         }
 
         private void button7_Click(object sender, EventArgs e)
-        { SaveFileDialog saveFiledialog = new SaveFileDialog();
+        { 
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.CurrentCell.ColumnIndex == 5)
+            {
+                FoodMaterial.Index frm = new FoodMaterial.Index();
+                frm._foodIds = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                frm.companyId = (int) comboBox1.SelectedValue;
+                var createMaterialFoods = frm.ShowDialog();
+                if (createMaterialFoods == DialogResult.Cancel)
+                {
+                    ShowFoodGrid(false);
+                }
+            }
+
+            if (dataGridView1.CurrentCell.ColumnIndex == 6)
+            {
+                if (dataGridView1.CurrentRow != null)
+                {
+                    using (UnitOfWork db = new UnitOfWork())
+                    {
+                        int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                        FoodPrice.Index frm = new FoodPrice.Index();
+                        frm._foodId = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                        var model = db.FoodMaterialService.GetOneByFoodId(id);
+                        var totalPrice = model.Sum(a => a.MaterialTotalPrice);
+                        frm.TotalPrice.Text = totalPrice.ToString();
+                        frm.label1.Text = " هزینه های مازاد یک پرس :" + "  " +
+                                          dataGridView1.CurrentRow.Cells[1].Value.ToString();
+
+                        //گرفتن لیست هزینه های مازاد یک پرس غذا 
+                        var foodsurplus = db.FoodSurplusPricService.GetFoodSurplusPricesByFoodId(id);
+                        if (foodsurplus.Any())
+                        {
+                            frm._IsUpdate = true; //فعال سازی مود اپدیت کردن
+
+                        }
+                        else
+                        {
+                            frm._IsUpdate = false; //فعال سازی مود ثبت کردن
+                        }
+
+                        frm.person.Text = foodsurplus.Any(a => a.AdjustKind == 1)
+                            ? foodsurplus.First(a => a.AdjustKind == 1).Price.ToString()
+                            : "0";
+
+                        frm.Chashni.Text = foodsurplus.Any(a => a.AdjustKind == 2)
+                            ? foodsurplus.First(a => a.AdjustKind == 2).Price.ToString()
+                            : "0";
+                        frm.Clean.Text = foodsurplus.Any(a => a.AdjustKind == 3)
+                            ? foodsurplus.First(a => a.AdjustKind == 3).Price.ToString()
+                            : "0";
+                        frm.Box.Text = foodsurplus.Any(a => a.AdjustKind == 4)
+                            ? foodsurplus.First(a => a.AdjustKind == 4).Price.ToString()
+                            : "0";
+                        frm.Parent.Text = foodsurplus.Any(a => a.AdjustKind == 5)
+                            ? foodsurplus.First(a => a.AdjustKind == 5).Price.ToString(CultureInfo.InvariantCulture)
+                            : "0";
+                        if (foodsurplus.Any(a => a.AdjustKind == 6))
+                        {
+                            var x = foodsurplus.First(a => a.AdjustKind == 6).Price.ToString(CultureInfo.InvariantCulture);
+                            frm.bimeh.Text = x.ToString();
+                        }
+                        else
+                        {
+                            frm.bimeh.Text = "0";
+                        }
+
+                        frm.tax.Text = foodsurplus.Any(a => a.AdjustKind == 7)
+                            ? foodsurplus.First(a => a.AdjustKind == 7).Price.ToString(CultureInfo.InvariantCulture)
+                            : "0";
+                        frm.Calculator();
+
+                        var createMaterialFoods = frm.ShowDialog();
+                        if (createMaterialFoods == DialogResult.OK)
+                        {
+                            ShowFoodGrid(false);
+                        }
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("لطفا ابتدا نام غذا را از جدول زیر انتخاب نمایید.");
+                }
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ShowFoodGrid(false);
+        }
+
+        private void خروجیPdfToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
+
+        private void خروجیPdfToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+           
+
+            var reportViewver = new ReportViewer();
+            var food = (Data.Food)cmbFoodName.SelectedItem;
+            if (food.Id > 0)
+            {
+                reportViewver.foodId = food.Id;
+                reportViewver.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("لطفا نام کالا را انتخاب کنید");
+            }
+
+        }
+
+        private void خروجیExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFiledialog = new SaveFileDialog();
             saveFiledialog.Filter = @"Excel Xls|*.xls";
             saveFiledialog.Title = "Save Excel File";
             saveFiledialog.FileName = "data" + DateTime.Now.ToFa().Replace("/", "-");
@@ -372,8 +342,8 @@ namespace Plum.Form.Food
                 using (UnitOfWork db = new UnitOfWork())
                 {
                     var finalList = new List<FoodDetailsModel>();
-                    var food = (int) cmbFoodName.SelectedValue;
-                    var company = (int) comboBox1.SelectedValue;
+                    var food = (int)cmbFoodName.SelectedValue;
+                    var company = (int)comboBox1.SelectedValue;
                     var foods = db.FoodService.GetFoodsbyFoodDetails(MaterialsName.Text, company, food);
                     if (!string.IsNullOrWhiteSpace(PriceFrom.Text))
                     {
@@ -393,29 +363,29 @@ namespace Plum.Form.Food
                         var workbook = p.Workbook;
                         var ws = p.Workbook.Worksheets.Add("گزارش مصرف کلی ماهیانه");
                         ws.View.RightToLeft = true;
-                      
-                       
+
+
                         var record = 1;
                         var nextRecord = 1;
                         foreach (var row in foods)
                         {
-                          
-                           
-                            ws.Cells[record, 1, record,8].Merge = true;
-                            ws.Cells[record, 1, record,8].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                            ws.Cells[record, 1, record,8].Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Bisque);
-                            ws.Cells[record, 1, record,8].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                            ws.Cells[record, 1, record,8].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                            ws.Cells[record, 1, record,8].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                            ws.Cells[record, 1, record,8].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                            ws.Cells[record, 1].Value ="ریز اجزای تشکیل دهنده یک پرس :" + " "+row.FoodName;
+
+
+                            ws.Cells[record, 1, record, 8].Merge = true;
+                            ws.Cells[record, 1, record, 8].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                            ws.Cells[record, 1, record, 8].Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Bisque);
+                            ws.Cells[record, 1, record, 8].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                            ws.Cells[record, 1, record, 8].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                            ws.Cells[record, 1, record, 8].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                            ws.Cells[record, 1, record, 8].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                            ws.Cells[record, 1].Value = "ریز اجزای تشکیل دهنده یک پرس :" + " " + row.FoodName;
                             record += 1;
                             ws.Cells[record, 1, record, 2].Merge = true;
                             ws.Cells[record, 1, record, 2].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
                             ws.Cells[record, 1, record, 2].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
                             ws.Cells[record, 1, record, 2].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
                             ws.Cells[record, 1, record, 2].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                            ws.Cells[record, 1].Value ="نام کالا" ;
+                            ws.Cells[record, 1].Value = "نام کالا";
 
                             ws.Cells[record, 3, record, 4].Merge = true;
                             ws.Cells[record, 3, record, 4].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
@@ -437,7 +407,7 @@ namespace Plum.Form.Food
                             ws.Cells[record, 7, record, 8].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
                             ws.Cells[record, 7, record, 8].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
                             ws.Cells[record, 7].Value = "قیمت نهایی  ";
-                           
+
                             nextRecord = record;
                             //ws.Row(record).Style.Fill.PatternType = ExcelFillStyle.Solid;
                             //ws.Row(record).Style.Fill.PatternType = ExcelFillStyle.Solid;
@@ -445,7 +415,7 @@ namespace Plum.Form.Food
                             //ws.Row(record).Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Gainsboro);
                             foreach (var rowFoodMaterial in row.FoodMaterials.ToList())
                             {
-                                nextRecord +=  1;
+                                nextRecord += 1;
                                 ws.Cells[nextRecord, 1, nextRecord, 2].Merge = true;
                                 ws.Cells[nextRecord, 1, nextRecord, 2].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
                                 ws.Cells[nextRecord, 1, nextRecord, 2].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
@@ -491,11 +461,11 @@ namespace Plum.Form.Food
                             ws.Cells[nextRecord, 1, nextRecord, 6].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
                             ws.Cells[nextRecord, 1].Value = "جمع کل";
                             ws.Cells[nextRecord, 7, nextRecord, 8].Merge = true;
-                            ws.Cells[nextRecord, 7, nextRecord,8].Merge = true;
-                            ws.Cells[nextRecord, 7, nextRecord,8].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                            ws.Cells[nextRecord, 7, nextRecord,8].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                            ws.Cells[nextRecord, 7, nextRecord,8].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                            ws.Cells[nextRecord, 7, nextRecord,8].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                            ws.Cells[nextRecord, 7, nextRecord, 8].Merge = true;
+                            ws.Cells[nextRecord, 7, nextRecord, 8].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                            ws.Cells[nextRecord, 7, nextRecord, 8].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                            ws.Cells[nextRecord, 7, nextRecord, 8].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                            ws.Cells[nextRecord, 7, nextRecord, 8].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
                             ws.Cells[nextRecord, 7].Value = row.FinalPrice;
                             ws.Row(nextRecord).Style.Fill.PatternType = ExcelFillStyle.Solid;
                             ws.Row(nextRecord).Style.Fill.PatternType = ExcelFillStyle.Solid;
@@ -511,11 +481,11 @@ namespace Plum.Form.Food
                             ws.Cells[nextRecord, 1, nextRecord, 6].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
                             ws.Cells[nextRecord, 1].Value = "هزینه های مازاد";
                             ws.Cells[nextRecord, 7, nextRecord, 8].Merge = true;
-                            ws.Cells[nextRecord,7, nextRecord, 8].Merge = true;
-                            ws.Cells[nextRecord,7, nextRecord, 8].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                            ws.Cells[nextRecord,7, nextRecord, 8].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                            ws.Cells[nextRecord,7, nextRecord, 8].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                            ws.Cells[nextRecord,7, nextRecord, 8].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                            ws.Cells[nextRecord, 7, nextRecord, 8].Merge = true;
+                            ws.Cells[nextRecord, 7, nextRecord, 8].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                            ws.Cells[nextRecord, 7, nextRecord, 8].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                            ws.Cells[nextRecord, 7, nextRecord, 8].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                            ws.Cells[nextRecord, 7, nextRecord, 8].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
                             ws.Cells[nextRecord, 7].Value = "مبلغ";
                             //ws.Row(nextRecord).Style.Fill.PatternType = ExcelFillStyle.Solid;
                             //ws.Row(nextRecord).Style.Fill.PatternType = ExcelFillStyle.Solid;
@@ -523,20 +493,20 @@ namespace Plum.Form.Food
                             //ws.Row(nextRecord).Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Gainsboro);
                             foreach (var rowFoodSurplusPrice in row.FoodSurplusPrices)
                             {
-                                
+
                                 ws.Cells[nextRecord, 1, nextRecord, 6].Merge = true;
-                                ws.Cells[nextRecord, 1, nextRecord,6].Merge = true;
-                                ws.Cells[nextRecord, 1, nextRecord,6].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                                ws.Cells[nextRecord, 1, nextRecord,6].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                                ws.Cells[nextRecord, 1, nextRecord,6].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                                ws.Cells[nextRecord, 1, nextRecord,6].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                                ws.Cells[nextRecord, 1, nextRecord, 6].Merge = true;
+                                ws.Cells[nextRecord, 1, nextRecord, 6].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                                ws.Cells[nextRecord, 1, nextRecord, 6].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                                ws.Cells[nextRecord, 1, nextRecord, 6].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                                ws.Cells[nextRecord, 1, nextRecord, 6].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
                                 ws.Cells[nextRecord, 1].Value = rowFoodSurplusPrice.CostTitle;
                                 ws.Cells[nextRecord, 7, nextRecord, 8].Merge = true;
-                                ws.Cells[nextRecord,7, nextRecord, 8].Merge = true;
-                                ws.Cells[nextRecord,7, nextRecord, 8].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                                ws.Cells[nextRecord,7, nextRecord, 8].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                                ws.Cells[nextRecord,7, nextRecord, 8].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                                ws.Cells[nextRecord,7, nextRecord, 8].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                                ws.Cells[nextRecord, 7, nextRecord, 8].Merge = true;
+                                ws.Cells[nextRecord, 7, nextRecord, 8].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                                ws.Cells[nextRecord, 7, nextRecord, 8].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                                ws.Cells[nextRecord, 7, nextRecord, 8].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                                ws.Cells[nextRecord, 7, nextRecord, 8].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
                                 ws.Cells[nextRecord, 7].Value = rowFoodSurplusPrice.Price;
                                 nextRecord += 1;
                             }

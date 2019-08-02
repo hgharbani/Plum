@@ -40,7 +40,7 @@ namespace Plum.Form.Food
                 {
                     db.Save();
                     RtlMessageBox.Show("عملیات با موفقیت انجام شد");
-                    DialogResult = DialogResult.OK;
+               
                 }
                 else
                 {

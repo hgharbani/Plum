@@ -41,7 +41,7 @@ namespace Plum.Form
              var searchUser=   db.UserServices.GetUser(user);
                 if (searchUser!=null)
                 {
-                    var form = new Form1();
+                    var form = new Index();
                     form.UserId = searchUser.UserId;
                     this.Hide();
                     var x = form.ShowDialog();

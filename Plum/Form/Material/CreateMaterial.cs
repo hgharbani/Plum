@@ -27,24 +27,7 @@ namespace Plum.Form.Material
 
                 int id = MaterialId;
                 string name = MaterialName.Text;
-                if (RtlMessageBox.Show($"ایا از حذف {name} مطمئن هستید", "توجه", MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Warning) == DialogResult.Yes)
-                {
-
-                    var result = db.MaterialService.DeleteMaterial(id);
-                    if (result.IsChange)
-                    {
-                        db.Save();
-
-                        RtlMessageBox.Show(result.Message);
-                        DialogResult = DialogResult.OK;
-                    }
-                    else
-                    {
-                        RtlMessageBox.Show(result.Message);
-                    }
-
-                }
+                
             }
         }
 
@@ -78,7 +61,7 @@ namespace Plum.Form.Material
                     {
                         db.Save();
                         RtlMessageBox.Show(result.Message);
-                        DialogResult = DialogResult.OK;
+                        DialogResult = DialogResult.Cancel;
                     }
                     else
                     {

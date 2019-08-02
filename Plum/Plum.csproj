@@ -235,6 +235,18 @@
     <Compile Include="Form\Food\FoodIndex.Designer.cs">
       <DependentUpon>FoodIndex.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form\Food\Index.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Food\Index.Designer.cs">
+      <DependentUpon>Index.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Index.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Index.Designer.cs">
+      <DependentUpon>Index.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -366,6 +378,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\Food\FoodIndex.resx">
       <DependentUpon>FoodIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Food\Index.resx">
+      <DependentUpon>Index.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Index.resx">
+      <DependentUpon>Index.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -509,6 +527,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Trash-icon.png" />
+    <None Include="Resources\Search-icon.png" />
     <None Include="Resources\Trash - Empty.ico" />
     <None Include="Resources\Reastor.png" />
     <None Include="Resources\reload.png" />
@@ -516,6 +536,12 @@
     <None Include="Resources\iconfinder_business-work_7_2377640%281%29.png" />
     <None Include="Resources\iconfinder_simpline_35_2305625.png" />
     <None Include="Resources\iconfinder_simpline_35_2305625%281%29.png" />
+    <None Include="Resources\add-icon.png" />
+    <None Include="Resources\delete-icon.png" />
+    <None Include="Resources\add-icon1.png" />
+    <None Include="Resources\delete-icon34.png" />
+    <None Include="Resources\sale.png" />
+    <None Include="Resources\discount.png" />
     <Content Include="Resources\SaveIcon.png" />
   </ItemGroup>
   <ItemGroup />

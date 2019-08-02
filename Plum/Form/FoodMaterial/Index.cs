@@ -52,6 +52,10 @@ namespace Plum.Form.FoodMaterial
                     model.Add(foodmaterial);
                 }
 
+                if (!string.IsNullOrWhiteSpace(txtMaterialName.Text))
+                {
+                    model = model.Where(b => b.MaterialName.Contains(txtMaterialName.Text)).ToList();
+                }
                 dataGridView1.DataSource = model;
                 textBox2.Text = foodMaterial.Sum(a => a.MaterialTotalPrice).ToString(CultureInfo.CurrentCulture);
                 dataGridView1.Columns[0].Visible = false;
@@ -59,28 +63,60 @@ namespace Plum.Form.FoodMaterial
                 dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
             }
         }
+        
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                using (UnitOfWork db = new UnitOfWork())
+                {
+                    Data.FoodMaterial model = db.FoodMaterialService.GetOne(id);
+                    EditMaterialFood formEdit = new EditMaterialFood();
+                    formEdit._foodMaterilId = id;
+                    formEdit._foodIds = model.FoodId;
+                    formEdit.Quantity.Text = model.Quantity.ToString();
+                    formEdit._materialId = model.MaterialPrice.Id;
+                    formEdit._companyId = companyId;
 
+                    formEdit.UnitPrice.Text = model.MaterialPrice.UnitPrice.ToString();
+                    if (formEdit.ShowDialog() == DialogResult.OK)
+                    {
+                        ShowMaterialFoodGrid(_foodIds);
+                    }
+                }
 
-        private void button1_Click(object sender, EventArgs e)
+            }
+            else
+            {
+                RtlMessageBox.Show("آیتمی انتخاب نشده است");
+            }
+        }
+        
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            ShowMaterialFoodGrid(_foodIds);
+        }
+
+        private void btnCreate_Click_1(object sender, EventArgs e)
         {
             CreateMAterialFood createMaterialFoods = new CreateMAterialFood
             {
                 _foodIds = _foodIds,
-                company= companyId
+                company = companyId
             };
             DialogResult result = createMaterialFoods.ShowDialog();
-            
+
             if (result == DialogResult.OK)
             {
                 ShowMaterialFoodGrid(_foodIds);
             }
         }
 
-
-        private void button6_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
             if (dataGridView1.RowCount > 0)
             {
@@ -113,40 +149,6 @@ namespace Plum.Form.FoodMaterial
 
                 ShowMaterialFoodGrid(_foodIds);
             }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.CurrentRow != null)
-            {
-                int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-                using (UnitOfWork db = new UnitOfWork())
-                {
-                    Data.FoodMaterial model = db.FoodMaterialService.GetOne(id);
-                    EditMaterialFood formEdit = new EditMaterialFood();
-                    formEdit._foodMaterilId = id;
-                    formEdit._foodIds = model.FoodId;
-                    formEdit.Quantity.Text = model.Quantity.ToString();
-                    formEdit._materialId=model.MaterialPrice.Id;
-                    formEdit._companyId=companyId;
-
-                    formEdit.UnitPrice.Text = model.MaterialPrice.UnitPrice.ToString();
-                    if (formEdit.ShowDialog() == DialogResult.OK)
-                    {
-                        ShowMaterialFoodGrid(_foodIds);
-                    }
-                }
-
-            }
-            else
-            {
-                RtlMessageBox.Show("آیتمی انتخاب نشده است");
-            }
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

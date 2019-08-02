@@ -25,37 +25,7 @@ namespace Plum.Form.Material
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (dataGridView2.CurrentRow != null)
-            {
-                int id = int.Parse(dataGridView2.CurrentRow.Cells[0].Value.ToString());
-                using (UnitOfWork db = new UnitOfWork())
-                {
-                    Data.Material model = db.MaterialService.GetOne(id);
-                    CreateMaterial formEdit = new CreateMaterial();
-                    formEdit.MaterialId = id;
-                    formEdit.MaterialName.Text = model.MaterialName;
-                    formEdit.label2.Text="ویرایش نام "+ model.MaterialName;
-                    if (formEdit.ShowDialog() == DialogResult.Cancel)
-                    {
-                        ShowMaterialGrid();
-                        dataGridView2.ClearSelection();
-                        dataGridView2.CurrentCell = null;
-                    }
-                }
-
-            }
-            else
-            {
-                var materialIndex = new CreateMaterial();
-                materialIndex.deleteMAterial.Visible = false;
-                var result = materialIndex.ShowDialog();
-                if (result == DialogResult.Cancel)
-                {
-                    ShowMaterialGrid();
-                    dataGridView2.ClearSelection();
-                    dataGridView2.CurrentCell = null;
-                }
-            }
+           
 
         }
 
@@ -91,36 +61,13 @@ namespace Plum.Form.Material
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var materialIndex = new MaterialPrice.Index();
-            var result = materialIndex.ShowDialog();
-            if (result == DialogResult.Cancel)
-            {
-                ShowMaterialGrid();
-            }
-
-        }
-
         private void Index_Click(object sender, EventArgs e)
         {
             dataGridView2.ClearSelection();
             dataGridView2.CurrentCell = null;
         }
 
-        private void panel1_Click(object sender, EventArgs e)
-        {
-            dataGridView2.ClearSelection();
-            dataGridView2.CurrentCell = null;
-        }
-
-
-
-        private void panel5_Click(object sender, EventArgs e)
-        {
-            dataGridView2.ClearSelection();
-            dataGridView2.CurrentCell = null;
-        }
+       
 
         private void txtMaterialName_TextChanged(object sender, EventArgs e)
         {
@@ -144,6 +91,77 @@ namespace Plum.Form.Material
         {
             dataGridView2.ClearSelection();
             dataGridView2.CurrentCell = null;
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView2.CurrentRow != null)
+            {
+                int id = int.Parse(dataGridView2.CurrentRow.Cells[0].Value.ToString());
+                using (UnitOfWork db = new UnitOfWork())
+                {
+                    Data.Material model = db.MaterialService.GetOne(id);
+                    CreateMaterial formEdit = new CreateMaterial();
+                    formEdit.MaterialId = model.Id;
+                    formEdit.MaterialName.Text = model.MaterialName;
+
+                    if (formEdit.ShowDialog() == DialogResult.OK)
+                    {
+                        ShowMaterialGrid();
+                    }
+                }
+
+            }
+            else
+            {
+                RtlMessageBox.Show("آیتمی انتخاب نشده است");
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dataGridView2.RowCount > 0)
+            {
+                using (UnitOfWork db = new UnitOfWork())
+                {
+
+                    int id = int.Parse(dataGridView2.CurrentRow.Cells[0].Value.ToString());
+                    string name = dataGridView2.CurrentRow.Cells[1].Value.ToString();
+                    if (RtlMessageBox.Show($"ایا از حذف {name} مطمئن هستید", "توجه", MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+
+                        var result = db.MaterialService.DeleteMaterial(id);
+                        if (result.IsChange)
+                        {
+                            db.Save();
+
+                            RtlMessageBox.Show(result.Message);
+
+                        }
+                        else
+                        {
+                            RtlMessageBox.Show(result.Message);
+
+                        }
+                    }
+                }
+
+            }
+
+            ShowMaterialGrid();
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            var materialIndex = new CreateMaterial();
+            var result = materialIndex.ShowDialog();
+            if (result == DialogResult.Cancel)
+            {
+                ShowMaterialGrid();
+                dataGridView2.ClearSelection();
+                dataGridView2.CurrentCell = null;
+            }
         }
     }
 }

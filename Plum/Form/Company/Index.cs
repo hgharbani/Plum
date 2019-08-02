@@ -47,55 +47,11 @@ namespace Plum.Form.Company
 
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.CurrentRow != null)
-            {
-                int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-                using (UnitOfWork db = new UnitOfWork())
-                {
-                    Data.Company model = db.CompanyService.GetOne(id);
-                    CreateCompany formEdit = new CreateCompany();
-                    formEdit.companyId = model.CompanyId;
-                    formEdit.txtCompanyName.Text = model.CompanyName;
-
-                    if (formEdit.ShowDialog() == DialogResult.OK)
-                    {
-                        ShowMaterialGrid();
-                    }
-                }
-
-            }
-            else
-            {
-                RtlMessageBox.Show("آیتمی انتخاب نشده است");
-            }
-
-        }
-
         private void Index_Load(object sender, EventArgs e)
         {
             ShowMaterialGrid();
         }
-
-        private void txtCompanyName_TextChanged(object sender, EventArgs e)
-        {
-            using (UnitOfWork db = new UnitOfWork())
-            {
-                if (txtCompanyName.Text == "")
-                {
-                    ShowMaterialGrid();
-                }
-                else
-                {
-                    var model = db.CompanyService.GetByParamert(txtCompanyName.Text);
-
-                    dataGridView1.DataSource = model;
-
-                }
-            }
-        }
-
+        
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (dataGridView1.RowCount > 0)
@@ -128,6 +84,34 @@ namespace Plum.Form.Company
             }
 
             ShowMaterialGrid();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (UnitOfWork db = new UnitOfWork())
+            {
+                if (txtCompanyName.Text == "")
+                {
+                    ShowMaterialGrid();
+                }
+                else
+                {
+                    var model = db.CompanyService.GetByParamert(txtCompanyName.Text);
+
+                    dataGridView1.DataSource = model;
+
+                }
+            }
+        }
+
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
