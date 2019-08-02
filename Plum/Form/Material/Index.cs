@@ -71,20 +71,7 @@ namespace Plum.Form.Material
 
         private void txtMaterialName_TextChanged(object sender, EventArgs e)
         {
-            dataGridView2.ClearSelection();
-            dataGridView2.CurrentCell = null;
-            var materialMode = new MaterialModel()
-            {
-                MaterialName = txtMaterialName.Text,
-            };
-            using (UnitOfWork db = new UnitOfWork())
-            {
-                dataGridView2.AutoGenerateColumns = false;
-                var material = db.MaterialService.GetMaterialModel(materialMode);
-
-                dataGridView2.DataSource = material;
-
-            }
+          
         }
 
         private void txtMaterialName_Click(object sender, EventArgs e)
@@ -176,7 +163,7 @@ namespace Plum.Form.Material
                     formEdit.MaterialId = model.Id;
                     formEdit.MaterialName.Text = model.MaterialName;
 
-                    if (formEdit.ShowDialog() == DialogResult.OK)
+                    if (formEdit.ShowDialog() == DialogResult.Cancel)
                     {
                         ShowMaterialGrid();
                     }
@@ -186,6 +173,24 @@ namespace Plum.Form.Material
             else
             {
                 RtlMessageBox.Show("آیتمی انتخاب نشده است");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dataGridView2.ClearSelection();
+            dataGridView2.CurrentCell = null;
+            var materialMode = new MaterialModel()
+            {
+                MaterialName = txtMaterialName.Text,
+            };
+            using (UnitOfWork db = new UnitOfWork())
+            {
+                dataGridView2.AutoGenerateColumns = false;
+                var material = db.MaterialService.GetMaterialModel(materialMode);
+
+                dataGridView2.DataSource = material;
+
             }
         }
     }

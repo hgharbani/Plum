@@ -133,7 +133,7 @@ namespace Plum.Form.Food
                     formEdit.CompanyId = companyId.CompanyId;
                     formEdit.FoodName.Text = model.FoodName;
 
-                    if (formEdit.ShowDialog() == DialogResult.None)
+                    if (formEdit.ShowDialog() == DialogResult.OK)
                     {
                         ShowFoodGrid();
                     }
